@@ -16,6 +16,11 @@ import ProductDetails from './pages/ProductDetails';
 import UserDashboard from './pages/UserDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 
+import Contact from './pages/Contact';
+import Wishlist from './pages/Wishlist';
+import Policies from './pages/Policies';
+import Blog from './pages/Blog';
+
 function App() {
   return (
     <Router>
@@ -28,11 +33,16 @@ function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<UserDashboard />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/privacy" element={<Policies />} />
+            <Route path="/terms" element={<Policies />} />
             <Route path="/philosophy" element={<Philosophy />} />
             <Route path="/ingredients" element={<Ingredients />} />
             <Route path="/learn" element={<Learn />} />

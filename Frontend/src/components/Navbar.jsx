@@ -57,7 +57,7 @@ const Navbar = () => {
               <button type="button" className="icon-btn" aria-label="Search">
                 <i className="fa-solid fa-magnifying-glass fa-icon" aria-hidden="true" />
               </button>
-              <button type="button" className="icon-btn" aria-label="Wishlist">
+              <button type="button" className="icon-btn" aria-label="Wishlist" onClick={() => navigate('/wishlist')}>
                 <i className="fa-solid fa-heart fa-icon" aria-hidden="true" />
               </button>
               <button
