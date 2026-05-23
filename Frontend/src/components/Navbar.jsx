@@ -1,22 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
+import { Search, Heart, User, ShoppingBag, Menu, X, ChevronDown, Leaf } from 'lucide-react';
 import './Navbar.css';
+import originalLogo from '../assets/logoo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const { cartItems } = useCart();
+  const { user } = useAuth();
   const navigate = useNavigate();
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/shop?search=${encodeURIComponent(searchQuery)}`);
+      setIsSearchOpen(false);
+      setSearchQuery('');
+    }
+  };
 
   const navLinks = [
     { label: 'Home', path: '/' },
-    { label: 'Categories', path: '/categories', hasDropdown: true },
     { label: 'Shop', path: '/shop' },
+    { label: 'Philosophy', path: '/philosophy' },
     { label: 'About', path: '/about' },
-    { label: 'Blog', path: '/blog' },
+    { label: 'Learn', path: '/learn' },
+    { label: 'Ingredients', path: '/ingredients' },
     { label: 'Contact', path: '/contact' }
   ];
+
+  if (user && user.role === 'admin') {
+    navLinks.push({ label: 'Admin Panel', path: '/admin' });
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,13 +53,7 @@ const Navbar = () => {
         <div className="container navbar-shell">
           <div className="navbar-pill glass-nav">
             <Link to="/" className="brand-logo">
-              <div className="logo-circle" aria-hidden="true">
-                <i className="fa-solid fa-leaf fa-icon" />
-              </div>
-              <div className="brand-text">
-                <span className="brand-name">PURO NOVA</span>
-                <span className="brand-tagline">ORGANIC & FRESH</span>
-              </div>
+              <img src={originalLogo} alt="Puro Nova" className="navbar-logo-img" />
             </Link>
 
             <nav className="nav-menu" aria-label="Primary navigation">
@@ -47,29 +61,45 @@ const Navbar = () => {
                 <div key={item.label} className="nav-item-wrapper">
                   <Link to={item.path} className="nav-item">
                     {item.label}
-                    {item.hasDropdown && <i className="fa-solid fa-chevron-down nav-caret" aria-hidden="true" />}
+                    {item.hasDropdown && <ChevronDown className="nav-caret" size={14} strokeWidth={1.5} />}
                   </Link>
                 </div>
               ))}
             </nav>
 
             <div className="header-right">
-              <button type="button" className="icon-btn" aria-label="Search">
-                <i className="fa-solid fa-magnifying-glass fa-icon" aria-hidden="true" />
+              {isSearchOpen && (
+                <form className="nav-search-form" onSubmit={handleSearchSubmit}>
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    autoFocus
+                  />
+                </form>
+              )}
+              <button 
+                type="button" 
+                className="icon-btn" 
+                aria-label="Search"
+                onClick={() => setIsSearchOpen(!isSearchOpen)}
+              >
+                {isSearchOpen ? <X size={22} strokeWidth={1.5} /> : <Search size={22} strokeWidth={1.5} />}
               </button>
               <button type="button" className="icon-btn" aria-label="Wishlist" onClick={() => navigate('/wishlist')}>
-                <i className="fa-solid fa-heart fa-icon" aria-hidden="true" />
+                <Heart size={22} strokeWidth={1.5} />
               </button>
               <button
                 type="button"
                 className="icon-btn"
                 aria-label="Account"
-                onClick={() => navigate('/login')}
+                onClick={() => navigate(user ? (user.role === 'admin' ? '/admin' : '/dashboard') : '/login')}
               >
-                <i className="fa-solid fa-user fa-icon" aria-hidden="true" />
+                <User size={22} strokeWidth={1.5} />
               </button>
               <button type="button" className="cart-btn" aria-label="Shopping cart" onClick={() => navigate('/cart')}>
-                <i className="fa-solid fa-basket-shopping fa-icon" aria-hidden="true" />
+                <ShoppingBag size={20} strokeWidth={2} />
                 {cartItems.length > 0 && <span className="cart-count">{cartItems.length}</span>}
               </button>
               <button
@@ -78,7 +108,7 @@ const Navbar = () => {
                 aria-label="Toggle menu"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
-                <i className={`fa-solid ${mobileMenuOpen ? 'fa-xmark' : 'fa-bars'} fa-icon`} aria-hidden="true" />
+                {mobileMenuOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
               </button>
             </div>
           </div>

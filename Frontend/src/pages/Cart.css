@@ -214,4 +214,8 @@
   .cart-item {
     position: relative;
   }
+  
+  .cart-page {
+    padding-top: calc(var(--nav-height) + 20px);
+  }
 }

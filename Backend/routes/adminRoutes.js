@@ -7,6 +7,7 @@ import Category from '../models/Category.js';
 import Coupon from '../models/Coupon.js';
 import multer from 'multer';
 import path from 'path';
+import sendEmail from '../utils/sendEmail.js';
 const router = express.Router();
 
 // Image upload config
@@ -38,6 +39,10 @@ router.get('/dashboard', protect, admin, async (req, res) => {
       { $sort: { totalSold: -1 } },
       { $limit: 5 }
     ]);
+    const pendingOrders = await Order.countDocuments({ orderStatus: 'placed' });
+    const deliveredOrders = await Order.countDocuments({ orderStatus: 'delivered' });
+    const cancelledOrders = await Order.countDocuments({ orderStatus: 'cancelled' });
+    const lowStockAlerts = await Product.find({ sizes: { $elemMatch: { stock: { $lt: 10 } } } }).limit(5);
 
     res.json({
       success: true,
@@ -49,6 +54,10 @@ router.get('/dashboard', protect, admin, async (req, res) => {
         recentOrders,
         monthlySales,
         bestSelling,
+        pendingOrders,
+        deliveredOrders,
+        cancelledOrders,
+        lowStockAlerts,
       }
     });
   } catch (err) {
@@ -112,7 +121,36 @@ router.put('/orders/:id/status', protect, admin, async (req, res) => {
     const { status, note } = req.body;
     const update = { orderStatus: status, $push: { statusHistory: { status, note: note || `Status changed to ${status}` } } };
     if (status === 'delivered') update.deliveredAt = new Date();
-    const order = await Order.findByIdAndUpdate(req.params.id, update, { new: true });
+    
+    // Find order and populate user to get email
+    const order = await Order.findByIdAndUpdate(req.params.id, update, { new: true }).populate('user', 'name email');
+    
+    if (order && order.user) {
+      const emailContent = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+          <div style="background-color: #1b4332; color: white; padding: 20px; text-align: center;">
+            <h1 style="margin: 0; font-size: 24px;">Order Status Update</h1>
+          </div>
+          <div style="padding: 20px;">
+            <p style="font-size: 16px;">Hello ${order.user.name},</p>
+            <p style="font-size: 16px;">The status of your Puro Nova order <strong>#${order._id}</strong> has been updated.</p>
+            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #1b4332;">
+              <p style="margin: 0; font-size: 18px;"><strong>New Status:</strong> <span style="color: #1b4332; text-transform: capitalize;">${status}</span></p>
+            </div>
+            ${status === 'shipped' ? '<p style="font-size: 16px;">Your items are on the way! You will receive them shortly.</p>' : ''}
+            ${status === 'delivered' ? '<p style="font-size: 16px;">Your order has been delivered! We hope you love your products.</p>' : ''}
+            <p style="font-size: 16px; margin-top: 30px;">Thank you for shopping with Puro Nova!</p>
+          </div>
+        </div>
+      `;
+      
+      await sendEmail({
+        email: order.user.email,
+        subject: `Puro Nova - Order Status Updated to ${status.toUpperCase()}`,
+        html: emailContent
+      });
+    }
+    
     res.json({ success: true, order });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
@@ -124,6 +162,20 @@ router.get('/customers', protect, admin, async (req, res) => {
   try {
     const customers = await User.find({ role: 'customer' }).select('-password').sort({ createdAt: -1 });
     res.json({ success: true, customers });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+router.put('/customers/:id/block', protect, admin, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+    user.isActive = !user.isActive;
+    await user.save();
+    res.json({ success: true, user });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }

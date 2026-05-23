@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Send, Mail, Phone, MapPin } from 'lucide-react';
 import './Footer.css';
+import originalLogo from '../assets/logoo.png';
 
 const Footer = () => {
   return (
@@ -11,11 +12,10 @@ const Footer = () => {
         <div className="footer-grid">
           <div className="footer-brand-col">
             <Link to="/" className="footer-logo">
-              <div className="logo-circle">🌱</div>
-              <span>PURO NOVA</span>
+              <img src={originalLogo} alt="Puro Nova" className="footer-logo-img" />
             </Link>
             <p className="footer-desc">
-              Providing the best quality organic fruits & vegetables at your doorstep. We believe in healthy living and natural products.
+              Providing the best quality natural, herbal, and eco-friendly products at your doorstep. We believe in pure living and holistic care.
             </p>
             <div className="social-icons">
               <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
@@ -61,7 +61,7 @@ const Footer = () => {
               <Mail size={18} />
               <span>support@puronova.com</span>
             </div>
-            
+
             <div className="footer-newsletter">
               <h4>Newsletter</h4>
               <p>Subscribe to get updates on new offers.</p>
@@ -75,16 +75,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} PURO NOVA. All Rights Reserved.</p>
-          <div className="payment-methods">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal" />
-          </div>
-          <div className="footer-extra-links">
-            <span>Secure Payment</span>
-            <span>|</span>
-            <span>Free Delivery over $50</span>
-          </div>
+
         </div>
       </div>
       <div className="footer-floating-leaf">🍃</div>

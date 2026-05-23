@@ -1,0 +1,235 @@
+/* About Page Styles */
+.about-page {
+  background-color: var(--puro-cream);
+}
+
+.about-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: calc(60px + var(--nav-height)) 0 60px;
+}
+
+.about-hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.about-hero-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  color: var(--puro-white);
+}
+
+.about-hero-content h1 {
+  margin-bottom: 24px;
+  color: var(--puro-white);
+}
+
+.about-hero-content .text-lead {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.story-text {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  line-height: 1.8;
+}
+
+.story-text p {
+  margin-bottom: 20px;
+}
+
+.highlight-text {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--puro-green-deep);
+  line-height: 1.4;
+  margin-top: 40px;
+  border-left: 4px solid var(--puro-olive);
+  padding-left: 24px;
+}
+
+.story-quote {
+  background: var(--puro-white);
+  padding: 40px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 120px;
+}
+
+.story-quote blockquote {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--puro-green-forest);
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.story-quote cite {
+  font-style: normal;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.about-ingredients {
+  background-color: var(--puro-white);
+}
+
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.ingredients-image {
+  height: 500px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.ingredients-content p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+.family-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.family-card {
+  background: var(--puro-white);
+  padding: 40px 30px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.family-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-md);
+}
+
+.family-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  color: var(--puro-green-forest);
+}
+
+.family-card p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.family-image {
+  height: 400px;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.about-contact {
+  background-color: var(--puro-white);
+}
+
+.contact-box {
+  padding: 60px;
+  border-radius: var(--radius-lg);
+  background: var(--puro-cream);
+  text-align: center;
+}
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.contact-info-item h4 {
+  font-size: 1.1rem;
+  color: var(--puro-green-forest);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contact-info-item p {
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.contact-info-item a {
+  color: var(--puro-olive);
+  font-weight: 600;
+}
+
+.contact-info-item a:hover {
+  text-decoration: underline;
+}
+
+/* Utilities */
+.radius-lg {
+  border-radius: var(--radius-lg);
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .about-story-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .story-quote {
+    position: static;
+  }
+  
+  .ingredients-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

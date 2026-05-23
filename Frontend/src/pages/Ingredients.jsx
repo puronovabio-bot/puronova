@@ -1,30 +1,115 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import './Ingredients.css';
+import ingredientsHero from '../assets/ingredients_hero.png';
+import citrusImg from '../assets/ingredient_citrus.png';
+import aloeImg from '../assets/ingredient_aloe.png';
+import turmericImg from '../assets/ingredient_turmeric.png';
 
-const ingredients = [
-  { name: 'Citrus Bio-Enzyme', desc: 'A natural degreaser made from fermented citrus peels. Powerful against grime, gentle on surfaces.' },
-  { name: 'Aloe Vera Gel', desc: 'Deeply hydrating and soothing, sustainably harvested to ensure maximum nutrient retention.' },
-  { name: 'Neem Bio-Enzyme', desc: 'Traditional antibacterial properties supercharged through our fermentation process.' },
-  { name: 'Raw Turmeric', desc: 'Potent antioxidant used in our wellness blends to support a healthy immune response.' },
-];
+const Ingredients = () => {
+  useEffect(() => {
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
 
-export const Ingredients = () => (
-  <div style={{ paddingTop: 'var(--nav-height)' }}>
-    <header className="page-header section-padding" style={{ backgroundColor: 'var(--secondary-alt)', textAlign: 'center' }}>
-      <div className="container">
-        <h1 className="heading-xl mb-4">Ingredients Library</h1>
-        <p className="text-lead mx-auto">Radical transparency in every formulation.</p>
-      </div>
-    </header>
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
-    <section className="section-padding container">
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '2rem' }}>
-        {ingredients.map((ing, i) => (
-          <div key={i} style={{ padding: '2rem', backgroundColor: 'var(--white)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
-            <h3 className="heading-sm mb-4" style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: 'var(--primary)' }}>{ing.name}</h3>
-            <p style={{ color: 'var(--text-light)', lineHeight: '1.6' }}>{ing.desc}</p>
+  const ingredients = [
+    {
+      id: 1,
+      name: "Citrus Bio-Enzyme",
+      scientific: "Natural Fermentation",
+      description: "Bio-enzymes are natural catalysts produced through fermentation of citrus peels and organic materials. They help break down grease, stains, and odors naturally without harsh chemicals.",
+      usedIn: 3,
+      image: citrusImg
+    },
+    {
+      id: 2,
+      name: "Aloe Vera Gel",
+      scientific: "Aloe barbadensis Miller",
+      description: "Aloe vera has been used for centuries across cultures for its soothing, hydrating, and skin-calming properties. Rich in vitamins and antioxidants, it supports gentle daily skincare.",
+      usedIn: 2,
+      image: aloeImg
+    },
+    {
+      id: 3,
+      name: "Raw Turmeric & Neem",
+      scientific: "Curcuma longa & Azadirachta indica",
+      description: "Used across Indian traditions for centuries, these botanicals bring natural antibacterial and antioxidant benefits. Neem offers powerful cleansing while turmeric supports healthy skin and wellness.",
+      usedIn: 2,
+      image: turmericImg
+    },
+    {
+      id: 4,
+      name: "Guar Gum",
+      scientific: "Cyamopsis tetragonoloba",
+      description: "A natural thickener derived from guar beans, guar gum gives our formulations smooth texture and stability without relying on synthetic additives.",
+      usedIn: 4,
+      image: null
+    },
+    {
+      id: 5,
+      name: "Organic Jaggery",
+      scientific: "Saccharum officinarum",
+      description: "Unlike refined sugar, jaggery retains natural minerals and trace nutrients. It is traditionally used in wellness preparations and wholesome food formulations.",
+      usedIn: 2,
+      image: null
+    }
+  ];
+
+  return (
+    <div className="ingredients-page">
+      {/* Hero Banner */}
+      <section className="ingredients-hero">
+        <div className="ingredients-hero-image">
+          <img src={ingredientsHero} alt="Botanical laboratory" className="img-cover" />
+        </div>
+        <div className="container">
+          <div className="ingredients-hero-content reveal">
+            <h1 className="heading-lg">The Ingredient Library</h1>
+            <p className="text-lead">
+              We believe you should know exactly what goes into every product you bring into your home. This is our ingredient library — an honest guide to every botanical, enzyme, and natural active we use.
+            </p>
           </div>
-        ))}
-      </div>
-    </section>
-  </div>
-);
+        </div>
+      </section>
+
+      {/* Ingredients Grid */}
+      <section className="ingredients-list-section section-padding">
+        <div className="container">
+          <div className="ingredients-grid">
+            {ingredients.map((item, index) => (
+              <div 
+                key={item.id} 
+                className={`ingredient-card reveal delay-${index % 3 + 1} ${!item.image ? 'text-only-card' : ''}`}
+              >
+                {item.image && (
+                  <div className="ingredient-image-wrapper">
+                    <img src={item.image} alt={item.name} className="img-cover" />
+                  </div>
+                )}
+                <div className="ingredient-info">
+                  <h2 className="ingredient-name">{item.name}</h2>
+                  <span className="ingredient-scientific">{item.scientific}</span>
+                  <p className="ingredient-desc">{item.description}</p>
+                  
+                  <a href="#" className="used-in-link" onClick={(e) => e.preventDefault()}>
+                    Used in {item.usedIn} product{item.usedIn > 1 ? 's' : ''} <span>&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Ingredients;

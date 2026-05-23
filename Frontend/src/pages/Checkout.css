@@ -205,4 +205,12 @@
     flex-direction: column;
     gap: 20px;
   }
+  
+  .checkout-page {
+    padding-top: calc(var(--nav-height) + 20px);
+  }
+  
+  .checkout-form-section, .checkout-summary {
+    padding: 20px;
+  }
 }

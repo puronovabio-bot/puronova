@@ -74,6 +74,12 @@
   text-decoration: none;
 }
 
+.navbar-logo-img {
+  height: 60px; /* Adjust height to fit nicely inside the 80px tall navbar */
+  width: auto;
+  object-fit: contain;
+}
+
 .logo-circle {
   width: 45px;
   height: 45px;
@@ -115,8 +121,9 @@
 }
 
 .nav-item {
-  font-weight: 600;
-  font-size: 15px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 17px;
   color: var(--text-main);
   transition: color 0.3s ease;
   display: flex;
@@ -261,5 +268,72 @@
   
   .navbar-pill {
     padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-bar {
+    display: none; /* Hide top bar on very small screens to save space */
+  }
+  
+  .site-header {
+    padding: 10px 0;
+  }
+
+  .site-header.scrolled .navbar-pill, .navbar-pill {
+    height: 60px;
+    padding: 0 15px;
+  }
+
+  .navbar-logo-img {
+    height: 40px;
+  }
+
+  .cart-btn {
+    padding: 8px 12px;
+  }
+}
+
+/* Nav Search Form */
+.nav-search-form {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  padding: 5px 15px;
+  animation: slideIn 0.3s ease forwards;
+}
+
+.nav-search-form input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 150px;
+  font-size: 14px;
+  color: var(--text-main);
+  font-family: inherit;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    width: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    width: 150px;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-search-form {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: var(--puro-white, #fff);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1001;
   }
 }

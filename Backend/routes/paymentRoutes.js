@@ -3,6 +3,7 @@ import Razorpay from 'razorpay';
 import crypto from 'crypto';
 import Order from '../models/Order.js';
 import { protect } from '../middleware/auth.js';
+import sendEmail from '../utils/sendEmail.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -57,13 +58,48 @@ router.post('/verify', protect, async (req, res) => {
       .digest('hex');
 
     if (expectedSignature === razorpay_signature) {
-      await Order.findByIdAndUpdate(orderId, {
+      const updatedOrder = await Order.findByIdAndUpdate(orderId, {
         paymentStatus: 'paid',
         razorpayPaymentId: razorpay_payment_id,
         razorpaySignature: razorpay_signature,
         orderStatus: 'confirmed',
         $push: { statusHistory: { status: 'confirmed', note: 'Payment verified' } },
+      }, { new: true }).populate('user', 'name email');
+
+      const emailContent = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #1e4d3b;">Payment Successful!</h2>
+          <p>Dear ${updatedOrder.user.name},</p>
+          <p>Your payment of <strong>₹${updatedOrder.total}</strong> for order (<strong>${updatedOrder.orderNumber}</strong>) was successful.</p>
+          <p>We are now processing your order and will notify you once it ships. Thank you for shopping with Puro Nova!</p>
+        </div>
+      `;
+      await sendEmail({
+        email: updatedOrder.user.email,
+        subject: `Payment Successful - Puro Nova [${updatedOrder.orderNumber}]`,
+        html: emailContent
       });
+
+      // Send email to Admin
+      if (process.env.ADMIN_EMAIL) {
+        const adminEmailContent = `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #1e4d3b; border-radius: 8px; padding: 20px;">
+            <h2 style="color: #1e4d3b;">New Order Received (Prepaid)</h2>
+            <p><strong>Order ID:</strong> ${updatedOrder.orderNumber}</p>
+            <p><strong>Customer:</strong> ${updatedOrder.user.name} (${updatedOrder.user.email})</p>
+            <p><strong>Total Amount:</strong> ₹${updatedOrder.total}</p>
+            <p><strong>Payment Method:</strong> Razorpay (Paid)</p>
+            <p><strong>Payment ID:</strong> ${razorpay_payment_id}</p>
+            <p style="margin-top: 20px;">Please check the admin dashboard for full details.</p>
+          </div>
+        `;
+        await sendEmail({
+          email: process.env.ADMIN_EMAIL,
+          subject: `NEW ORDER ALERT - ${updatedOrder.orderNumber} (PAID)`,
+          html: adminEmailContent
+        });
+      }
+
       res.json({ success: true, message: 'Payment verified' });
     } else {
       await Order.findByIdAndUpdate(orderId, { paymentStatus: 'failed' });

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Dancing+Script:wght@600;700&display=swap');
 
 :root {
   /* Premium Organic Palette */
@@ -20,7 +20,7 @@
   --white: #FFFFFF;
   
   /* Typography */
-  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
   --font-script: 'Dancing Script', cursive;
   
@@ -217,18 +217,21 @@ ul {
 }
 
 .product-image-container {
-  height: 200px;
+  height: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
   position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--puro-cream);
 }
 
 .product-image-container img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: var(--transition-smooth);
 }
 
@@ -297,4 +300,41 @@ ul {
 .page-exit-active {
   opacity: 0;
   transition: opacity 0.5s;
+}
+
+/* Global Mobile Optimizations */
+@media (max-width: 768px) {
+  :root {
+    --section-spacing: 60px;
+    --nav-height: 80px;
+  }
+  
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .heading-xl {
+    font-size: clamp(2.2rem, 8vw, 3rem);
+  }
+
+  .heading-lg {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+
+  .heading-md {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .text-lead {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 0.9rem 1.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .section-header {
+    margin-bottom: 40px;
+  }
 }

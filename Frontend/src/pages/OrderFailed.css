@@ -1,0 +1,66 @@
+.order-failed-page {
+  padding: 80px 20px;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+}
+
+.failed-container {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.failed-icon {
+  font-size: 80px;
+  color: #d32f2f;
+  margin-bottom: 20px;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+}
+
+.failed-container h1 {
+  color: #d32f2f;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 15px;
+  font-size: 2.5rem;
+}
+
+.failed-container p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.failed-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.failed-actions .btn {
+  padding: 12px 30px;
+  font-weight: 600;
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .failed-actions {
+    flex-direction: column;
+  }
+}
