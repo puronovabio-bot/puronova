@@ -22,6 +22,8 @@ const Checkout = () => {
   const { clearCart } = useCart();
   
   const { subtotal, shipping, total, cartItems } = location.state || { subtotal: 0, shipping: 0, total: 0, cartItems: [] };
+  
+  const [showAuthPopup, setShowAuthPopup] = useState(false);
 
   const [formData, setFormData] = useState({
     fullName: user?.name || '',
@@ -48,8 +50,7 @@ const Checkout = () => {
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
     if (!user) {
-      alert("Please login to place an order");
-      navigate('/login');
+      setShowAuthPopup(true);
       return;
     }
 
@@ -88,7 +89,7 @@ const Checkout = () => {
         paymentMethod: formData.paymentMethod
       };
 
-      const orderRes = await axios.post('http://localhost:5000/api/orders', orderData, {
+      const orderRes = await axios.post('https://puronova.onrender.com/api/orders', orderData, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -99,11 +100,6 @@ const Checkout = () => {
 
       const orderId = orderRes.data.order._id;
 
-      if (formData.paymentMethod === 'cod') {
-        clearCart();
-        navigate('/order-success');
-        return;
-      }
 
       const isLoaded = await loadRazorpayScript();
       if (!isLoaded) {
@@ -111,7 +107,7 @@ const Checkout = () => {
         return;
       }
 
-      const rzpOrderRes = await axios.post('http://localhost:5000/api/payments/create-order', {
+      const rzpOrderRes = await axios.post('https://puronova.onrender.com/api/payments/create-order', {
         amount: total,
         orderId
       }, {
@@ -134,7 +130,7 @@ const Checkout = () => {
         order_id: razorpayOrderId,
         handler: async function (response) {
           try {
-            const verifyRes = await axios.post('http://localhost:5000/api/payments/verify', {
+            const verifyRes = await axios.post('https://puronova.onrender.com/api/payments/verify', {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
@@ -232,20 +228,10 @@ const Checkout = () => {
                 />
                 <span className="payment-name">Razorpay (UPI, Cards, NetBanking)</span>
               </label>
-              <label className={`payment-option ${formData.paymentMethod === 'cod' ? 'selected' : ''}`}>
-                <input 
-                  type="radio" 
-                  name="paymentMethod" 
-                  value="cod" 
-                  checked={formData.paymentMethod === 'cod'} 
-                  onChange={handleChange} 
-                />
-                <span className="payment-name">Cash on Delivery (COD)</span>
-              </label>
             </div>
 
             <button type="submit" className="btn btn-primary place-order-btn">
-              {formData.paymentMethod === 'razorpay' ? 'Pay Securely with Razorpay' : 'Place Order'}
+              Pay Securely with Razorpay
             </button>
           </form>
         </div>
@@ -282,6 +268,20 @@ const Checkout = () => {
           </div>
         </div>
       </div>
+
+      {/* Custom Auth Popup */}
+      {showAuthPopup && (
+        <div className="auth-popup-overlay">
+          <div className="auth-popup">
+            <h3>Authentication Required</h3>
+            <p>Please sign in or create an account to proceed with checkout.</p>
+            <div className="auth-popup-actions">
+              <button type="button" className="btn btn-outline" onClick={() => setShowAuthPopup(false)}>Cancel</button>
+              <button type="button" className="btn btn-primary" onClick={() => navigate('/login?redirect=/checkout')}>Log In</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

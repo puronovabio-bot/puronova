@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Search, Filter, Eye, Edit } from 'lucide-react';
+import { Search, Filter, Eye, Edit, Download } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 const AdminOrders = () => {
@@ -9,11 +9,13 @@ const AdminOrders = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [selectedOrder, setSelectedOrder] = useState(null);
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/admin/orders', { 
+      const res = await axios.get('https://puronova.onrender.com/api/admin/orders', { 
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -32,7 +34,7 @@ const AdminOrders = () => {
 
   const handleStatusChange = async (orderId, newStatus) => {
     try {
-      const res = await axios.put(`http://localhost:5000/api/admin/orders/${orderId}/status`, { status: newStatus }, { 
+      const res = await axios.put(`https://puronova.onrender.com/api/admin/orders/${orderId}/status`, { status: newStatus }, { 
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -48,8 +50,58 @@ const AdminOrders = () => {
     const matchesSearch = order.orderNumber.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           (order.user?.name || '').toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === 'all' || order.orderStatus === statusFilter;
-    return matchesSearch && matchesStatus;
+    
+    let matchesDate = true;
+    if (startDate) {
+      matchesDate = matchesDate && new Date(order.createdAt) >= new Date(startDate);
+    }
+    if (endDate) {
+      const end = new Date(endDate);
+      end.setDate(end.getDate() + 1);
+      matchesDate = matchesDate && new Date(order.createdAt) < end;
+    }
+    
+    return matchesSearch && matchesStatus && matchesDate;
   });
+
+  const exportToCSV = () => {
+    if (filteredOrders.length === 0) {
+      alert("No orders to export");
+      return;
+    }
+
+    const headers = ['Order ID', 'Customer Name', 'Customer Email', 'Date', 'Total Amount', 'Payment Status', 'Payment Method', 'Order Status', 'Items'];
+    
+    const csvData = filteredOrders.map(order => {
+      const itemsString = order.items.map(item => `${item.name} (${item.quantity}x${item.size})`).join('; ');
+      return [
+        order.orderNumber,
+        order.user?.name || 'N/A',
+        order.user?.email || 'N/A',
+        new Date(order.createdAt).toLocaleDateString(),
+        order.total,
+        order.paymentStatus,
+        order.paymentMethod,
+        order.orderStatus,
+        `"${itemsString}"`
+      ];
+    });
+
+    const csvContent = [
+      headers.join(','),
+      ...csvData.map(row => row.join(','))
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', `orders_export_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   if (loading) return <div className="admin-loading">Loading orders...</div>;
 
@@ -67,6 +119,23 @@ const AdminOrders = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
+          <div className="admin-filter" style={{ display: 'flex', gap: '8px' }}>
+            <input 
+              type="date" 
+              value={startDate} 
+              onChange={(e) => setStartDate(e.target.value)} 
+              title="Start Date"
+              style={{ border: 'none', background: 'transparent', outline: 'none', color: '#334155', fontSize: '13px' }}
+            />
+            <span style={{color: '#94a3b8'}}>-</span>
+            <input 
+              type="date" 
+              value={endDate} 
+              onChange={(e) => setEndDate(e.target.value)} 
+              title="End Date"
+              style={{ border: 'none', background: 'transparent', outline: 'none', color: '#334155', fontSize: '13px' }}
+            />
+          </div>
           <div className="admin-filter">
             <Filter size={18} />
             <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
@@ -78,6 +147,9 @@ const AdminOrders = () => {
               <option value="cancelled">Cancelled</option>
             </select>
           </div>
+          <button onClick={exportToCSV} className="btn-action btn-success" style={{ padding: '8px 16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Download size={16} /> Export
+          </button>
         </div>
       </div>
 

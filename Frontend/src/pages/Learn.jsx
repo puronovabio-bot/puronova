@@ -28,7 +28,7 @@ const Learn = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/blogs');
+        const res = await axios.get('https://puronova.onrender.com/api/blogs');
         if (res.data.success) {
           setArticles(res.data.blogs);
         }

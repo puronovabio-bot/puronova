@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { Leaf, Sparkles, Beaker, Users, HandHeart } from 'lucide-react';
@@ -23,6 +23,33 @@ import imgPhilosophyPrinciples from '../assets/philosophy_principles.png';
 const Home = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const [wishlist, setWishlist] = useState(() => {
+    const saved = localStorage.getItem('wishlist');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [toast, setToast] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  }, [wishlist]);
+
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 2500);
+  };
+
+  const toggleWishlist = (e, productId) => {
+    e.stopPropagation();
+    setWishlist(prev => {
+      if (prev.includes(productId)) {
+        showToast('Removed from wishlist', 'info');
+        return prev.filter(id => id !== productId);
+      } else {
+        showToast('Added to wishlist!', 'success');
+        return [...prev, productId];
+      }
+    });
+  };
 
   useEffect(() => {
     const observerOptions = {
@@ -60,6 +87,13 @@ const Home = () => {
 
   return (
     <div className="home-page">
+      {/* Toast Notification */}
+      {toast && (
+        <div className={`shop-toast shop-toast--${toast.type}`}>
+          <i className={`fa-solid ${toast.type === 'cart' ? 'fa-cart-plus' : toast.type === 'info' ? 'fa-heart-crack' : 'fa-heart'}`}></i>
+          <span>{toast.message}</span>
+        </div>
+      )}
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-bg-overlay"></div>
@@ -158,7 +192,13 @@ const Home = () => {
             {bestSellers.map((product, i) => (
               <div key={product.id} className={`product-card reveal delay-${i % 3 + 1}`} onClick={() => navigate(`/product/${product.id}`)} style={{ cursor: 'pointer' }}>
                 <div className="product-badge">-10%</div>
-                <button className="wishlist-btn" onClick={(e) => e.stopPropagation()}>❤</button>
+                <button 
+                  className={`wishlist-btn ${wishlist.includes(product.id) ? 'wishlisted' : ''}`}
+                  onClick={(e) => toggleWishlist(e, product.id)}
+                  title={wishlist.includes(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
+                >
+                  <i className={`${wishlist.includes(product.id) ? 'fa-solid' : 'fa-regular'} fa-heart`}></i>
+                </button>
                 <div className="product-image-container">
                   <img src={product.img} alt={product.name} />
                 </div>
@@ -176,6 +216,7 @@ const Home = () => {
                       onClick={(e) => {
                         e.stopPropagation();
                         addToCart({ _id: product.id, name: product.name, brand: product.brand, images: [product.img] }, product.sizes[0], product.price, 1);
+                        navigate('/cart');
                       }}
                     >
                       🛒

@@ -59,6 +59,7 @@ const Wishlist = () => {
     addToCart({ _id: item.id, name: item.name, brand: item.brand, images: [item.img] }, item.sizes[0], item.price, 1);
     removeFromWishlist(item.id);
     showToast(`${item.name} moved to cart!`, 'cart');
+    navigate('/cart');
   };
 
   const wishlistItems = allProducts.filter(p => wishlistIds.includes(p.id));

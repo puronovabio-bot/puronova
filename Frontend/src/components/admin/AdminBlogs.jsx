@@ -22,7 +22,7 @@ const AdminBlogs = () => {
 
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/blogs/all', {
+      const res = await axios.get('https://puronova.onrender.com/api/blogs/all', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -64,7 +64,7 @@ const AdminBlogs = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this blog?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/blogs/${id}`, {
+        await axios.delete(`https://puronova.onrender.com/api/blogs/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         fetchBlogs();
@@ -79,11 +79,11 @@ const AdminBlogs = () => {
     e.preventDefault();
     try {
       if (editingBlog) {
-        await axios.put(`http://localhost:5000/api/blogs/${editingBlog}`, formData, {
+        await axios.put(`https://puronova.onrender.com/api/blogs/${editingBlog}`, formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post('http://localhost:5000/api/blogs', formData, {
+        await axios.post('https://puronova.onrender.com/api/blogs', formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }
@@ -155,10 +155,10 @@ const AdminBlogs = () => {
                   <td>{new Date(blog.createdAt).toLocaleDateString()}</td>
                   <td>
                     <div className="action-buttons">
-                      <button className="action-btn edit" onClick={() => handleEdit(blog)} title="Edit">
+                      <button className="icon-btn-small edit" onClick={() => handleEdit(blog)} title="Edit">
                         <Edit size={16} />
                       </button>
-                      <button className="action-btn delete" onClick={() => handleDelete(blog._id)} title="Delete">
+                      <button className="icon-btn-small delete" onClick={() => handleDelete(blog._id)} title="Delete" style={{ color: '#ef4444' }}>
                         <Trash2 size={16} />
                       </button>
                     </div>

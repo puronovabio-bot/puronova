@@ -100,6 +100,7 @@ const Shop = () => {
     e.stopPropagation();
     addToCart({ _id: p.id, name: p.name, brand: p.brand, images: [p.img] }, p.sizes[0], p.price, 1);
     showToast(`${p.name} added to cart!`, 'cart');
+    navigate('/cart');
   };
 
   const handleQuickView = (e, product) => {

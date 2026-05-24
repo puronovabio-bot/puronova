@@ -127,19 +127,33 @@ router.put('/orders/:id/status', protect, admin, async (req, res) => {
     
     if (order && order.user) {
       const emailContent = `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
-          <div style="background-color: #1b4332; color: white; padding: 20px; text-align: center;">
-            <h1 style="margin: 0; font-size: 24px;">Order Status Update</h1>
+        <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background-color: #ffffff;">
+          <div style="background-color: #1a5336; padding: 30px 20px; text-align: center;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 600; letter-spacing: 1px;">PURO NOVA</h1>
+            <p style="color: #a0d8ba; margin: 5px 0 0 0; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">Order Status Update</p>
           </div>
-          <div style="padding: 20px;">
-            <p style="font-size: 16px;">Hello ${order.user.name},</p>
-            <p style="font-size: 16px;">The status of your Puro Nova order <strong>#${order._id}</strong> has been updated.</p>
-            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #1b4332;">
-              <p style="margin: 0; font-size: 18px;"><strong>New Status:</strong> <span style="color: #1b4332; text-transform: capitalize;">${status}</span></p>
+          
+          <div style="padding: 40px 30px;">
+            <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin-bottom: 15px;">Dear <strong>${order.user.name}</strong>,</p>
+            <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin-bottom: 25px;">The status of your Puro Nova order (<strong>${order.orderNumber || order._id}</strong>) has been updated.</p>
+            
+            <div style="background-color: #f8fafc; border-radius: 8px; padding: 20px; margin-bottom: 30px; border-left: 4px solid #1a5336;">
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                  <td style="padding: 8px 0; color: #718096; font-size: 14px;">New Status:</td>
+                  <td style="padding: 8px 0; color: #1a5336; font-size: 18px; font-weight: 700; text-align: right; text-transform: capitalize;">${status}</td>
+                </tr>
+              </table>
             </div>
-            ${status === 'shipped' ? '<p style="font-size: 16px;">Your items are on the way! You will receive them shortly.</p>' : ''}
-            ${status === 'delivered' ? '<p style="font-size: 16px;">Your order has been delivered! We hope you love your products.</p>' : ''}
-            <p style="font-size: 16px; margin-top: 30px;">Thank you for shopping with Puro Nova!</p>
+            
+            ${status === 'shipped' ? '<p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">Your items are on the way! You will receive them shortly.</p>' : ''}
+            ${status === 'delivered' ? '<p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">Your order has been delivered! We hope you love your products.</p>' : ''}
+            ${status === 'cancelled' ? '<p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">We regret to inform you that your order has been cancelled. If you have any questions, please contact our support team.</p>' : ''}
+            
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0;">
+              <p style="color: #718096; font-size: 14px; margin-bottom: 5px;">Thank you for choosing organic wellness.</p>
+              <strong style="color: #1a5336; font-size: 16px;">The Puro Nova Team</strong>
+            </div>
           </div>
         </div>
       `;

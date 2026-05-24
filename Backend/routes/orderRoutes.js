@@ -26,19 +26,44 @@ router.post('/', protect, async (req, res) => {
 
     if (paymentMethod === 'cod') {
       const emailContent = `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #1e4d3b;">Order Confirmed!</h2>
-          <p>Dear ${req.user.name},</p>
-          <p>Your order (<strong>${order.orderNumber}</strong>) has been successfully placed via Cash on Delivery.</p>
-          <p>Total Amount: <strong>₹${order.total}</strong></p>
-          <p>We will notify you once it ships. Thank you for shopping with Puro Nova!</p>
+        <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background-color: #ffffff;">
+          <div style="background-color: #1a5336; padding: 30px 20px; text-align: center;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 600; letter-spacing: 1px;">PURO NOVA</h1>
+            <p style="color: #a0d8ba; margin: 5px 0 0 0; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">Order Confirmed</p>
+          </div>
+          
+          <div style="padding: 40px 30px;">
+            <h2 style="color: #2d3748; font-size: 22px; margin-top: 0; margin-bottom: 20px;">Thank you for your order!</h2>
+            <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin-bottom: 15px;">Dear <strong>${req.user.name}</strong>,</p>
+            <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin-bottom: 25px;">Your order has been successfully placed via Cash on Delivery and is now being processed.</p>
+            
+            <div style="background-color: #f8fafc; border-radius: 8px; padding: 20px; margin-bottom: 30px; border-left: 4px solid #1a5336;">
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                  <td style="padding: 8px 0; color: #718096; font-size: 14px;">Order Number:</td>
+                  <td style="padding: 8px 0; color: #2d3748; font-size: 15px; font-weight: 600; text-align: right;">${order.orderNumber}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; color: #718096; font-size: 14px;">Total Amount:</td>
+                  <td style="padding: 8px 0; color: #1a5336; font-size: 18px; font-weight: 700; text-align: right;">₹${order.total}</td>
+                </tr>
+              </table>
+            </div>
+            
+            <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin-bottom: 30px;">We'll send you another email with tracking information as soon as your order ships.</p>
+            
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0;">
+              <p style="color: #718096; font-size: 14px; margin-bottom: 5px;">Thank you for choosing organic wellness.</p>
+              <strong style="color: #1a5336; font-size: 16px;">The Puro Nova Team</strong>
+            </div>
+          </div>
         </div>
       `;
-      await sendEmail({
+      sendEmail({
         email: req.user.email,
         subject: `Order Confirmation - Puro Nova [${order.orderNumber}]`,
         html: emailContent
-      });
+      }).catch(err => console.error("Email send error:", err));
 
       // Send email to Admin
       if (process.env.ADMIN_EMAIL) {
@@ -52,11 +77,11 @@ router.post('/', protect, async (req, res) => {
             <p style="margin-top: 20px;">Please check the admin dashboard for full details.</p>
           </div>
         `;
-        await sendEmail({
+        sendEmail({
           email: process.env.ADMIN_EMAIL,
           subject: `NEW ORDER ALERT - ${order.orderNumber} (COD)`,
           html: adminEmailContent
-        });
+        }).catch(err => console.error("Admin email send error:", err));
       }
     }
 

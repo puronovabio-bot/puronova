@@ -11,7 +11,7 @@ const AdminCustomers = () => {
 
   const fetchCustomers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/admin/customers', { 
+      const res = await axios.get('https://puronova.onrender.com/api/admin/customers', { 
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -30,7 +30,7 @@ const AdminCustomers = () => {
 
   const handleToggleBlock = async (customerId) => {
     try {
-      const res = await axios.put(`http://localhost:5000/api/admin/customers/${customerId}/block`, {}, { 
+      const res = await axios.put(`https://puronova.onrender.com/api/admin/customers/${customerId}/block`, {}, { 
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {

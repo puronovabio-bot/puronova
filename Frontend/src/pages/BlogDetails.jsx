@@ -14,7 +14,7 @@ const BlogDetails = () => {
     window.scrollTo(0, 0);
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/blogs/${id}`);
+        const res = await axios.get(`https://puronova.onrender.com/api/blogs/${id}`);
         if (res.data.success) {
           const fetchedBlog = res.data.blog;
           setBlog(fetchedBlog);

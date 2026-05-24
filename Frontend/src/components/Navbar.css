@@ -59,6 +59,8 @@
   transition: all 0.4s ease;
   background: var(--puro-white);
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 1001;
 }
 
 .site-header.scrolled .navbar-pill {
@@ -242,14 +244,14 @@
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
   text-align: center;
 }
 
 .mobile-link {
-  font-size: 32px;
+  font-size: 22px;
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--puro-green-deep);
 }
 

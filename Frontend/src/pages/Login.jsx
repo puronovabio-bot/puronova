@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Auth.css';
 
@@ -9,7 +9,11 @@ const Login = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useAuth();
+
+  const searchParams = new URLSearchParams(location.search);
+  const redirectPath = searchParams.get('redirect') || '/dashboard';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +21,7 @@ const Login = () => {
     setError('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/users/login', {
+      const res = await fetch('https://puronova.onrender.com/api/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -27,7 +31,7 @@ const Login = () => {
       if (data.success) {
         login(data.user, data.token);
         if (data.user.role === 'admin') navigate('/admin');
-        else navigate('/dashboard');
+        else navigate(redirectPath);
       } else {
         setError(data.message || 'Login failed');
       }
@@ -76,7 +80,7 @@ const Login = () => {
           </form>
           
           <div className="auth-footer">
-            Don't have an account? <Link to="/register">Register here</Link>
+            Don't have an account? <Link to={`/register?redirect=${encodeURIComponent(redirectPath)}`}>Register here</Link>
           </div>
         </div>
       </div>

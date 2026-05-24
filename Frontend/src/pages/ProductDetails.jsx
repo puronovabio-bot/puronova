@@ -141,6 +141,34 @@ const ProductDetails = () => {
   const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
   const [quantity, setQuantity] = useState(1);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  
+  const [wishlist, setWishlist] = useState(() => {
+    const saved = localStorage.getItem('wishlist');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [toast, setToast] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  }, [wishlist]);
+
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 2500);
+  };
+
+  const toggleWishlist = () => {
+    const numericId = parseInt(product._id, 10);
+    setWishlist(prev => {
+      if (prev.includes(numericId)) {
+        showToast('Removed from wishlist', 'info');
+        return prev.filter(id => id !== numericId);
+      } else {
+        showToast('Added to wishlist!', 'success');
+        return [...prev, numericId];
+      }
+    });
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -152,10 +180,17 @@ const ProductDetails = () => {
 
   const handleAddToCart = () => {
     addToCart(product, selectedVariant.size, selectedVariant.price, quantity);
+    navigate('/cart');
   };
 
   return (
     <div className="product-details-page">
+      {toast && (
+        <div className={`shop-toast shop-toast--${toast.type}`}>
+          <i className={`fa-solid ${toast.type === 'cart' ? 'fa-cart-plus' : toast.type === 'info' ? 'fa-heart-crack' : 'fa-heart'}`}></i>
+          <span>{toast.message}</span>
+        </div>
+      )}
       <div className="container">
         <div className="breadcrumb">
           <span onClick={() => navigate('/')}>Home</span> / 
@@ -213,8 +248,12 @@ const ProductDetails = () => {
                 Add to Cart
               </button>
               
-              <button className="btn btn-secondary wishlist-btn-large">
-                ❤
+              <button 
+                className={`btn btn-secondary wishlist-btn-large ${wishlist.includes(parseInt(product._id, 10)) ? 'active' : ''}`}
+                onClick={toggleWishlist}
+                title={wishlist.includes(parseInt(product._id, 10)) ? 'Remove from wishlist' : 'Add to wishlist'}
+              >
+                {wishlist.includes(parseInt(product._id, 10)) ? '♥' : '♡'}
               </button>
             </div>
 
