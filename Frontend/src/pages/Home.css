@@ -381,13 +381,21 @@
 .promo-banner {
   background: var(--puro-green-forest);
   border-radius: var(--radius-lg);
-  padding: 60px 80px;
+  padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: stretch;
   color: white;
   position: relative;
   overflow: hidden;
+}
+
+.promo-content {
+  padding: 60px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .promo-content h2 {
@@ -407,12 +415,15 @@
 
 .promo-visual {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .promo-visual img {
   width: 100%;
-  max-width: 400px;
-  border-radius: var(--radius-md);
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .discount-circle {
@@ -659,9 +670,17 @@
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
 }
 
+.principle-list-icon svg {
+  transition: stroke 0.3s ease;
+}
+
 .principle-list-item:hover .principle-list-icon {
   background: var(--puro-green-leaf);
   color: white;
+}
+
+.principle-list-item:hover .principle-list-icon svg {
+  stroke: var(--puro-white) !important;
 }
 
 .principle-list-title {
@@ -761,12 +780,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-size: 20px;
+  object-fit: cover;
+  display: block;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
@@ -915,11 +930,17 @@
   .promo-banner {
     grid-template-columns: 1fr;
     text-align: center;
+    padding: 0;
+  }
+
+  .promo-content {
     padding: 40px;
+    align-items: center;
   }
 
   .promo-visual {
-    margin-top: 40px;
+    margin-top: 0;
+    height: 350px;
   }
 
   .brands-grid,

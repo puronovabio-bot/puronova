@@ -4,6 +4,8 @@ import ingredientsHero from '../assets/ingredients_hero.png';
 import citrusImg from '../assets/ingredient_citrus.png';
 import aloeImg from '../assets/ingredient_aloe.png';
 import turmericImg from '../assets/ingredient_turmeric.png';
+import guargumImg from '../assets/ingredient_guargum.png';
+import jaggeryImg from '../assets/ingredient_jaggery.png';
 
 const Ingredients = () => {
   useEffect(() => {
@@ -51,7 +53,7 @@ const Ingredients = () => {
       scientific: "Cyamopsis tetragonoloba",
       description: "A natural thickener derived from guar beans, guar gum gives our formulations smooth texture and stability without relying on synthetic additives.",
       usedIn: 4,
-      image: null
+      image: guargumImg
     },
     {
       id: 5,
@@ -59,7 +61,7 @@ const Ingredients = () => {
       scientific: "Saccharum officinarum",
       description: "Unlike refined sugar, jaggery retains natural minerals and trace nutrients. It is traditionally used in wellness preparations and wholesome food formulations.",
       usedIn: 2,
-      image: null
+      image: jaggeryImg
     }
   ];
 
@@ -85,8 +87,8 @@ const Ingredients = () => {
         <div className="container">
           <div className="ingredients-grid">
             {ingredients.map((item, index) => (
-              <div 
-                key={item.id} 
+              <div
+                key={item.id}
                 className={`ingredient-card reveal delay-${index % 3 + 1} ${!item.image ? 'text-only-card' : ''}`}
               >
                 {item.image && (
@@ -98,10 +100,8 @@ const Ingredients = () => {
                   <h2 className="ingredient-name">{item.name}</h2>
                   <span className="ingredient-scientific">{item.scientific}</span>
                   <p className="ingredient-desc">{item.description}</p>
-                  
-                  <a href="#" className="used-in-link" onClick={(e) => e.preventDefault()}>
-                    Used in {item.usedIn} product{item.usedIn > 1 ? 's' : ''} <span>&rarr;</span>
-                  </a>
+
+
                 </div>
               </div>
             ))}

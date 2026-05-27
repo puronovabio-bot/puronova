@@ -40,7 +40,10 @@ const categoryIcons = {
 
 const Shop = () => {
   const location = useLocation();
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState(() => {
+    const params = new URLSearchParams(location.search);
+    return params.get('category') || 'All';
+  });
   const [searchTerm, setSearchTerm] = useState(() => {
     const params = new URLSearchParams(location.search);
     return params.get('search') || '';
@@ -49,8 +52,18 @@ const Shop = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const searchParam = params.get('search');
+    const categoryParam = params.get('category');
+
     if (searchParam !== null) {
       setSearchTerm(searchParam);
+    } else {
+      setSearchTerm('');
+    }
+
+    if (categoryParam !== null) {
+      setActiveCategory(categoryParam);
+    } else {
+      setActiveCategory('All');
     }
   }, [location.search]);
   const [wishlist, setWishlist] = useState(() => {

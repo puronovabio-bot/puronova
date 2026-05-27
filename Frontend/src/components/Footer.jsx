@@ -31,7 +31,7 @@ const Footer = () => {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/shop">Shop</Link></li>
               <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/blog">Our Blog</Link></li>
+              <li><Link to="/learn">Our Blog</Link></li>
               <li><Link to="/contact">Contact Us</Link></li>
             </ul>
           </div>
@@ -39,23 +39,28 @@ const Footer = () => {
           <div className="footer-links-col">
             <h4>Customer Service</h4>
             <ul>
-              <li><Link to="/account">My Account</Link></li>
-              <li><Link to="/orders">Order Tracking</Link></li>
               <li><Link to="/wishlist">Wishlist</Link></li>
-              <li><Link to="/returns">Returns</Link></li>
-              <li><Link to="/faq">FAQs</Link></li>
+              <li><Link to="/returns">Returns & Replacements</Link></li>
+              <li><Link to="/shipping">Shipping Policy</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
+              <li><Link to="/terms">Terms & Conditions</Link></li>
             </ul>
           </div>
 
           <div className="footer-contact-col">
             <h4>Contact Info</h4>
             <div className="contact-item">
-              <MapPin size={18} />
-              <span>123 Organic Lane, Nature City, NC 12345</span>
+              <MapPin size={18} style={{ flexShrink: 0, marginTop: '4px' }} />
+              <span>
+                Plot No. 127, Suraram Village,<br />
+                Gajularamaram, Quthbullapur,<br />
+                Medchal-Malkajgiri, Hyderabad,<br />
+                Telangana — 500055
+              </span>
             </div>
             <div className="contact-item">
               <Phone size={18} />
-              <span>+1 (234) 567-890</span>
+              <span>+91 97048 45883</span>
             </div>
             <div className="contact-item">
               <Mail size={18} />

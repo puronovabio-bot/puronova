@@ -41,14 +41,19 @@ const Contact = () => {
                 <span className="info-icon">📍</span>
                 <div>
                   <h4>Our Location</h4>
-                  <p>123 Organic Lane, Wellness City, India</p>
+                  <p style={{ margin: 0, lineHeight: '1.5' }}>
+                    Plot No. 127, Suraram Village,<br />
+                    Gajularamaram, Quthbullapur,<br />
+                    Medchal-Malkajgiri, Hyderabad,<br />
+                    Telangana — 500055
+                  </p>
                 </div>
               </div>
               <div className="info-card">
                 <span className="info-icon">📞</span>
                 <div>
                   <h4>Call Us</h4>
-                  <p>+91 98765 43210</p>
+                  <p>+91 97048 45883</p>
                 </div>
               </div>
               <div className="info-card">

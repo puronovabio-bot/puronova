@@ -19,6 +19,9 @@ import imgBlog1 from '../assets/learn_blog_1.png';
 import imgBlog2 from '../assets/learn_blog_2.png';
 import imgBlog3 from '../assets/learn_blog_3.png';
 import imgPhilosophyPrinciples from '../assets/philosophy_principles.png';
+import imgSarah from '../assets/testmonials/sarah.jpg';
+import imgPriya from '../assets/testmonials/priya.jpg';
+import imgPrasanth from '../assets/testmonials/prasanth-testmonials.jpg';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -156,7 +159,7 @@ const Home = () => {
               <div className="cat-info">
                 <h3>Home Care</h3>
                 <p>NeatCo by Puro Nova</p>
-                <Link to="/shop" className="cat-link">Shop Now ➔</Link>
+                <Link to="/shop?category=Home Care" className="cat-link">Shop Now ➔</Link>
               </div>
               <img src={categoryOneImg} alt="Home Care" className="cat-img floating-element" />
             </div>
@@ -164,7 +167,7 @@ const Home = () => {
               <div className="cat-info">
                 <h3>Personal Care</h3>
                 <p>TouchCo by Puro Nova</p>
-                <Link to="/shop" className="cat-link">Shop Now ➔</Link>
+                <Link to="/shop?category=Personal Care" className="cat-link">Shop Now ➔</Link>
               </div>
               <img src={categoryThreeImg} alt="Personal Care" className="cat-img floating-element delay-1" />
             </div>
@@ -172,7 +175,7 @@ const Home = () => {
               <div className="cat-info">
                 <h3>Wellness</h3>
                 <p>Natural & Herbal</p>
-                <Link to="/shop" className="cat-link">Shop Now ➔</Link>
+                <Link to="/shop?category=Wellness & Herbal" className="cat-link">Shop Now ➔</Link>
               </div>
               <img src={categoryTwoImg} alt="Wellness" className="cat-img floating-element delay-2" />
             </div>
@@ -192,7 +195,7 @@ const Home = () => {
             {bestSellers.map((product, i) => (
               <div key={product.id} className={`product-card reveal delay-${i % 3 + 1}`} onClick={() => navigate(`/product/${product.id}`)} style={{ cursor: 'pointer' }}>
                 <div className="product-badge">-10%</div>
-                <button 
+                <button
                   className={`wishlist-btn ${wishlist.includes(product.id) ? 'wishlisted' : ''}`}
                   onClick={(e) => toggleWishlist(e, product.id)}
                   title={wishlist.includes(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
@@ -235,12 +238,15 @@ const Home = () => {
           <div className="promo-banner reveal">
             <div className="promo-content">
               <span className="promo-tag">Special Offer</span>
-              <h2 className="heading-lg">Get 25% Off <br /> on Your First Order!</h2>
-              <Link to="/shop" className="btn btn-primary">Shop Now</Link>
+              <h2 className="heading-lg" style={{ marginBottom: '15px' }}>Get Discount <br /> on Your First Order!</h2>
+              <p className="promo-code-text" style={{ fontSize: '1.1rem', margin: '0 0 30px 0', opacity: 0.95, display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                Use Coupon Code: <span style={{ background: '#FFF', color: 'var(--puro-green-forest)', padding: '5px 12px', borderRadius: '6px', fontWeight: '800', letterSpacing: '1px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>WELCOME</span>
+              </p>
+              <Link to="/shop" className="btn btn-accent">Shop Now</Link>
             </div>
             <div className="promo-visual">
               <img src={promoImage} alt="Promo" />
-              <div className="discount-circle">25% <br /> OFF</div>
+
             </div>
           </div>
         </div>
@@ -273,7 +279,7 @@ const Home = () => {
                     <li>Toilet Cleaner</li>
                   </ul>
                 </div>
-                <Link to="/shop" className="explore-link">Explore range →</Link>
+                <Link to="/shop?category=Home Care" className="explore-link">Explore range →</Link>
               </div>
             </div>
             <div className="brand-card reveal delay-2">
@@ -292,7 +298,7 @@ const Home = () => {
                     <li>Tooth Powder</li>
                   </ul>
                 </div>
-                <Link to="/shop" className="explore-link">Explore range →</Link>
+                <Link to="/shop?category=Personal Care" className="explore-link">Explore range →</Link>
               </div>
             </div>
             <div className="brand-card reveal delay-3">
@@ -311,7 +317,7 @@ const Home = () => {
                     <li>Papads</li>
                   </ul>
                 </div>
-                <Link to="/shop" className="explore-link">Explore range →</Link>
+                <Link to="/shop?category=Wellness & Herbal" className="explore-link">Explore range →</Link>
               </div>
             </div>
           </div>
@@ -411,7 +417,7 @@ const Home = () => {
               <div className="stars">★★★★★</div>
               <p className="testimonial-text">"The NeatCo dish wash is incredibly gentle on my hands but tough on grease. I love knowing it's safe for my family."</p>
               <div className="testimonial-author-box">
-                <div className="author-avatar" style={{ background: 'var(--puro-green-leaf)' }}>S</div>
+                <img src={imgSarah} alt="Sarah M." className="author-avatar" />
                 <div className="author-info">
                   <h5 className="testimonial-author">Sarah M.</h5>
                   <span className="author-role">Verified Buyer</span>
@@ -423,7 +429,7 @@ const Home = () => {
               <div className="stars">★★★★★</div>
               <p className="testimonial-text">"TouchCo face wash has completely cleared up my skin. The natural ingredients really make a difference compared to chemical alternatives."</p>
               <div className="testimonial-author-box">
-                <div className="author-avatar" style={{ background: 'var(--puro-gold)' }}>P</div>
+                <img src={imgPriya} alt="Priya K." className="author-avatar" />
                 <div className="author-info">
                   <h5 className="testimonial-author">Priya K.</h5>
                   <span className="author-role">Verified Buyer</span>
@@ -433,12 +439,12 @@ const Home = () => {
             <div className="testimonial-card">
               <div className="quote-icon-large">"</div>
               <div className="stars">★★★★★</div>
-              <p className="testimonial-text">"Absolutely love the Heartful Foods laddus! They are the perfect healthy snack for my kids without any refined sugar."</p>
+              <p className="testimonial-text">"Puro Nova's commitment to 100% honest, plant-based ingredients is remarkable. Their bio-enzyme cleaners and botanical care products have completely transformed our family's daily wellness routine."</p>
               <div className="testimonial-author-box">
-                <div className="author-avatar" style={{ background: 'var(--puro-green-forest)' }}>A</div>
+                <img src={imgPrasanth} alt="Prasanth" className="author-avatar" />
                 <div className="author-info">
-                  <h5 className="testimonial-author">Anjali R.</h5>
-                  <span className="author-role">Verified Buyer</span>
+                  <h5 className="testimonial-author">Prasanth</h5>
+                  <span className="author-role">Digital Marketer</span>
                 </div>
               </div>
             </div>
@@ -446,47 +452,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Blogs Section */}
-      <section className="blog-section section-padding reveal">
-        <div className="container">
-          <div className="section-header text-center">
-            <span className="section-subtitle">Learn</span>
-            <h2 className="heading-lg">Latest from our Blog</h2>
-          </div>
-          <div className="blog-grid">
-            <div className="blog-card">
-              <div className="blog-img-wrapper">
-                <img src={imgBlog1} alt="Blog 1" className="blog-img" />
-              </div>
-              <div className="blog-content">
-                <span className="blog-date">May 15, 2026</span>
-                <h4 className="blog-title">The Power of Bio-enzymes in Cleaning</h4>
-                <Link to="/learn" className="blog-link">Read More →</Link>
-              </div>
-            </div>
-            <div className="blog-card">
-              <div className="blog-img-wrapper">
-                <img src={imgBlog2} alt="Blog 2" className="blog-img" />
-              </div>
-              <div className="blog-content">
-                <span className="blog-date">May 10, 2026</span>
-                <h4 className="blog-title">Why Plant-Based Ingredients Matter</h4>
-                <Link to="/learn" className="blog-link">Read More →</Link>
-              </div>
-            </div>
-            <div className="blog-card">
-              <div className="blog-img-wrapper">
-                <img src={imgBlog3} alt="Blog 3" className="blog-img" />
-              </div>
-              <div className="blog-content">
-                <span className="blog-date">May 05, 2026</span>
-                <h4 className="blog-title">A Guide to Toxin-Free Living</h4>
-                <Link to="/learn" className="blog-link">Read More →</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Newsletter Section */}
       <section className="newsletter-section section-padding reveal" style={{ background: 'var(--puro-green-forest)', color: 'white' }}>

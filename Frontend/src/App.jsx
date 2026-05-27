@@ -23,7 +23,10 @@ import OrderFailed from './pages/OrderFailed';
 
 import Contact from './pages/Contact';
 import Wishlist from './pages/Wishlist';
-import Policies from './pages/Policies';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
+import ShippingPolicy from './pages/ShippingPolicy';
+import ReturnPolicy from './pages/ReturnPolicy';
 
 const PublicLayout = () => {
   return (
@@ -62,8 +65,10 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/learn" element={<Learn />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
-          <Route path="/privacy" element={<Policies />} />
-          <Route path="/terms" element={<Policies />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsConditions />} />
+          <Route path="/returns" element={<ReturnPolicy />} />
+          <Route path="/shipping" element={<ShippingPolicy />} />
           <Route path="/philosophy" element={<Philosophy />} />
           <Route path="/ingredients" element={<Ingredients />} />
           <Route path="/about" element={<About />} />
