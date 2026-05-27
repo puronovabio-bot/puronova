@@ -306,7 +306,7 @@ const Home = () => {
                 <img src={categoryTwoImg} alt="Heartful Foods" className="brand-img" style={{ objectFit: 'contain', padding: '20px' }} />
               </div>
               <div className="brand-content-wrapper">
-                <h3 className="brand-name">Heartful Foods</h3>
+                <h3 className="brand-name">Heartfull Foods</h3>
                 <p className="brand-desc">Honest food, made the right way. Dry fruit laddus, herbal teas, organic jaggery — whole ingredients, nothing hidden.</p>
                 <div className="brand-products">
                   <strong>Products:</strong>
