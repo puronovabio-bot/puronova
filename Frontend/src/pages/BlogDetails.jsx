@@ -3,9 +3,45 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, Clock, Calendar } from 'lucide-react';
 import './Learn.css';
+import blog1 from '../assets/learn_blog_1.png';
+import blog2 from '../assets/learn_blog_2.png';
+import blog3 from '../assets/learn_blog_3.png';
+
+const fallbackArticles = [
+  {
+    _id: 'f1',
+    slug: 'science-of-bio-enzymes',
+    title: 'The Science of Bio-Enzymes in Cleaning',
+    category: 'Home Care',
+    excerpt: 'Discover how natural bio-enzymes break down stains and grime at a microscopic level, offering a safer alternative to harsh chemicals.',
+    readTime: '4 min read',
+    createdAt: new Date('2026-05-15').toISOString(),
+    image: blog1
+  },
+  {
+    _id: 'f2',
+    slug: 'benefits-of-neem-and-turmeric',
+    title: 'Why Neem and Turmeric Are Skincare Superheroes',
+    category: 'Personal Care',
+    excerpt: 'Explore the Ayurvedic wisdom behind using neem and raw turmeric for clear, glowing, and healthy skin.',
+    readTime: '5 min read',
+    createdAt: new Date('2026-05-20').toISOString(),
+    image: blog2
+  },
+  {
+    _id: 'f3',
+    slug: 'switch-to-unrefined-jaggery',
+    title: 'Making the Switch to Unrefined Organic Jaggery',
+    category: 'Heartful Foods',
+    excerpt: 'Learn why unrefined jaggery is more than just a sweetener, and how its natural minerals support your overall wellness.',
+    readTime: '3 min read',
+    createdAt: new Date('2026-05-25').toISOString(),
+    image: blog3
+  }
+];
 
 const BlogDetails = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,12 +50,11 @@ const BlogDetails = () => {
     window.scrollTo(0, 0);
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(`https://puronova.onrender.com/api/blogs/${id}`);
+        const res = await axios.get(`https://puronova.onrender.com/api/blogs/${slug}`);
         if (res.data.success) {
           const fetchedBlog = res.data.blog;
           setBlog(fetchedBlog);
           
-          // Update SEO Title and Meta Description
           document.title = `${fetchedBlog.title} | Puro Nova Learn`;
           let metaDesc = document.querySelector('meta[name="description"]');
           if (!metaDesc) {
@@ -28,19 +63,27 @@ const BlogDetails = () => {
             document.head.appendChild(metaDesc);
           }
           metaDesc.setAttribute('content', fetchedBlog.excerpt);
-          
         } else {
-          setError('Blog not found');
+          throw new Error('Not found');
         }
       } catch (err) {
-        console.error('Failed to fetch blog', err);
-        setError('Failed to load the article');
+        console.error('Failed to fetch blog via API, falling back...', err);
+        const fallback = fallbackArticles.find(a => a.slug === slug || a._id === slug);
+        if (fallback) {
+          setBlog({
+            ...fallback,
+            content: "Nature has provided us with incredible solutions for our everyday needs. " + fallback.excerpt + "\n\nBy embracing traditional wisdom and combining it with modern understanding, we can make choices that are better for our health and our environment.\n\nAt Puro Nova, we believe in the power of these natural ingredients and formulate our products to maximize their benefits without the need for harsh additives."
+          });
+          document.title = `${fallback.title} | Puro Nova Learn`;
+        } else {
+          setError('Article not found');
+        }
       } finally {
         setLoading(false);
       }
     };
     fetchBlog();
-  }, [id]);
+  }, [slug]);
 
   if (loading) return <div className="blog-details-loading">Loading article...</div>;
   if (error || !blog) return (

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { Leaf, Sparkles, Beaker, Users, HandHeart } from 'lucide-react';
+import { Leaf, Sparkles, Beaker, Users, HandHeart, BookOpen, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import './Home.css';
+import './Home_Additions.css';
 import vegImage from '../assets/490f43d6-cf4a-42b9-aa7b-e3794043f1af.png';
 import promoImage from '../assets/two-image.png';
 
@@ -31,9 +32,24 @@ const Home = () => {
     return saved ? JSON.parse(saved) : [];
   });
   const [toast, setToast] = useState(null);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const testimonials = [
+    { text: "The NeatCo dish wash is incredibly gentle on my hands but tough on grease. I love knowing it's safe for my family.", author: "Sarah M.", role: "Verified Buyer", image: imgSarah },
+    { text: "TouchCo face wash has completely cleared up my skin. The natural ingredients really make a difference compared to chemical alternatives.", author: "Priya K.", role: "Verified Buyer", image: imgPriya },
+    { text: "Puro Nova's commitment to 100% honest, plant-based ingredients is remarkable. Their bio-enzyme cleaners and botanical care products have completely transformed our family's daily wellness routine.", author: "Prasanth", role: "Digital Marketer", image: imgPrasanth }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    document.title = 'Puro Nova | Modern Natural Living';
   }, [wishlist]);
 
   const showToast = (message, type = 'success') => {
@@ -131,9 +147,9 @@ const Home = () => {
         <div className="container hero-container">
           <div className="hero-content reveal">
             <h1 className="hero-title">
-              Pure Living <br />
-              Starts with <br />
-              <span className="text-leaf">Natural Care</span>
+              Modern Natural <br />
+              Living for <br />
+              <span className="text-leaf">Everyday Homes</span>
             </h1>
             <p className="hero-subtitle">
               Discover our range of herbal personal care and eco-friendly <br />
@@ -141,7 +157,7 @@ const Home = () => {
             </p>
             <div className="hero-btns">
               <Link to="/shop" className="btn btn-accent">Shop Now ➔</Link>
-              <Link to="/categories" className="btn btn-secondary">Explore Categories</Link>
+              <Link to="/philosophy" className="btn btn-secondary">Learn Our Philosophy</Link>
             </div>
           </div>
         </div>
@@ -306,7 +322,7 @@ const Home = () => {
                 <img src={categoryTwoImg} alt="Heartful Foods" className="brand-img" style={{ objectFit: 'contain', padding: '20px' }} />
               </div>
               <div className="brand-content-wrapper">
-                <h3 className="brand-name">Heartfull Foods</h3>
+                <h3 className="brand-name">Heartful Foods</h3>
                 <p className="brand-desc">Honest food, made the right way. Dry fruit laddus, herbal teas, organic jaggery — whole ingredients, nothing hidden.</p>
                 <div className="brand-products">
                   <strong>Products:</strong>
@@ -411,48 +427,151 @@ const Home = () => {
             <span className="section-subtitle">Testimonials</span>
             <h2 className="heading-lg">What Our Customers Say</h2>
           </div>
-          <div className="testimonials-grid">
-            <div className="testimonial-card">
-              <div className="quote-icon-large">"</div>
-              <div className="stars">★★★★★</div>
-              <p className="testimonial-text">"The NeatCo dish wash is incredibly gentle on my hands but tough on grease. I love knowing it's safe for my family."</p>
-              <div className="testimonial-author-box">
-                <img src={imgSarah} alt="Sarah M." className="author-avatar" />
-                <div className="author-info">
-                  <h5 className="testimonial-author">Sarah M.</h5>
-                  <span className="author-role">Verified Buyer</span>
-                </div>
+          <div className="testimonial-carousel-container" style={{ position: 'relative', maxWidth: '800px', margin: '0 auto' }}>
+            <div className="testimonial-carousel" style={{ overflow: 'hidden' }}>
+              <div 
+                className="testimonial-track" 
+                style={{ 
+                  display: 'flex', 
+                  transition: 'transform 0.5s ease-in-out',
+                  transform: `translateX(-${currentTestimonial * 100}%)`
+                }}
+              >
+                {testimonials.map((t, i) => (
+                  <div key={i} className="testimonial-card" style={{ minWidth: '100%', boxSizing: 'border-box' }}>
+                    <div className="quote-icon-large">"</div>
+                    <div className="stars">★★★★★</div>
+                    <p className="testimonial-text">{t.text}</p>
+                    <div className="testimonial-author-box">
+                      <img src={t.image} alt={t.author} className="author-avatar" />
+                      <div className="author-info">
+                        <h5 className="testimonial-author">{t.author}</h5>
+                        <span className="author-role">{t.role}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="testimonial-card">
-              <div className="quote-icon-large">"</div>
-              <div className="stars">★★★★★</div>
-              <p className="testimonial-text">"TouchCo face wash has completely cleared up my skin. The natural ingredients really make a difference compared to chemical alternatives."</p>
-              <div className="testimonial-author-box">
-                <img src={imgPriya} alt="Priya K." className="author-avatar" />
-                <div className="author-info">
-                  <h5 className="testimonial-author">Priya K.</h5>
-                  <span className="author-role">Verified Buyer</span>
-                </div>
+            
+            {/* Carousel Controls */}
+            <div className="carousel-controls" style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginTop: '20px' }}>
+              <button 
+                onClick={() => setCurrentTestimonial(prev => (prev - 1 + testimonials.length) % testimonials.length)}
+                style={{ background: 'white', border: 'none', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
+              >
+                <ChevronLeft size={20} color="var(--puro-green-forest)" />
+              </button>
+              <div className="carousel-dots" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                {testimonials.map((_, i) => (
+                  <div 
+                    key={i} 
+                    onClick={() => setCurrentTestimonial(i)}
+                    style={{ 
+                      width: currentTestimonial === i ? '24px' : '8px', 
+                      height: '8px', 
+                      borderRadius: '4px', 
+                      background: currentTestimonial === i ? 'var(--puro-green-forest)' : '#ccc',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s'
+                    }}
+                  />
+                ))}
               </div>
-            </div>
-            <div className="testimonial-card">
-              <div className="quote-icon-large">"</div>
-              <div className="stars">★★★★★</div>
-              <p className="testimonial-text">"Puro Nova's commitment to 100% honest, plant-based ingredients is remarkable. Their bio-enzyme cleaners and botanical care products have completely transformed our family's daily wellness routine."</p>
-              <div className="testimonial-author-box">
-                <img src={imgPrasanth} alt="Prasanth" className="author-avatar" />
-                <div className="author-info">
-                  <h5 className="testimonial-author">Prasanth</h5>
-                  <span className="author-role">Digital Marketer</span>
-                </div>
-              </div>
+              <button 
+                onClick={() => setCurrentTestimonial(prev => (prev + 1) % testimonials.length)}
+                style={{ background: 'white', border: 'none', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
+              >
+                <ChevronRight size={20} color="var(--puro-green-forest)" />
+              </button>
             </div>
           </div>
         </div>
       </section>
+      {/* Educational Section */}
+      <section className="home-learn-section section-padding reveal" style={{ backgroundColor: 'white' }}>
+        <div className="container">
+          <div className="section-header-flex">
+            <div>
+              <span className="section-subtitle">Learn & Discover</span>
+              <h2 className="heading-lg" style={{ color: 'var(--puro-green-deep)' }}>The Botanical Journal</h2>
+            </div>
+            <Link to="/learn" className="btn btn-outline" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              View all articles <ArrowRight size={16} />
+            </Link>
+          </div>
+          
+          <div className="home-learn-grid">
+            <Link to="/learn/science-of-bio-enzymes" className="home-learn-card">
+              <div className="learn-img-wrapper">
+                <img src={imgBlog1} alt="Bio-Enzymes" />
+              </div>
+              <div className="learn-card-content">
+                <span className="learn-category">Home Care</span>
+                <h3>The Science of Bio-Enzymes in Cleaning</h3>
+                <p>Discover how natural bio-enzymes break down stains and grime safely.</p>
+                <span className="read-link">Read Article &rarr;</span>
+              </div>
+            </Link>
+            
+            <Link to="/learn/benefits-of-neem-and-turmeric" className="home-learn-card">
+              <div className="learn-img-wrapper">
+                <img src={imgBlog2} alt="Neem & Turmeric" />
+              </div>
+              <div className="learn-card-content">
+                <span className="learn-category">Personal Care</span>
+                <h3>Why Neem & Turmeric Are Skincare Superheroes</h3>
+                <p>Explore the Ayurvedic wisdom behind clear, glowing, and healthy skin.</p>
+                <span className="read-link">Read Article &rarr;</span>
+              </div>
+            </Link>
+            
+            <Link to="/learn/switch-to-unrefined-jaggery" className="home-learn-card">
+              <div className="learn-img-wrapper">
+                <img src={imgBlog3} alt="Organic Jaggery" />
+              </div>
+              <div className="learn-card-content">
+                <span className="learn-category">Heartful Foods</span>
+                <h3>Making the Switch to Unrefined Organic Jaggery</h3>
+                <p>Learn why unrefined jaggery supports your overall wellness.</p>
+                <span className="read-link">Read Article &rarr;</span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
 
-
+      {/* Instagram Section */}
+      <section className="home-instagram-section reveal">
+        <div className="container text-center" style={{ marginBottom: '40px' }}>
+          <i className="fa-brands fa-instagram" style={{ fontSize: '32px', color: 'var(--puro-gold)', marginBottom: '15px' }}></i>
+          <h2 className="heading-md">Join Our Community</h2>
+          <p style={{ color: 'var(--text-light)' }}>Follow <a href="https://instagram.com/puronova_official" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--puro-green-forest)', fontWeight: '600' }}>@puronova_official</a> for wellness tips & updates</p>
+        </div>
+        
+        <div className="instagram-grid">
+          <a href="https://instagram.com/puronova_official" target="_blank" rel="noopener noreferrer" className="insta-item">
+            <img src={imgDishWash} alt="Instagram Post 1" />
+            <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
+          </a>
+          <a href="https://instagram.com/puronova_official" target="_blank" rel="noopener noreferrer" className="insta-item">
+            <img src={imgFaceWash} alt="Instagram Post 2" />
+            <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
+          </a>
+          <a href="https://instagram.com/puronova_official" target="_blank" rel="noopener noreferrer" className="insta-item">
+            <img src={imgBodyWash} alt="Instagram Post 3" />
+            <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
+          </a>
+          <a href="https://instagram.com/puronova_official" target="_blank" rel="noopener noreferrer" className="insta-item">
+            <img src={imgFacePack} alt="Instagram Post 4" />
+            <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
+          </a>
+          <a href="https://instagram.com/puronova_official" target="_blank" rel="noopener noreferrer" className="insta-item">
+            <img src={imgAmrutadhara} alt="Instagram Post 5" />
+            <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
+          </a>
+        </div>
+      </section>
 
       {/* Newsletter Section */}
       <section className="newsletter-section section-padding reveal" style={{ background: 'var(--puro-green-forest)', color: 'white' }}>

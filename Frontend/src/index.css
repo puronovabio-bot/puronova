@@ -1,28 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Dancing+Script:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
 :root {
   /* Premium Organic Palette */
-  --puro-green-deep: #0E3B21;
-  --puro-green-forest: #1A5336;
-  --puro-green-leaf: #4CAF50;
-  --puro-cream: #F9F7F2;
+  --puro-green-deep: #1A4731;
+  --puro-green-forest: #2D5A27;
+  --puro-green-leaf: #87A96B;
+  --puro-cream: #FFF5E1;
+  --puro-warm-white: #FAFAF7;
   --puro-white: #FFFFFF;
   --puro-olive: #828B52;
-  --puro-gold: #D4AF37;
+  --puro-gold: #C9922A;
+  --puro-charcoal: #2C2C2C;
+  --puro-soft-grey: #F8F9FA;
   
   --primary: var(--puro-green-forest);
   --primary-light: var(--puro-green-leaf);
   --primary-dark: var(--puro-green-deep);
   --secondary: var(--puro-cream);
   --accent: var(--puro-olive);
-  --text-main: #1C2B23;
+  --text-main: var(--puro-charcoal);
   --text-light: #5C6D64;
   --white: #FFFFFF;
   
   /* Typography */
-  --font-heading: 'Playfair Display', serif;
+  --font-heading: 'Cormorant Garamond', serif;
   --font-body: 'Inter', sans-serif;
-  --font-script: 'Dancing Script', cursive;
   
   /* Spacing & Layout */
   --nav-height: 100px;
@@ -55,8 +57,8 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--text-main);
-  background-color: var(--puro-white);
-  line-height: 1.6;
+  background-color: var(--puro-warm-white);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -149,14 +151,14 @@ ul {
 }
 
 .btn-accent {
-  background-color: #F7C35F; /* Warm yellow like the CTA in reference */
+  background-color: var(--puro-gold);
   color: var(--puro-green-deep);
 }
 
 .btn-accent:hover {
-  background-color: #f5b942;
+  background-color: #b58326;
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(247, 195, 95, 0.3);
+  box-shadow: 0 10px 20px rgba(201, 146, 42, 0.3);
 }
 
 /* Glassmorphism */

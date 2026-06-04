@@ -35,7 +35,7 @@
 .admin-login-page::after {
   width: 400px;
   height: 400px;
-  background: #f7c35f;
+  background: var(--puro-gold);
   bottom: -120px;
   left: -80px;
   animation-delay: 4s;

@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Policies.css';
 
 const ReturnPolicy = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = 'Return Policy | Puro Nova';
+  }, []);
+
   return (
     <div className="policy-page">
       <div className="container">
@@ -26,7 +31,7 @@ const ReturnPolicy = () => {
 
           <h2>1. Why is this policy in place?</h2>
           <p>
-            To maintain our promise of supplying purely unadulterated, chemical-free, and contaminant-free batches 
+            To maintain our promise of supplying purely unadulterated, free from harsh additives, and contaminant-free batches 
             directly to homes, we cannot restock or redistribute items that have left our secure custody. This 
             policy protects all families against product contamination and keeps standards pristine.
           </p>

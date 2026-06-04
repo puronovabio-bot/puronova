@@ -60,7 +60,7 @@ const Contact = () => {
                 <span className="info-icon">✉️</span>
                 <div>
                   <h4>Email Us</h4>
-                  <p>support@puronova.com</p>
+                  <p><a href="mailto:hello@puronova.in">hello@puronova.in</a></p>
                 </div>
               </div>
             </div>

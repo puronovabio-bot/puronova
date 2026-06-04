@@ -39,11 +39,11 @@
 }
 
 .text-leaf {
-  color: #cddb32;
-  font-family: var(--font-script);
+  color: var(--puro-green-leaf);
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.1em;
-  font-style: normal;
+  font-style: italic;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -430,7 +430,7 @@
   position: absolute;
   top: -20px;
   right: 0;
-  background: #F7C35F;
+  background: var(--puro-gold);
   color: var(--puro-green-deep);
   width: 100px;
   height: 100px;
@@ -753,7 +753,7 @@
 }
 
 .stars {
-  color: #F7C35F;
+  color: var(--puro-gold);
   font-size: 20px;
   margin-bottom: 20px;
   letter-spacing: 2px;

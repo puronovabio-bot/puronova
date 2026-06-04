@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Ingredients.css';
 import ingredientsHero from '../assets/ingredients_hero.png';
 import citrusImg from '../assets/ingredient_citrus.png';
@@ -21,6 +22,8 @@ const Ingredients = () => {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     return () => observer.disconnect();
   }, []);
+
+  const getSlug = (name) => name.toLowerCase().replace(/ /g, '-').replace(/[&]/g, 'and');
 
   const ingredients = [
     {
@@ -87,23 +90,22 @@ const Ingredients = () => {
         <div className="container">
           <div className="ingredients-grid">
             {ingredients.map((item, index) => (
-              <div
-                key={item.id}
-                className={`ingredient-card reveal delay-${index % 3 + 1} ${!item.image ? 'text-only-card' : ''}`}
-              >
-                {item.image && (
-                  <div className="ingredient-image-wrapper">
-                    <img src={item.image} alt={item.name} className="img-cover" />
+              <Link to={`/ingredients/${getSlug(item.name)}`} style={{textDecoration: 'none', color: 'inherit'}} key={item.id}>
+                <div
+                  className={`ingredient-card reveal delay-${index % 3 + 1} ${!item.image ? 'text-only-card' : ''}`}
+                >
+                  {item.image && (
+                    <div className="ingredient-image-wrapper">
+                      <img src={item.image} alt={item.name} className="img-cover" />
+                    </div>
+                  )}
+                  <div className="ingredient-info">
+                    <h2 className="ingredient-name">{item.name}</h2>
+                    <span className="ingredient-scientific">{item.scientific}</span>
+                    <p className="ingredient-desc">{item.description}</p>
                   </div>
-                )}
-                <div className="ingredient-info">
-                  <h2 className="ingredient-name">{item.name}</h2>
-                  <span className="ingredient-scientific">{item.scientific}</span>
-                  <p className="ingredient-desc">{item.description}</p>
-
-
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

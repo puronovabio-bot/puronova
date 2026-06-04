@@ -7,6 +7,39 @@ import blog1 from '../assets/learn_blog_1.png';
 import blog2 from '../assets/learn_blog_2.png';
 import blog3 from '../assets/learn_blog_3.png';
 
+const fallbackArticles = [
+  {
+    _id: 'f1',
+    slug: 'science-of-bio-enzymes',
+    title: 'The Science of Bio-Enzymes in Cleaning',
+    category: 'Home Care',
+    excerpt: 'Discover how natural bio-enzymes break down stains and grime at a microscopic level, offering a safer alternative to harsh chemicals.',
+    readTime: '4 min read',
+    createdAt: new Date('2026-05-15').toISOString(),
+    image: blog1
+  },
+  {
+    _id: 'f2',
+    slug: 'benefits-of-neem-and-turmeric',
+    title: 'Why Neem and Turmeric Are Skincare Superheroes',
+    category: 'Personal Care',
+    excerpt: 'Explore the Ayurvedic wisdom behind using neem and raw turmeric for clear, glowing, and healthy skin.',
+    readTime: '5 min read',
+    createdAt: new Date('2026-05-20').toISOString(),
+    image: blog2
+  },
+  {
+    _id: 'f3',
+    slug: 'switch-to-unrefined-jaggery',
+    title: 'Making the Switch to Unrefined Organic Jaggery',
+    category: 'Heartful Foods',
+    excerpt: 'Learn why unrefined jaggery is more than just a sweetener, and how its natural minerals support your overall wellness.',
+    readTime: '3 min read',
+    createdAt: new Date('2026-05-25').toISOString(),
+    image: blog3
+  }
+];
+
 const Learn = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,11 +62,14 @@ const Learn = () => {
     const fetchBlogs = async () => {
       try {
         const res = await axios.get('https://puronova.onrender.com/api/blogs');
-        if (res.data.success) {
+        if (res.data.success && res.data.blogs.length > 0) {
           setArticles(res.data.blogs);
+        } else {
+          setArticles(fallbackArticles);
         }
       } catch (err) {
         console.error('Failed to fetch blogs', err);
+        setArticles(fallbackArticles);
       } finally {
         setLoading(false);
       }
@@ -81,7 +117,7 @@ const Learn = () => {
                     <span>{article.readTime}</span>
                   </div>
                   
-                  <Link to={`/blog/${article.slug || article._id}`} className="read-more">
+                  <Link to={`/learn/${article.slug || article._id}`} className="read-more">
                     Read article <span>&rarr;</span>
                   </Link>
                 </div>

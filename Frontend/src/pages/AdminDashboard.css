@@ -69,7 +69,7 @@
 .admin-nav button.active {
   background: rgba(255,255,255,0.1);
   color: #fff;
-  border-left-color: #f7c35f;
+  border-left-color: var(--puro-gold);
   font-weight: 600;
 }
 

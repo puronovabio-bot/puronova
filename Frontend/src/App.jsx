@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import WhatsAppFloat from './components/WhatsAppFloat';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import Philosophy from './pages/Philosophy';
@@ -27,6 +28,9 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 import ShippingPolicy from './pages/ShippingPolicy';
 import ReturnPolicy from './pages/ReturnPolicy';
+import FAQs from './pages/FAQs';
+import NotFound from './pages/NotFound';
+import IngredientDetails from './pages/IngredientDetails';
 
 const PublicLayout = () => {
   return (
@@ -35,6 +39,7 @@ const PublicLayout = () => {
       <main style={{ flex: 1 }}>
         <Outlet />
       </main>
+      <WhatsAppFloat />
       <Footer />
     </div>
   );
@@ -53,7 +58,8 @@ function App() {
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/shop/:category" element={<Shop />} />
+          <Route path="/products/:slug" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/checkout" element={<Checkout />} />
@@ -64,14 +70,17 @@ function App() {
           <Route path="/order-failed" element={<OrderFailed />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/learn" element={<Learn />} />
-          <Route path="/blog/:id" element={<BlogDetails />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<TermsConditions />} />
-          <Route path="/returns" element={<ReturnPolicy />} />
-          <Route path="/shipping" element={<ShippingPolicy />} />
+          <Route path="/learn/:slug" element={<BlogDetails />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-policy" element={<TermsConditions />} />
+          <Route path="/return-policy" element={<ReturnPolicy />} />
+          <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route path="/philosophy" element={<Philosophy />} />
           <Route path="/ingredients" element={<Ingredients />} />
+          <Route path="/ingredients/:slug" element={<IngredientDetails />} />
           <Route path="/about" element={<About />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Router>

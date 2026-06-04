@@ -1,0 +1,134 @@
+/* FAQs.css */
+.faqs-page {
+  padding-bottom: 80px;
+  background-color: var(--puro-warm-white);
+  min-height: 80vh;
+}
+
+.faqs-header {
+  background: var(--puro-green-forest);
+  color: white;
+  padding: 140px 0 60px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.faqs-header h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+  color: var(--puro-white);
+}
+
+.faqs-header p {
+  font-size: 18px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.faqs-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faq-item {
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.faq-item:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border-color: rgba(94, 126, 38, 0.2);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 30px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--puro-green-deep);
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+  color: var(--puro-green-forest);
+}
+
+.faq-icon {
+  font-size: 14px;
+  color: var(--puro-gold);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-icon.rotate {
+  transform: rotate(180deg);
+}
+
+.faq-answer-wrapper {
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+}
+
+.faq-answer {
+  padding: 0 30px 24px;
+  color: var(--text-light);
+  line-height: 1.7;
+  font-size: 16px;
+  border-top: 1px solid rgba(0,0,0,0.03);
+  margin-top: 5px;
+  padding-top: 20px;
+}
+
+.faqs-contact {
+  text-align: center;
+  margin-top: 80px;
+  padding: 40px;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faqs-contact h3 {
+  font-size: 24px;
+  color: var(--puro-green-deep);
+  margin-bottom: 10px;
+}
+
+.faqs-contact p {
+  color: var(--text-light);
+  margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+  .faqs-header {
+    padding: 120px 0 40px;
+  }
+  .faqs-header h1 {
+    font-size: 32px;
+  }
+  .faq-question {
+    padding: 20px;
+    font-size: 16px;
+  }
+  .faq-answer {
+    padding: 0 20px 20px;
+  }
+}
