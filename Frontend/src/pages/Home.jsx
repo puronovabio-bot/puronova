@@ -546,27 +546,27 @@ const Home = () => {
         <div className="container text-center" style={{ marginBottom: '40px' }}>
           <i className="fa-brands fa-instagram" style={{ fontSize: '32px', color: 'var(--puro-gold)', marginBottom: '15px' }}></i>
           <h2 className="heading-md">Join Our Community</h2>
-          <p style={{ color: 'var(--text-light)' }}>Follow <a href="https://instagram.com/puronova_official" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--puro-green-forest)', fontWeight: '600' }}>@puronova_official</a> for wellness tips & updates</p>
+          <p style={{ color: 'var(--text-light)' }}>Follow <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--puro-green-forest)', fontWeight: '600' }}>@puronova.in</a> for wellness tips & updates</p>
         </div>
         
         <div className="instagram-grid">
-          <a href="https://instagram.com/puronova_official" target="_blank" rel="noopener noreferrer" className="insta-item">
+          <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="insta-item">
             <img src={imgDishWash} alt="Instagram Post 1" />
             <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
           </a>
-          <a href="https://instagram.com/puronova_official" target="_blank" rel="noopener noreferrer" className="insta-item">
+          <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="insta-item">
             <img src={imgFaceWash} alt="Instagram Post 2" />
             <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
           </a>
-          <a href="https://instagram.com/puronova_official" target="_blank" rel="noopener noreferrer" className="insta-item">
+          <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="insta-item">
             <img src={imgBodyWash} alt="Instagram Post 3" />
             <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
           </a>
-          <a href="https://instagram.com/puronova_official" target="_blank" rel="noopener noreferrer" className="insta-item">
+          <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="insta-item">
             <img src={imgFacePack} alt="Instagram Post 4" />
             <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
           </a>
-          <a href="https://instagram.com/puronova_official" target="_blank" rel="noopener noreferrer" className="insta-item">
+          <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="insta-item">
             <img src={imgAmrutadhara} alt="Instagram Post 5" />
             <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
           </a>
