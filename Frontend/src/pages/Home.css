@@ -940,7 +940,13 @@
 
   .promo-visual {
     margin-top: 0;
-    height: 350px;
+    height: auto;
+  }
+
+  .promo-visual img {
+    height: auto;
+    object-fit: contain;
+    max-height: 400px;
   }
 
   .brands-grid,
