@@ -380,7 +380,7 @@ const ProductDetails = () => {
             <h2>You may also like</h2>
             <div className="related-product-grid">
               {relatedProducts.map(rp => (
-                <div key={rp._id} className="related-product-card" onClick={() => navigate(`/product/${rp._id}`)}>
+                <div key={rp._id} className="related-product-card" onClick={() => navigate(`/products/${getSlug(rp.name)}`)}>
                   <img src={rp.images[0]} alt={rp.name} className="related-product-img" />
                   <div className="related-product-brand">{rp.brand}</div>
                   <h4 className="related-product-name">{rp.name}</h4>

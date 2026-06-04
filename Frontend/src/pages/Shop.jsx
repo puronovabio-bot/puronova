@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './Shop.css';
 
@@ -130,7 +130,50 @@ const Shop = () => {
     e.stopPropagation();
     addToCart({ _id: p.id, name: p.name, brand: p.brand, images: [p.img] }, p.sizes[0], p.price, 1);
     showToast(`${p.name} added to cart!`, 'cart');
-    navigate('/cart');
+
+    // Fly-to-cart animation
+    const imgEl = e.currentTarget.closest('.product-card')?.querySelector('.product-image-container img');
+    const cartBtn = document.querySelector('.cart-btn');
+    if (imgEl && cartBtn) {
+      const imgRect = imgEl.getBoundingClientRect();
+      const cartRect = cartBtn.getBoundingClientRect();
+
+      const flyImg = document.createElement('img');
+      flyImg.src = p.img;
+      flyImg.className = 'fly-to-cart-img';
+      flyImg.style.cssText = `
+        position: fixed;
+        left: ${imgRect.left}px;
+        top: ${imgRect.top}px;
+        width: ${imgRect.width}px;
+        height: ${imgRect.height}px;
+        z-index: 9999;
+        border-radius: 12px;
+        object-fit: cover;
+        pointer-events: none;
+        transition: all 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+      `;
+      document.body.appendChild(flyImg);
+
+      // Force reflow then animate
+      requestAnimationFrame(() => {
+        flyImg.style.left = `${cartRect.left + cartRect.width / 2 - 12}px`;
+        flyImg.style.top = `${cartRect.top + cartRect.height / 2 - 12}px`;
+        flyImg.style.width = '24px';
+        flyImg.style.height = '24px';
+        flyImg.style.opacity = '0.4';
+        flyImg.style.borderRadius = '50%';
+      });
+
+      // Bounce the cart badge
+      setTimeout(() => {
+        cartBtn.classList.add('cart-bounce');
+        setTimeout(() => cartBtn.classList.remove('cart-bounce'), 500);
+      }, 600);
+
+      // Remove the flying image
+      setTimeout(() => flyImg.remove(), 750);
+    }
   };
 
   const getSlug = (name) => name.toLowerCase().replace(/ /g, '-').replace(/[()]/g, '');
