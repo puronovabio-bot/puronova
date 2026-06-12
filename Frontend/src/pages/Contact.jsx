@@ -67,7 +67,7 @@ const Contact = () => {
 
             <div className="social-links">
               <h3>Follow Our Journey</h3>
-              <div className="social-icons">
+              <div className="contact-social-icons">
                 <a href="#">Instagram</a>
                 <a href="#">Facebook</a>
                 <a href="#">LinkedIn</a>

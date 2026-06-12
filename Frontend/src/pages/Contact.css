@@ -65,19 +65,20 @@
   margin-bottom: 20px;
 }
 
-.social-icons {
+.contact-social-icons {
   display: flex;
   gap: 20px;
 }
 
-.social-icons a {
+.contact-social-icons a {
   color: var(--puro-green-forest);
   font-weight: 600;
   border-bottom: 1px solid transparent;
   transition: all 0.3s;
+  text-decoration: none;
 }
 
-.social-icons a:hover {
+.contact-social-icons a:hover {
   border-bottom: 1px solid currentColor;
   transform: translateY(-2px);
 }
@@ -153,7 +154,7 @@
     justify-content: center;
   }
   
-  .social-icons {
+  .contact-social-icons {
     justify-content: center;
   }
 }
