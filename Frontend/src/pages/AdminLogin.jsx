@@ -43,7 +43,8 @@ const AdminLogin = () => {
         setError(data.message || 'Invalid credentials. Please try again.');
       }
     } catch (err) {
-      setError('Server error. Please try again later.');
+      console.error('Login fetch error:', err);
+      setError(`Connection error: ${err.message}. If this is a CORS issue, check FRONTEND_URL on Render.`);
     } finally {
       setLoading(false);
     }
@@ -71,12 +72,12 @@ const AdminLogin = () => {
               <div className="admin-input-wrapper">
                 <Mail size={18} className="admin-input-icon" />
                 <input
-                  type="email"
+                  type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="admin@puronova.com"
-                  autoComplete="email"
+                  placeholder="admin@puronova"
+                  autoComplete="username"
                 />
               </div>
             </div>
