@@ -346,19 +346,19 @@ const Home = () => {
           <div className="stats-grid">
             <div className="stat-item">
               <h3 className="stat-number">15+</h3>
-              <p className="stat-label">Products across all ranges</p>
+              <p className="home-stat-label">Products across all ranges</p>
             </div>
             <div className="stat-item">
               <h3 className="stat-number">4</h3>
-              <p className="stat-label">Brands under one vision</p>
+              <p className="home-stat-label">Brands under one vision</p>
             </div>
             <div className="stat-item">
               <h3 className="stat-number">100%</h3>
-              <p className="stat-label">Plant-based active ingredients</p>
+              <p className="home-stat-label">Plant-based active ingredients</p>
             </div>
             <div className="stat-item">
               <h3 className="stat-number">6+</h3>
-              <p className="stat-label">Ingredients documented openly</p>
+              <p className="home-stat-label">Ingredients documented openly</p>
             </div>
           </div>
         </div>
