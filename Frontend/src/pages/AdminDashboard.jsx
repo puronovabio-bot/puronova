@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogOut } from 'lucide-react';
 import './AdminDashboard.css';
 
 import AdminOverview from '../components/admin/AdminOverview';
@@ -106,9 +106,14 @@ const AdminDashboard = () => {
             <Menu size={24} />
           </button>
           <h2>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}</h2>
-          <div className="admin-profile">
-            <span>Admin User</span>
-            <div className="admin-avatar">A</div>
+          <div className="admin-header-actions">
+            <div className="admin-profile">
+              <span>Admin User</span>
+              <div className="admin-avatar">A</div>
+            </div>
+            <button className="header-logout-btn" onClick={handleLogout} title="Log Out">
+              <LogOut size={18} />
+            </button>
           </div>
         </header>
 
