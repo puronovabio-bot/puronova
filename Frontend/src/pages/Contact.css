@@ -76,6 +76,9 @@
   border-bottom: 1px solid transparent;
   transition: all 0.3s;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .contact-social-icons a:hover {

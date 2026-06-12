@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Instagram, Facebook, Linkedin } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
@@ -68,9 +69,9 @@ const Contact = () => {
             <div className="social-links">
               <h3>Follow Our Journey</h3>
               <div className="contact-social-icons">
-                <a href="#">Instagram</a>
-                <a href="#">Facebook</a>
-                <a href="#">LinkedIn</a>
+                <a href="#"><Instagram size={18} /> Instagram</a>
+                <a href="#"><Facebook size={18} /> Facebook</a>
+                <a href="#"><Linkedin size={18} /> LinkedIn</a>
               </div>
             </div>
           </div>
