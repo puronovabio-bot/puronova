@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { useCart } from '../context/CartContext';
 import { Leaf, Sparkles, Beaker, Users, HandHeart, BookOpen, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import './Home.css';
@@ -33,6 +34,8 @@ const Home = () => {
   });
   const [toast, setToast] = useState(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [blogs, setBlogs] = useState([]);
+  const [loadingBlogs, setLoadingBlogs] = useState(true);
 
   const testimonials = [
     { text: "The NeatCo dish wash is incredibly gentle on my hands but tough on grease. I love knowing it's safe for my family.", author: "Sarah M.", role: "Verified Buyer", image: imgSarah },
@@ -45,6 +48,22 @@ const Home = () => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await axios.get('https://puronova.onrender.com/api/blogs');
+        if (res.data.success) {
+          setBlogs(res.data.blogs);
+        }
+      } catch (err) {
+        console.error('Failed to fetch blogs', err);
+      } finally {
+        setLoadingBlogs(false);
+      }
+    };
+    fetchBlogs();
   }, []);
 
   useEffect(() => {
@@ -502,41 +521,25 @@ const Home = () => {
           </div>
           
           <div className="home-learn-grid">
-            <Link to="/learn/science-of-bio-enzymes" className="home-learn-card">
-              <div className="learn-img-wrapper">
-                <img src={imgBlog1} alt="Bio-Enzymes" />
-              </div>
-              <div className="learn-card-content">
-                <span className="learn-category">Home Care</span>
-                <h3>The Science of Bio-Enzymes in Cleaning</h3>
-                <p>Discover how natural bio-enzymes break down stains and grime safely.</p>
-                <span className="read-link">Read Article &rarr;</span>
-              </div>
-            </Link>
-            
-            <Link to="/learn/benefits-of-neem-and-turmeric" className="home-learn-card">
-              <div className="learn-img-wrapper">
-                <img src={imgBlog2} alt="Neem & Turmeric" />
-              </div>
-              <div className="learn-card-content">
-                <span className="learn-category">Personal Care</span>
-                <h3>Why Neem & Turmeric Are Skincare Superheroes</h3>
-                <p>Explore the Ayurvedic wisdom behind clear, glowing, and healthy skin.</p>
-                <span className="read-link">Read Article &rarr;</span>
-              </div>
-            </Link>
-            
-            <Link to="/learn/switch-to-unrefined-jaggery" className="home-learn-card">
-              <div className="learn-img-wrapper">
-                <img src={imgBlog3} alt="Organic Jaggery" />
-              </div>
-              <div className="learn-card-content">
-                <span className="learn-category">Heartful Foods</span>
-                <h3>Making the Switch to Unrefined Organic Jaggery</h3>
-                <p>Learn why unrefined jaggery supports your overall wellness.</p>
-                <span className="read-link">Read Article &rarr;</span>
-              </div>
-            </Link>
+            {loadingBlogs ? (
+              <div style={{ padding: '20px', textAlign: 'center', gridColumn: '1 / -1' }}>Loading articles...</div>
+            ) : blogs.length === 0 ? (
+              <div style={{ padding: '20px', textAlign: 'center', gridColumn: '1 / -1' }}>No articles published yet. Check back soon!</div>
+            ) : (
+              blogs.slice(0, 3).map((article) => (
+                <Link key={article._id} to={`/learn/${article.slug || article._id}`} className="home-learn-card">
+                  <div className="learn-img-wrapper">
+                    <img src={article.image || imgBlog1} alt={article.title} />
+                  </div>
+                  <div className="learn-card-content">
+                    <span className="learn-category">{article.category}</span>
+                    <h3>{article.title}</h3>
+                    <p>{article.excerpt}</p>
+                    <span className="read-link">Read Article &rarr;</span>
+                  </div>
+                </Link>
+              ))
+            )}
           </div>
         </div>
       </section>
