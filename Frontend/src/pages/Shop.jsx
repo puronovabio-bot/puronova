@@ -62,6 +62,7 @@ const Shop = () => {
   
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [wishlist, setWishlist] = useState(() => {
     const saved = localStorage.getItem('wishlist');
     return saved ? JSON.parse(saved) : [];
@@ -212,9 +213,41 @@ const Shop = () => {
       </div>
 
       <div className="container">
+        {/* Mobile Top Bar (Search + Categories) */}
+        <div className="mobile-top-bar">
+          <div className="mobile-search-box">
+            <i className="fa-solid fa-magnifying-glass search-icon"></i>
+            <input 
+              type="text" 
+              placeholder="Search products..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            {searchTerm && (
+              <button className="search-clear" onClick={() => setSearchTerm('')}>
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+            )}
+          </div>
+          <div className="mobile-scroll-filters">
+            <button className="mobile-chip-btn" onClick={() => setShowMobileFilters(!showMobileFilters)}>
+              <i className="fa-solid fa-sliders"></i> Sort & Filter
+            </button>
+            {['All', 'Home Care', 'Personal Care', 'Wellness & Herbal', 'Heartful Foods'].map((cat, i) => (
+              <button 
+                key={i} 
+                className={`mobile-chip-btn ${activeCategory === cat ? 'active' : ''}`}
+                onClick={() => setActiveCategory(cat)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="shop-layout">
           {/* Sidebar Filters */}
-          <aside className="shop-sidebar reveal">
+          <aside className={`shop-sidebar reveal ${showMobileFilters ? 'show-mobile' : ''}`}>
             <div className="sidebar-header">
               <i className="fa-solid fa-sliders"></i>
               <h3>Filters</h3>

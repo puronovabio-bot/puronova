@@ -62,12 +62,12 @@
 
 .dashboard-nav button:hover {
   background: var(--puro-cream);
-  color: var(--puro-green-forest);
+  color: var(--puro-charcoal);
 }
 
 .dashboard-nav button.active {
   background: rgba(26, 83, 54, 0.1);
-  color: var(--puro-green-forest);
+  color: var(--puro-charcoal);
   font-weight: 600;
 }
 

@@ -31,7 +31,7 @@
 
 .policy-header-icon {
   font-size: 32px;
-  color: var(--puro-green-forest);
+  color: var(--puro-charcoal);
 }
 
 .policy-header-icon.text-warning {
@@ -41,13 +41,13 @@
 .policy-card h1 {
   font-size: 2.2rem;
   margin: 0;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
   font-family: var(--font-heading);
 }
 
 .policy-meta {
   font-size: 0.9rem;
-  color: var(--puro-green-leaf);
+  color: var(--puro-charcoal);
   font-weight: 600;
   margin-top: 15px;
   margin-bottom: 30px;
@@ -57,7 +57,7 @@
 .policy-card h2 {
   font-size: 1.35rem;
   margin: 35px 0 15px;
-  color: var(--puro-green-forest);
+  color: var(--puro-charcoal);
   font-family: var(--font-heading);
   position: relative;
   padding-bottom: 8px;
@@ -100,7 +100,7 @@
   content: '✦';
   position: absolute;
   left: 5px;
-  color: var(--puro-green-leaf);
+  color: var(--puro-charcoal);
   font-weight: 700;
 }
 

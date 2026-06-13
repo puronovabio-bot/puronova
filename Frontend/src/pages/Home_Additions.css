@@ -63,7 +63,7 @@
 }
 
 .learn-card-content h3 {
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
   font-size: 20px;
   line-height: 1.4;
   margin-bottom: 12px;
@@ -78,7 +78,7 @@
 }
 
 .read-link {
-  color: var(--puro-green-forest);
+  color: var(--puro-charcoal);
   font-weight: 600;
   font-size: 14px;
 }

@@ -50,7 +50,7 @@
   height: 40px;
   padding: 0 16px;
   background: var(--puro-cream);
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -68,7 +68,7 @@
 .footer-links-col h4, .footer-contact-col h4 {
   font-size: 18px;
   margin-bottom: 30px;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
 }
 
 .footer-links-col ul {
@@ -83,7 +83,7 @@
 }
 
 .footer-links-col a:hover {
-  color: var(--puro-green-leaf);
+  color: var(--puro-charcoal);
   padding-left: 5px;
 }
 
@@ -101,7 +101,7 @@
 
 .footer-newsletter h4 {
   margin-bottom: 12px;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
 }
 
 .footer-newsletter p {

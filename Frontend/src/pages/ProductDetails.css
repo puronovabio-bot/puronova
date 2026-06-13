@@ -15,7 +15,7 @@
 }
 
 .breadcrumb span:hover {
-  color: var(--puro-green-forest);
+  color: var(--puro-charcoal);
 }
 
 .product-main-grid {
@@ -52,7 +52,7 @@
 }
 
 .brand-tag {
-  color: var(--puro-green-leaf);
+  color: var(--puro-charcoal);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -81,7 +81,7 @@
 .price-display {
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
   margin-bottom: 30px;
   display: flex;
   align-items: flex-start;
@@ -126,13 +126,13 @@
 }
 
 .variant-btn:hover {
-  border-color: var(--puro-green-forest);
+  border-color: var(--puro-charcoal);
 }
 
 .variant-btn.active {
   background: var(--puro-green-forest);
   color: white;
-  border-color: var(--puro-green-forest);
+  border-color: var(--puro-charcoal);
 }
 
 .purchase-actions {
@@ -217,7 +217,7 @@
   display: block;
   font-size: 1.1rem;
   margin-bottom: 5px;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
 }
 
 .meta-item p {
@@ -256,7 +256,7 @@
 .related-products-section h2 {
   font-size: 2rem;
   margin-bottom: 40px;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
 }
 
 .related-product-grid {
@@ -297,14 +297,14 @@
 
 .related-product-name {
   font-size: 1.1rem;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
   margin-bottom: 10px;
   font-weight: 600;
 }
 
 .related-product-price {
   font-weight: bold;
-  color: var(--puro-green-leaf);
+  color: var(--puro-charcoal);
   font-size: 1.1rem;
 }
 

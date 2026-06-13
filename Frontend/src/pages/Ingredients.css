@@ -106,7 +106,7 @@
 .ingredient-name {
   font-family: var(--font-heading);
   font-size: 1.6rem;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
   margin-bottom: 5px;
 }
 
@@ -129,7 +129,7 @@
   display: inline-flex;
   align-items: center;
   font-weight: 600;
-  color: var(--puro-green-forest);
+  color: var(--puro-charcoal);
   font-size: 0.95rem;
   transition: color 0.3s ease;
   padding-top: 15px;
@@ -142,7 +142,7 @@
 }
 
 .used-in-link:hover {
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
 }
 
 .used-in-link:hover span {

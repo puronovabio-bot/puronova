@@ -59,14 +59,14 @@
   text-align: left;
   font-size: 18px;
   font-weight: 600;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
   cursor: pointer;
   font-family: inherit;
   transition: color 0.3s ease;
 }
 
 .faq-question:hover {
-  color: var(--puro-green-forest);
+  color: var(--puro-charcoal);
 }
 
 .faq-icon {
@@ -108,7 +108,7 @@
 
 .faqs-contact h3 {
   font-size: 24px;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
   margin-bottom: 10px;
 }
 

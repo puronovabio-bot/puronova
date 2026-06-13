@@ -51,7 +51,7 @@
 
 .cart-item-brand {
   font-size: 0.8rem;
-  color: var(--puro-green-leaf);
+  color: var(--puro-charcoal);
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 5px;
@@ -69,7 +69,7 @@
 
 .cart-item-price, .cart-item-total {
   font-weight: 700;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
 }
 
 .cart-item-quantity {
@@ -140,13 +140,13 @@
 .summary-row.total {
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
   margin-bottom: 30px;
 }
 
 .free-shipping-notice {
   background: rgba(76, 175, 80, 0.1);
-  color: var(--puro-green-leaf);
+  color: var(--puro-charcoal);
   padding: 10px 15px;
   border-radius: 8px;
   font-size: 0.9rem;

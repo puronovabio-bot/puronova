@@ -19,7 +19,7 @@
   --secondary: var(--puro-cream);
   --accent: var(--puro-olive);
   --text-main: var(--puro-charcoal);
-  --text-light: #5C6D64;
+  --text-light: #555555;
   --white: #FFFFFF;
   
   /* Typography */
@@ -67,7 +67,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.1;
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
 }
 
 a {
@@ -128,20 +128,20 @@ ul {
 }
 
 .btn-primary {
-  background-color: var(--puro-green-forest);
+  background-color: var(--puro-charcoal);
   color: var(--puro-white);
   box-shadow: 0 10px 20px rgba(26, 83, 54, 0.2);
 }
 
 .btn-primary:hover {
-  background-color: var(--puro-green-deep);
+  background-color: var(--puro-charcoal);
   transform: translateY(-3px);
   box-shadow: 0 15px 30px rgba(26, 83, 54, 0.3);
 }
 
 .btn-secondary {
   background-color: var(--puro-white);
-  color: var(--puro-green-forest);
+  color: var(--puro-charcoal);
   border: 1px solid rgba(26, 83, 54, 0.1);
 }
 
@@ -152,7 +152,7 @@ ul {
 
 .btn-accent {
   background-color: var(--puro-gold);
-  color: var(--puro-green-deep);
+  color: var(--puro-charcoal);
 }
 
 .btn-accent:hover {
@@ -183,7 +183,7 @@ ul {
 }
 
 .section-subtitle {
-  color: var(--puro-green-leaf);
+  color: var(--puro-charcoal);
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.1em;

@@ -24,6 +24,9 @@ import imgPhilosophyPrinciples from '../assets/philosophy_principles.png';
 import imgSarah from '../assets/testmonials/sarah.jpg';
 import imgPriya from '../assets/testmonials/priya.jpg';
 import imgPrasanth from '../assets/testmonials/prasanth-testmonials.jpg';
+import imgElena from '../assets/testmonials/Elena.png';
+import imgMichael from '../assets/testmonials/Michael.png';
+import imgAmit from '../assets/testmonials/Amit.png';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -38,17 +41,13 @@ const Home = () => {
   const [loadingBlogs, setLoadingBlogs] = useState(true);
 
   const testimonials = [
-    { text: "The NeatCo dish wash is incredibly gentle on my hands but tough on grease. I love knowing it's safe for my family.", author: "Sarah M.", role: "Verified Buyer", image: imgSarah },
-    { text: "TouchCo face wash has completely cleared up my skin. The natural ingredients really make a difference compared to chemical alternatives.", author: "Priya K.", role: "Verified Buyer", image: imgPriya },
-    { text: "Puro Nova's commitment to 100% honest, plant-based ingredients is remarkable. Their bio-enzyme cleaners and botanical care products have completely transformed our family's daily wellness routine.", author: "Prasanth", role: "Digital Marketer", image: imgPrasanth }
+    { text: "The NeatCo dish wash is incredibly gentle on my hands but tough on grease. I love knowing it's safe for my family.", author: "Sarah M.", role: "Verified Buyer", image: imgSarah, rating: 5, type: 'standard' },
+    { headline: "I really appreciate!!", text: "TouchCo face wash has completely cleared up my skin. The natural ingredients really make a difference compared to chemical alternatives.", author: "Priya K.", role: "Verified Buyer", image: imgPriya, rating: 5, type: 'highlight' },
+    { text: "Puro Nova's commitment to 100% honest, plant-based ingredients is remarkable. Their bio-enzyme cleaners and botanical care products have completely transformed our family's daily wellness routine.", author: "Prasanth", role: "Digital Marketer", image: imgPrasanth, rating: 5, type: 'bigQuote' },
+    { text: "I was very impressed! The herbal teas from Heartful Foods are so authentic and refreshing.", author: "Amit R.", role: "Wellness Enthusiast", image: imgAmit, rating: 4, type: 'standard' },
+    { headline: "Good Job!", text: "Puro Nova products are a staple in my household now.", author: "Subba Lakshmi D", role: "Verified Buyer", image: imgElena, rating: 5, type: 'topAvatar' },
+    { text: "The transparency in the ingredients is unmatched.", author: "Prerana", role: "Verified Buyer", image: imgMichael, rating: 5, type: 'bigQuote' }
   ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -168,7 +167,7 @@ const Home = () => {
             <h1 className="hero-title">
               Modern Natural <br />
               Living for <br />
-              <span className="text-leaf">Everyday Homes</span>
+              <span className="text-leaf" style={{ color: 'var(--puro-green-leaf)' }}>Everyday Homes</span>
             </h1>
             <p className="hero-subtitle">
               Discover our range of herbal personal care and eco-friendly <br />
@@ -275,7 +274,7 @@ const Home = () => {
               <span className="promo-tag">Special Offer</span>
               <h2 className="heading-lg" style={{ marginBottom: '15px' }}>Get Discount <br /> on Your First Order!</h2>
               <p className="promo-code-text" style={{ fontSize: '1.1rem', margin: '0 0 30px 0', opacity: 0.95, display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                Use Coupon Code: <span style={{ background: '#FFF', color: 'var(--puro-green-forest)', padding: '5px 12px', borderRadius: '6px', fontWeight: '800', letterSpacing: '1px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>WELCOME</span>
+                Use Coupon Code: <span style={{ background: '#FFF', color: 'var(--puro-charcoal)', padding: '5px 12px', borderRadius: '6px', fontWeight: '800', letterSpacing: '1px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>WELCOME</span>
               </p>
               <Link to="/shop" className="btn btn-accent">Shop Now</Link>
             </div>
@@ -440,26 +439,17 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="testimonials-section section-padding reveal" style={{ background: '#F9F7F2', position: 'relative', overflow: 'hidden' }}>
+      <section className="testimonials-section section-padding reveal" style={{ background: '#F0F2F5', position: 'relative' }}>
         <div className="container">
-          <div className="section-header text-center">
-            <span className="section-subtitle">Testimonials</span>
-            <h2 className="heading-lg">What Our Customers Say</h2>
+          <div className="section-header text-center" style={{ marginBottom: '50px' }}>
+            <h2 className="heading-lg" style={{ color: 'var(--puro-charcoal)', marginTop: '10px' }}>What Our Customers Say</h2>
           </div>
-          <div className="testimonial-carousel-container" style={{ position: 'relative', maxWidth: '800px', margin: '0 auto' }}>
-            <div className="testimonial-carousel" style={{ overflow: 'hidden' }}>
-              <div 
-                className="testimonial-track" 
-                style={{ 
-                  display: 'flex', 
-                  transition: 'transform 0.5s ease-in-out',
-                  transform: `translateX(-${currentTestimonial * 100}%)`
-                }}
-              >
-                {testimonials.map((t, i) => (
-                  <div key={i} className="testimonial-card" style={{ minWidth: '100%', boxSizing: 'border-box' }}>
-                    <div className="quote-icon-large">"</div>
-                    <div className="stars">★★★★★</div>
+          <div className="testimonial-masonry">
+            {testimonials.map((t, i) => (
+              <div key={i} className={`testimonial-masonry-card type-${t.type}`}>
+                {t.type === 'bigQuote' && (
+                  <>
+                    <div className="big-quote-mark">“</div>
                     <p className="testimonial-text">{t.text}</p>
                     <div className="testimonial-author-box">
                       <img src={t.image} alt={t.author} className="author-avatar" />
@@ -468,42 +458,53 @@ const Home = () => {
                         <span className="author-role">{t.role}</span>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  </>
+                )}
+
+                {t.type === 'highlight' && (
+                  <>
+                    <div className="testimonial-author-box-top">
+                      <img src={t.image} alt={t.author} className="author-avatar" />
+                      <div className="author-info">
+                        <h5 className="testimonial-author">{t.author}</h5>
+                        <span className="author-role">{t.role}</span>
+                      </div>
+                    </div>
+                    <div className="stars">{'★'.repeat(t.rating)}</div>
+                    {t.headline && <h4 className="testimonial-headline">{t.headline}</h4>}
+                    <p className="testimonial-text">{t.text}</p>
+                    <div className="quote-icon-bottom">”</div>
+                  </>
+                )}
+
+                {t.type === 'topAvatar' && (
+                  <>
+                    <div className="testimonial-author-center">
+                      <img src={t.image} alt={t.author} className="author-avatar" />
+                      <h5 className="testimonial-author">{t.author}</h5>
+                      <span className="author-role">{t.role}</span>
+                    </div>
+                    <div className="stars text-center">{'★'.repeat(t.rating)}</div>
+                    {t.headline && <h4 className="testimonial-headline text-center">{t.headline}</h4>}
+                    <p className="testimonial-text text-center">{t.text}</p>
+                  </>
+                )}
+
+                {t.type === 'standard' && (
+                  <>
+                    <div className="stars">{'★'.repeat(t.rating)}</div>
+                    <p className="testimonial-text">{t.text}</p>
+                    <div className="testimonial-author-box">
+                      <img src={t.image} alt={t.author} className="author-avatar" />
+                      <div className="author-info">
+                        <h5 className="testimonial-author">{t.author}</h5>
+                        <span className="author-role">{t.role}</span>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
-            </div>
-            
-            {/* Carousel Controls */}
-            <div className="carousel-controls" style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginTop: '20px' }}>
-              <button 
-                onClick={() => setCurrentTestimonial(prev => (prev - 1 + testimonials.length) % testimonials.length)}
-                style={{ background: 'white', border: 'none', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
-              >
-                <ChevronLeft size={20} color="var(--puro-green-forest)" />
-              </button>
-              <div className="carousel-dots" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                {testimonials.map((_, i) => (
-                  <div 
-                    key={i} 
-                    onClick={() => setCurrentTestimonial(i)}
-                    style={{ 
-                      width: currentTestimonial === i ? '24px' : '8px', 
-                      height: '8px', 
-                      borderRadius: '4px', 
-                      background: currentTestimonial === i ? 'var(--puro-green-forest)' : '#ccc',
-                      cursor: 'pointer',
-                      transition: 'all 0.3s'
-                    }}
-                  />
-                ))}
-              </div>
-              <button 
-                onClick={() => setCurrentTestimonial(prev => (prev + 1) % testimonials.length)}
-                style={{ background: 'white', border: 'none', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
-              >
-                <ChevronRight size={20} color="var(--puro-green-forest)" />
-              </button>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -513,13 +514,13 @@ const Home = () => {
           <div className="section-header-flex">
             <div>
               <span className="section-subtitle">Learn & Discover</span>
-              <h2 className="heading-lg" style={{ color: 'var(--puro-green-deep)' }}>The Botanical Journal</h2>
+              <h2 className="heading-lg" style={{ color: 'var(--puro-charcoal)' }}>The Botanical Journal</h2>
             </div>
             <Link to="/learn" className="btn btn-outline" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
               View all articles <ArrowRight size={16} />
             </Link>
           </div>
-          
+
           <div className="home-learn-grid">
             {loadingBlogs ? (
               <div style={{ padding: '20px', textAlign: 'center', gridColumn: '1 / -1' }}>Loading articles...</div>
@@ -549,31 +550,10 @@ const Home = () => {
         <div className="container text-center" style={{ marginBottom: '40px' }}>
           <i className="fa-brands fa-instagram" style={{ fontSize: '32px', color: 'var(--puro-gold)', marginBottom: '15px' }}></i>
           <h2 className="heading-md">Join Our Community</h2>
-          <p style={{ color: 'var(--text-light)' }}>Follow <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--puro-green-forest)', fontWeight: '600' }}>@puronova.in</a> for wellness tips & updates</p>
+          <p style={{ color: 'var(--text-light)' }}>Follow <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--puro-charcoal)', fontWeight: '600' }}>@puronova.in</a> for wellness tips & updates</p>
         </div>
-        
-        <div className="instagram-grid">
-          <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="insta-item">
-            <img src={imgDishWash} alt="Instagram Post 1" />
-            <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
-          </a>
-          <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="insta-item">
-            <img src={imgFaceWash} alt="Instagram Post 2" />
-            <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
-          </a>
-          <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="insta-item">
-            <img src={imgBodyWash} alt="Instagram Post 3" />
-            <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
-          </a>
-          <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="insta-item">
-            <img src={imgFacePack} alt="Instagram Post 4" />
-            <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
-          </a>
-          <a href="https://www.instagram.com/puronova.in?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="insta-item">
-            <img src={imgAmrutadhara} alt="Instagram Post 5" />
-            <div className="insta-overlay"><i className="fa-brands fa-instagram" style={{ fontSize: '24px', color: 'white' }}></i></div>
-          </a>
-        </div>
+
+
       </section>
 
       {/* Newsletter Section */}
