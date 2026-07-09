@@ -8,7 +8,7 @@ const Blog = () => {
       title: 'The Magic of Bio-Enzymes in Home Cleaning',
       excerpt: 'Discover why bio-enzymes are the future of sustainable, safe, and effective home hygiene...',
       date: 'May 10, 2026',
-      author: 'Organic Expert',
+      author: 'Wellness Expert',
       category: 'Home Care',
       img: 'https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=400&h=250&auto=format&fit=crop'
     },
@@ -28,7 +28,7 @@ const Blog = () => {
       <div className="container">
         <header className="blog-header section-padding text-center">
           <h1 className="heading-xl">Puro Nova Stories</h1>
-          <p className="text-lead mx-auto">Insights into organic living, herbal wisdom, and sustainable wellness.</p>
+          <p className="text-lead mx-auto">Insights into natural living, herbal wisdom, and sustainable wellness.</p>
         </header>
 
         <div className="blog-grid">

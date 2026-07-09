@@ -18,7 +18,7 @@ const TermsConditions = () => {
 
           <h2>1. Small-Batch Natural Product Variances</h2>
           <p>
-            Because Puro Nova products (including NeatCo, TouchCo, and Heartful Foods) are formulated using organic, 
+            Because Puro Nova products (including NeatCo, TouchCo, and Heart-full Foods) are formulated using natural, 
             plant-based actives and fermented bio-enzymes in small batches, minor natural variances in product color, 
             scent intensity, and thickness may occur. These are normal, safe characteristics of pure botanical 
             processing and do not constitute product defects.

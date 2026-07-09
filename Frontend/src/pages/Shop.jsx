@@ -17,41 +17,39 @@ import imgPeetambar from '../assets/products/Peetambar.png';
 import imgAmrutadhara from '../assets/products/Amrutadhara.png';
 
 const products = [
-  { id: 1, name: 'Dish Wash Liquid', brand: 'NeatCo', category: 'Home Care', price: 149, sizes: ['500ml', '1000ml'], img: imgDishWash },
-  { id: 2, name: 'Detergent Liquid', brand: 'NeatCo', category: 'Home Care', price: 135, sizes: ['500ml', '1000ml'], img: imgDetergent },
-  { id: 3, name: 'Floor Cleaner', brand: 'NeatCo', category: 'Home Care', price: 120, sizes: ['500ml', '1000ml'], img: imgFloorCleaner },
-  { id: 4, name: 'Toilet Cleaner', brand: 'NeatCo', category: 'Home Care', price: 118, sizes: ['500ml'], img: imgFloorCleaner }, /* Placeholder img */
-  { id: 5, name: 'Face Wash', brand: 'TouchCo', category: 'Personal Care', price: 125, sizes: ['100ml'], img: imgFaceWash },
-  { id: 6, name: 'Body Wash', brand: 'TouchCo', category: 'Personal Care', price: 135, sizes: ['200ml', '500ml'], img: imgBodyWash },
-  { id: 7, name: 'Hand Wash', brand: 'TouchCo', category: 'Personal Care', price: 115, sizes: ['200ml'], img: imgHandWash },
-  { id: 8, name: 'Vedic Tooth Powder', brand: 'TouchCo', category: 'Personal Care', price: 120, sizes: ['50g'], img: imgToothPowder },
-  { id: 9, name: 'Face Pack & Bath Powder', brand: 'TouchCo', category: 'Personal Care', price: 249, sizes: ['200g'], img: imgFacePack },
-  { id: 10, name: 'Shampoo', brand: 'TouchCo', category: 'Personal Care', price: 140, sizes: ['200ml', '500ml'], img: imgShampoo },
-  { id: 11, name: 'Natural Hair Dye', brand: 'TouchCo', category: 'Personal Care', price: 100, sizes: ['50g'], img: imgHairDye },
-  { id: 12, name: 'Moisturizing Face Cream', brand: 'TouchCo', category: 'Personal Care', price: 200, sizes: ['50g'], img: imgFaceWash }, /* Placeholder img */
-  { id: 13, name: 'Herbal Tea Powder', brand: 'Wellness', category: 'Wellness & Herbal', price: 95, sizes: ['100g'], img: imgPeetambar }, /* Placeholder img */
-  { id: 14, name: 'Pitambar (Peetambar) Metal Shine Powder', brand: 'Wellness', category: 'Wellness & Herbal', price: 75, sizes: ['200g'], img: imgPeetambar },
-  { id: 15, name: 'Amrutha Dhara', brand: 'Wellness', category: 'Wellness & Herbal', price: 90, sizes: ['10ml'], img: imgAmrutadhara },
-  { id: 16, name: 'Dry Fruit Laddu', brand: 'Heartful Foods', category: 'Heartful Foods', price: 325, sizes: ['250g', '500g', '1kg'], img: imgFacePack }, /* Placeholder img */
-  { id: 17, name: 'Sesame & Flax Seed Laddu', brand: 'Heartful Foods', category: 'Heartful Foods', price: 249, sizes: ['500g', '1kg'], img: imgFacePack }, /* Placeholder img */
-  { id: 18, name: 'Protein Powder', brand: 'Heartful Foods', category: 'Heartful Foods', price: 700, sizes: ['500g'], img: imgFacePack }, /* Placeholder img */
-  { id: 19, name: 'Organic Jaggery', brand: 'Heartful Foods', category: 'Heartful Foods', price: 55, sizes: ['500g', '1kg'], img: imgFacePack }, /* Placeholder img */
-  { id: 20, name: 'Papads', brand: 'Heartful Foods', category: 'Heartful Foods', price: 50, sizes: ['10pc', '25pc', '50pc'], img: imgFacePack }, /* Placeholder img */
+  { id: 1, name: 'Dish Wash', brand: 'NeatCo', category: 'Home Care & Hygiene', price: 215, sizes: ['500ml', '1L'], img: imgDishWash },
+  { id: 2, name: 'Detergent', brand: 'NeatCo', category: 'Home Care & Hygiene', price: 200, sizes: ['500ml', '1L'], img: imgDetergent },
+  { id: 3, name: 'Floor Cleaner', brand: 'NeatCo', category: 'Home Care & Hygiene', price: 195, sizes: ['500ml', '1L'], img: imgFloorCleaner },
+  { id: 4, name: 'Bio Pitambar', brand: 'NeatCo', category: 'Home Care & Hygiene', price: 250, sizes: ['500ml'], img: imgPeetambar }, /* Placeholder img */
+  { id: 5, name: 'Rose + Papaya Face Wash', brand: 'TouchCo', category: 'Personal Care', price: 225, sizes: ['100ml', '200ml'], img: imgFaceWash },
+  { id: 6, name: 'Herbal Facepack Powder', brand: 'TouchCo', category: 'Personal Care', price: 175, sizes: ['100g'], img: imgFacePack },
+  { id: 7, name: 'Face Cream', brand: 'TouchCo', category: 'Personal Care', price: 220, sizes: ['50g'], img: imgFaceWash }, /* Placeholder img */
+  { id: 8, name: 'Bees Wax Lip Balm, Beetroot', brand: 'TouchCo', category: 'Personal Care', price: 230, sizes: ['20g'], img: imgFacePack }, /* Placeholder img */
+  { id: 9, name: 'Body Wash', brand: 'TouchCo', category: 'Personal Care', price: 235, sizes: ['200ml'], img: imgBodyWash },
+  { id: 10, name: 'Bio Enzyme Shampoo', brand: 'TouchCo', category: 'Personal Care', price: 190, sizes: ['200ml', '500ml'], img: imgShampoo },
+  { id: 11, name: 'Chemical-Free Black Henna / Hair Dye', brand: 'TouchCo', category: 'Personal Care', price: 150, sizes: ['50g'], img: imgHairDye },
+  { id: 12, name: 'Hair Oil', brand: 'TouchCo', category: 'Personal Care', price: 215, sizes: ['100ml'], img: imgFacePack }, /* Placeholder img */
+  { id: 13, name: 'Neem + Citrus Hand Wash', brand: 'TouchCo', category: 'Personal Care', price: 185, sizes: ['200ml'], img: imgHandWash },
+  { id: 14, name: 'Vedic Tooth Powder', brand: 'TouchCo', category: 'Personal Care', price: 170, sizes: ['50g'], img: imgToothPowder },
+  { id: 15, name: 'Amruta Dhara', brand: 'Wellness / Traditional', category: 'Wellness / Traditional', price: 150, sizes: ['10ml'], img: imgAmrutadhara },
+  { id: 16, name: 'Dry Fruit Laddu', brand: 'Heart-full Foods', category: 'Heart-full Foods', price: 325, sizes: ['250g', '500g', '1kg'], img: imgFacePack }, /* Placeholder img */
+  { id: 17, name: 'Protein Jawa', brand: 'Heart-full Foods', category: 'Heart-full Foods', price: 700, sizes: ['500g'], img: imgFacePack }, /* Placeholder img */
+  { id: 18, name: 'A2 Cow Ghee', brand: 'Heart-full Foods', category: 'Heart-full Foods', price: 850, sizes: ['500ml'], img: imgFacePack }, /* Placeholder img */
 ];
 
 const categoryIcons = {
   'All': 'fa-border-all',
-  'Home Care': 'fa-house-chimney',
+  'Home Care & Hygiene': 'fa-house-chimney',
   'Personal Care': 'fa-spa',
-  'Wellness & Herbal': 'fa-leaf',
-  'Heartful Foods': 'fa-seedling',
+  'Wellness / Traditional': 'fa-leaf',
+  'Heart-full Foods': 'fa-seedling',
 };
 
 const catMap = {
-  'home-care': 'Home Care',
+  'home-care': 'Home Care & Hygiene',
   'personal-care': 'Personal Care',
-  'wellness': 'Wellness & Herbal',
-  'heartful-foods': 'Heartful Foods'
+  'wellness': 'Wellness / Traditional',
+  'heartful-foods': 'Heart-full Foods'
 };
 
 const Shop = () => {
@@ -207,7 +205,7 @@ const Shop = () => {
 
       <div className="shop-banner">
         <div className="container">
-          <h1 className="reveal">Premium Organic Shop</h1>
+          <h1 className="reveal">Shop Natural Everyday Essentials</h1>
           <p className="shop-banner-sub reveal delay-1">Discover our range of natural, plant-based products</p>
         </div>
       </div>
@@ -233,7 +231,7 @@ const Shop = () => {
             <button className="mobile-chip-btn" onClick={() => setShowMobileFilters(!showMobileFilters)}>
               <i className="fa-solid fa-sliders"></i> Sort & Filter
             </button>
-            {['All', 'Home Care', 'Personal Care', 'Wellness & Herbal', 'Heartful Foods'].map((cat, i) => (
+            {['All', 'Home Care & Hygiene', 'Personal Care', 'Wellness / Traditional', 'Heart-full Foods'].map((cat, i) => (
               <button 
                 key={i} 
                 className={`mobile-chip-btn ${activeCategory === cat ? 'active' : ''}`}
@@ -274,7 +272,7 @@ const Shop = () => {
                 Categories
               </h4>
               <div className="filter-list">
-                {['All', 'Home Care', 'Personal Care', 'Wellness & Herbal', 'Heartful Foods'].map((cat, i) => (
+                {['All', 'Home Care & Hygiene', 'Personal Care', 'Wellness / Traditional', 'Heart-full Foods'].map((cat, i) => (
                   <button 
                     key={i} 
                     className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}

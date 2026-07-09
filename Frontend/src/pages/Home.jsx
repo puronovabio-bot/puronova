@@ -105,17 +105,19 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
+  const getSlug = (name) => name.toLowerCase().replace(/ /g, '-').replace(/[&]/g, 'and');
+
   const popularCategories = [
-    { name: 'Home Care', items: '3 Items', img: imgDishWash },
-    { name: 'Personal Care', items: '7 Items', img: imgFaceWash },
-    { name: 'Wellness & Herbal', items: '2 Items', img: imgPeetambar },
+    { name: 'Home Care & Hygiene', items: '4 Items', img: imgDishWash },
+    { name: 'Personal Care', items: '10 Items', img: imgFaceWash },
+    { name: 'Wellness / Traditional', items: '1 Item', img: imgPeetambar },
   ];
 
   const bestSellers = [
-    { id: 1, name: 'Dish Wash Liquid', brand: 'NeatCo', price: 165, oldPrice: 180, rating: 4.8, sizes: ['500ml', '1000ml'], img: imgDishWash, desc: 'Citrus lemon themed design. Ingredients: Citrus bio enzyme, xanthan gum, natural surfactant, essential oil' },
-    { id: 4, name: 'Face Wash', brand: 'TouchCo', price: 175, oldPrice: 200, rating: 4.8, sizes: ['100ml', '200ml'], img: imgFaceWash, desc: 'Rose+papaya themed design. Ingredients: Rose bio enzyme, papaya bio enzyme, xanthan gum, natural surfactant, essential oils, glycerin' },
-    { id: 5, name: 'Body Wash', brand: 'TouchCo', price: 180, oldPrice: 210, rating: 4.9, sizes: ['200ml', '500ml'], img: imgBodyWash, desc: 'Raw turmeric, aloevera themed design. Ingredients: Citrus bio enzyme, raw turmeric, nagarmotha, xathan gum, natural surfactant, aloe vera gel, glycerin, essential oil' },
-    { id: 8, name: 'Face Pack & Bath Powder', brand: 'TouchCo', price: 135, oldPrice: 160, rating: 4.9, sizes: ['100gms', '200gms'], img: imgFacePack, desc: 'Herbal theme. Ingredients: Moong, Chana dal, Masoor dal, Menthi, Rice, Fenugreek, Rose petal, nagarmotha, Kasturi turmeric, Vetiver, Dry orange peel, Neem leaves, Amla powder, Bhavanchalu, Gandhakachuralu, multanimatti' },
+    { id: 1, name: 'Dish Wash', brand: 'NeatCo', price: 215, oldPrice: 215, rating: 4.8, sizes: ['500ml', '1L'], img: imgDishWash, desc: 'Ingredients: Citrus bio-enzyme, xanthan gum, natural surfactant, essential oil' },
+    { id: 5, name: 'Rose + Papaya Face Wash', brand: 'TouchCo', price: 225, oldPrice: 225, rating: 4.8, sizes: ['100ml', '200ml'], img: imgFaceWash, desc: 'Ingredients: Rose bio-enzyme, papaya bio-enzyme, xanthan gum, natural surfactant, essential oils, glycerin' },
+    { id: 9, name: 'Body Wash', brand: 'TouchCo', price: 235, oldPrice: 235, rating: 4.9, sizes: ['200ml'], img: imgBodyWash, desc: 'Ingredients: Citrus bio-enzyme, raw turmeric, nagarmotha, xanthan gum, natural surfactant, aloe vera gel, glycerin, essential oil' },
+    { id: 6, name: 'Herbal Facepack Powder', brand: 'TouchCo', price: 175, oldPrice: 175, rating: 4.9, sizes: ['100g'], img: imgFacePack, desc: 'Ingredients: Moong, Chana dal, Masoor dal, Menthi, Rice, Fenugreek, Rose petal, nagarmotha, Kasturi turmeric, Vetiver, Dry orange peel, Neem leaves, Amla powder, Bhavanchalu, Gandhakachuralu, multani mitti' },
   ];
 
   const handleProductClick = (product) => {
@@ -170,8 +172,8 @@ const Home = () => {
               <span className="text-leaf" style={{ color: 'var(--puro-green-leaf)' }}>Everyday Homes</span>
             </h1>
             <p className="hero-subtitle">
-              Discover our range of herbal personal care and eco-friendly <br />
-              home care products, crafted from nature for a healthier lifestyle.
+              Discover our range of natural home care, personal care, wellness, <br />
+              and traditional foods, crafted for a healthier lifestyle.
             </p>
             <div className="hero-btns">
               <Link to="/shop" className="btn btn-accent">Shop Now ➔</Link>
@@ -191,9 +193,9 @@ const Home = () => {
           <div className="category-grid">
             <div className="cat-card reveal" style={{ background: '#F0F7F0' }}>
               <div className="cat-info">
-                <h3>Home Care</h3>
+                <h3>Home Care & Hygiene</h3>
                 <p>NeatCo by Puro Nova</p>
-                <Link to="/shop?category=Home Care" className="cat-link">Shop Now ➔</Link>
+                <Link to="/shop?category=home-care" className="cat-link">Shop Now ➔</Link>
               </div>
               <img src={categoryOneImg} alt="Home Care" className="cat-img floating-element" />
             </div>
@@ -201,15 +203,15 @@ const Home = () => {
               <div className="cat-info">
                 <h3>Personal Care</h3>
                 <p>TouchCo by Puro Nova</p>
-                <Link to="/shop?category=Personal Care" className="cat-link">Shop Now ➔</Link>
+                <Link to="/shop?category=personal-care" className="cat-link">Shop Now ➔</Link>
               </div>
               <img src={categoryThreeImg} alt="Personal Care" className="cat-img floating-element delay-1" />
             </div>
             <div className="cat-card reveal delay-2" style={{ background: '#FDF2F2' }}>
               <div className="cat-info">
                 <h3>Wellness</h3>
-                <p>Natural & Herbal</p>
-                <Link to="/shop?category=Wellness & Herbal" className="cat-link">Shop Now ➔</Link>
+                <p>Natural & Traditional</p>
+                <Link to="/shop?category=wellness" className="cat-link">Shop Now ➔</Link>
               </div>
               <img src={categoryTwoImg} alt="Wellness" className="cat-img floating-element delay-2" />
             </div>
@@ -227,7 +229,7 @@ const Home = () => {
           </div>
           <div className="product-grid">
             {bestSellers.map((product, i) => (
-              <div key={product.id} className={`product-card reveal delay-${i % 3 + 1}`} onClick={() => navigate(`/product/${product.id}`)} style={{ cursor: 'pointer' }}>
+              <div key={product.id} className={`product-card reveal delay-${i % 3 + 1}`} onClick={() => navigate(`/products/${getSlug(product.name)}`)} style={{ cursor: 'pointer' }}>
                 <div className="product-badge">-10%</div>
                 <button
                   className={`wishlist-btn ${wishlist.includes(product.id) ? 'wishlisted' : ''}`}
@@ -303,17 +305,17 @@ const Home = () => {
               </div>
               <div className="brand-content-wrapper">
                 <h3 className="brand-name">NeatCo</h3>
-                <p className="brand-desc">Bio-enzyme powered cleaners for every surface. Effective, plant-based, and free from harsh additives that linger on hands and surfaces.</p>
+                <p className="brand-desc">Natural home care products for every surface. Effective, plant-based, and free from harsh additives that linger on hands and surfaces.</p>
                 <div className="brand-products">
                   <strong>Products:</strong>
                   <ul>
                     <li>Dish Wash</li>
                     <li>Detergent</li>
                     <li>Floor Cleaner</li>
-                    <li>Toilet Cleaner</li>
+                    <li>Bio Pitambar</li>
                   </ul>
                 </div>
-                <Link to="/shop?category=Home Care" className="explore-link">Explore range →</Link>
+                <Link to="/shop?category=home-care" className="explore-link">Explore range →</Link>
               </div>
             </div>
             <div className="brand-card reveal delay-2">
@@ -328,30 +330,29 @@ const Home = () => {
                   <ul>
                     <li>Face Wash</li>
                     <li>Body Wash</li>
-                    <li>Hand Wash</li>
+                    <li>Shampoo</li>
                     <li>Tooth Powder</li>
                   </ul>
                 </div>
-                <Link to="/shop?category=Personal Care" className="explore-link">Explore range →</Link>
+                <Link to="/shop?category=personal-care" className="explore-link">Explore range →</Link>
               </div>
             </div>
             <div className="brand-card reveal delay-3">
               <div className="brand-img-wrapper" style={{ background: '#FDF2F2' }}>
-                <img src={categoryTwoImg} alt="Heartful Foods" className="brand-img" style={{ objectFit: 'contain', padding: '20px' }} />
+                <img src={categoryTwoImg} alt="Heart-full Foods" className="brand-img" style={{ objectFit: 'contain', padding: '20px' }} />
               </div>
               <div className="brand-content-wrapper">
-                <h3 className="brand-name">Heartful Foods</h3>
-                <p className="brand-desc">Honest food, made the right way. Dry fruit laddus, herbal teas, organic jaggery — whole ingredients, nothing hidden.</p>
+                <h3 className="brand-name">Heart-full Foods</h3>
+                <p className="brand-desc">Honest food, made the right way. Dry fruit laddus, protein jawa, A2 cow ghee — whole ingredients, nothing hidden.</p>
                 <div className="brand-products">
                   <strong>Products:</strong>
                   <ul>
                     <li>Dry Fruit Laddus</li>
-                    <li>Herbal Tea</li>
-                    <li>Organic Jaggery</li>
-                    <li>Papads</li>
+                    <li>Protein Jawa</li>
+                    <li>A2 Cow Ghee</li>
                   </ul>
                 </div>
-                <Link to="/shop?category=Wellness & Herbal" className="explore-link">Explore range →</Link>
+                <Link to="/shop?category=heartful-foods" className="explore-link">Explore range →</Link>
               </div>
             </div>
           </div>
@@ -372,7 +373,7 @@ const Home = () => {
             </div>
             <div className="stat-item">
               <h3 className="stat-number">100%</h3>
-              <p className="home-stat-label">Plant-based active ingredients</p>
+              <p className="home-stat-label">Natural, herbal, or traditional ingredients</p>
             </div>
             <div className="stat-item">
               <h3 className="stat-number">6+</h3>

@@ -30,7 +30,7 @@ const Ingredients = () => {
       id: 1,
       name: "Citrus Bio-Enzyme",
       scientific: "Natural Fermentation",
-      description: "Bio-enzymes are natural catalysts produced through fermentation of citrus peels and organic materials. They help break down grease, stains, and odors naturally without harsh chemicals.",
+      description: "Bio-enzymes are natural catalysts produced through fermentation of citrus peels and natural materials. They help break down grease, stains, and odors naturally without harsh chemicals.",
       usedIn: 3,
       image: citrusImg
     },
@@ -57,14 +57,6 @@ const Ingredients = () => {
       description: "A natural thickener derived from guar beans, guar gum gives our formulations smooth texture and stability without relying on synthetic additives.",
       usedIn: 4,
       image: guargumImg
-    },
-    {
-      id: 5,
-      name: "Organic Jaggery",
-      scientific: "Saccharum officinarum",
-      description: "Unlike refined sugar, jaggery retains natural minerals and trace nutrients. It is traditionally used in wellness preparations and wholesome food formulations.",
-      usedIn: 2,
-      image: jaggeryImg
     }
   ];
 

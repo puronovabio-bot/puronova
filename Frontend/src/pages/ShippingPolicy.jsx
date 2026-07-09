@@ -12,7 +12,7 @@ const ShippingPolicy = () => {
           </div>
           <p className="policy-meta">Last Updated: May 27, 2026</p>
           <p>
-            We deliver nationwide to ensure premium organic home care and botanical skin solutions reach your home 
+            We deliver nationwide to ensure premium natural home care and botanical skin solutions reach your home 
             swiftly and securely.
           </p>
 

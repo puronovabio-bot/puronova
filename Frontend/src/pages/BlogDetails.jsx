@@ -30,10 +30,10 @@ const fallbackArticles = [
   },
   {
     _id: 'f3',
-    slug: 'switch-to-unrefined-jaggery',
-    title: 'Making the Switch to Unrefined Organic Jaggery',
-    category: 'Heartful Foods',
-    excerpt: 'Learn why unrefined jaggery is more than just a sweetener, and how its natural minerals support your overall wellness.',
+    slug: 'switch-to-traditional-ghee',
+    title: 'The Benefits of Traditional A2 Cow Ghee',
+    category: 'Heart-full Foods',
+    excerpt: 'Learn why traditional bilona A2 cow ghee is more than just an ingredient, and how it supports your overall wellness.',
     readTime: '3 min read',
     createdAt: new Date('2026-05-25').toISOString(),
     image: blog3

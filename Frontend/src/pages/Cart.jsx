@@ -17,7 +17,7 @@ const Cart = () => {
         <div className="container text-center">
           <div className="empty-cart-icon">🛒</div>
           <h2>Your cart is empty</h2>
-          <p>Looks like you haven't added any organic goodness yet.</p>
+          <p>Looks like you haven't added any natural goodness yet.</p>
           <button className="btn btn-primary" onClick={() => navigate('/shop')} style={{ marginTop: '20px' }}>
             Start Shopping
           </button>

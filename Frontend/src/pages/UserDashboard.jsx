@@ -116,7 +116,7 @@ const UserDashboard = () => {
                 <div className="orders-list empty-state">
                   <div className="empty-icon">📦</div>
                   <h3>No orders yet</h3>
-                  <p>You haven't placed any orders. Start exploring our organic products!</p>
+                  <p>You haven't placed any orders. Start exploring our natural products!</p>
                   <button className="btn btn-primary" onClick={() => navigate('/shop')}>Shop Now</button>
                 </div>
               )}

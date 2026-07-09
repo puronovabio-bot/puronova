@@ -31,8 +31,8 @@ const faqs = [
     answer: "Commercial brands use artificial foaming agents (like SLS/SLES) which don't actually improve cleaning. We use natural, coconut-based surfactants that create a mild, gentle lather but clean just as effectively, if not better, while being kinder to your skin and the planet."
   },
   {
-    question: "Are your food products organic?",
-    answer: "Yes, our Heartful Foods range uses high-quality, traditionally processed ingredients. Our jaggery is unrefined and our dry fruit laddus are made with pure cow ghee and contain absolutely no refined sugar."
+    question: "Are your food products natural?",
+    answer: "Yes, our Heart-full Foods range uses high-quality, traditionally processed ingredients. Our dry fruit laddus are made with pure cow ghee and contain absolutely no refined sugar."
   },
   {
     question: "Can I use your floor cleaner on marble or wooden floors?",

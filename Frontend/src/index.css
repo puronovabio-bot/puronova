@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
 :root {
-  /* Premium Organic Palette */
+  /* Premium Natural Palette */
   --puro-green-deep: #1A4731;
   --puro-green-forest: #2D5A27;
   --puro-green-leaf: #87A96B;
@@ -176,7 +176,7 @@ ul {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Organic Layouts */
+/* Natural Layouts */
 .section-header {
   text-align: center;
   margin-bottom: 60px;

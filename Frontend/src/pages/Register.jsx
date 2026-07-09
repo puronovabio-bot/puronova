@@ -48,7 +48,7 @@ const Register = () => {
       <div className="auth-container">
         <div className="auth-card">
           <h2>Create Account</h2>
-          <p>Join the Puro Nova organic community</p>
+          <p>Join the Puro Nova natural community</p>
           
           {error && <div className="auth-error">{error}</div>}
           

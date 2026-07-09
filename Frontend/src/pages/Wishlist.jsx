@@ -17,19 +17,27 @@ import imgPeetambar from '../assets/products/Peetambar.png';
 import imgAmrutadhara from '../assets/products/Amrutadhara.png';
 
 const allProducts = [
-  { id: 1, name: 'Dish Wash Liquid', brand: 'NeatCo', price: 165, oldPrice: 180, sizes: ['500ml', '1000ml'], img: imgDishWash },
-  { id: 2, name: 'Detergent', brand: 'NeatCo', price: 135, oldPrice: 150, sizes: ['500ml', '1000ml'], img: imgDetergent },
-  { id: 3, name: 'Floor Cleaner', brand: 'NeatCo', price: 140, oldPrice: 160, sizes: ['500ml', '1000ml'], img: imgFloorCleaner },
-  { id: 4, name: 'Face Wash', brand: 'TouchCo', price: 175, oldPrice: 200, sizes: ['100ml', '200ml'], img: imgFaceWash },
-  { id: 5, name: 'Body Wash', brand: 'TouchCo', price: 180, oldPrice: 210, sizes: ['200ml', '500ml'], img: imgBodyWash },
-  { id: 6, name: 'Tooth Powder', brand: 'TouchCo', price: 120, oldPrice: 140, sizes: ['50gms'], img: imgToothPowder },
-  { id: 7, name: 'Hand Wash', brand: 'TouchCo', price: 135, oldPrice: 150, sizes: ['200ml'], img: imgHandWash },
-  { id: 8, name: 'Face Pack & Bath Powder', brand: 'TouchCo', price: 135, oldPrice: 160, sizes: ['100gms', '200gms'], img: imgFacePack },
-  { id: 9, name: 'Shampoo', brand: 'TouchCo', price: 140, oldPrice: 160, sizes: ['200ml', '500ml'], img: imgShampoo },
-  { id: 10, name: 'Natural Hair Dye', brand: 'TouchCo', price: 100, oldPrice: 120, sizes: ['50gms'], img: imgHairDye },
-  { id: 11, name: 'Bio Salt Liquid', brand: 'Puro Nova', price: 85, oldPrice: 100, sizes: ['200ml'], img: imgPeetambar },
-  { id: 12, name: 'AmruthaDhara', brand: 'Puro Nova', price: 100, oldPrice: 120, sizes: ['10ml'], img: imgAmrutadhara },
+  { id: 1, name: 'Dish Wash', brand: 'NeatCo', price: 215, oldPrice: 215, sizes: ['500ml', '1L'], img: imgDishWash },
+  { id: 2, name: 'Detergent', brand: 'NeatCo', price: 200, oldPrice: 200, sizes: ['500ml', '1L'], img: imgDetergent },
+  { id: 3, name: 'Floor Cleaner', brand: 'NeatCo', price: 195, oldPrice: 195, sizes: ['500ml', '1L'], img: imgFloorCleaner },
+  { id: 4, name: 'Bio Pitambar', brand: 'NeatCo', price: 250, oldPrice: 250, sizes: ['500ml'], img: imgPeetambar }, /* Placeholder img */
+  { id: 5, name: 'Rose + Papaya Face Wash', brand: 'TouchCo', price: 225, oldPrice: 225, sizes: ['100ml', '200ml'], img: imgFaceWash },
+  { id: 6, name: 'Herbal Facepack Powder', brand: 'TouchCo', price: 175, oldPrice: 175, sizes: ['100g'], img: imgFacePack },
+  { id: 7, name: 'Face Cream', brand: 'TouchCo', price: 220, oldPrice: 220, sizes: ['50g'], img: imgFaceWash }, /* Placeholder img */
+  { id: 8, name: 'Bees Wax Lip Balm, Beetroot', brand: 'TouchCo', price: 230, oldPrice: 230, sizes: ['20g'], img: imgFacePack }, /* Placeholder img */
+  { id: 9, name: 'Body Wash', brand: 'TouchCo', price: 235, oldPrice: 235, sizes: ['200ml'], img: imgBodyWash },
+  { id: 10, name: 'Bio Enzyme Shampoo', brand: 'TouchCo', price: 190, oldPrice: 190, sizes: ['200ml', '500ml'], img: imgShampoo },
+  { id: 11, name: 'Chemical-Free Black Henna / Hair Dye', brand: 'TouchCo', price: 150, oldPrice: 150, sizes: ['50g'], img: imgHairDye },
+  { id: 12, name: 'Hair Oil', brand: 'TouchCo', price: 215, oldPrice: 215, sizes: ['100ml'], img: imgFacePack }, /* Placeholder img */
+  { id: 13, name: 'Neem + Citrus Hand Wash', brand: 'TouchCo', price: 185, oldPrice: 185, sizes: ['200ml'], img: imgHandWash },
+  { id: 14, name: 'Vedic Tooth Powder', brand: 'TouchCo', price: 170, oldPrice: 170, sizes: ['50g'], img: imgToothPowder },
+  { id: 15, name: 'Amruta Dhara', brand: 'Wellness / Traditional', price: 150, oldPrice: 150, sizes: ['10ml'], img: imgAmrutadhara },
+  { id: 16, name: 'Dry Fruit Laddu', brand: 'Heart-full Foods', price: 325, oldPrice: 325, sizes: ['250g', '500g', '1kg'], img: imgFacePack }, /* Placeholder img */
+  { id: 17, name: 'Protein Jawa', brand: 'Heart-full Foods', price: 700, oldPrice: 700, sizes: ['500g'], img: imgFacePack }, /* Placeholder img */
+  { id: 18, name: 'A2 Cow Ghee', brand: 'Heart-full Foods', price: 850, oldPrice: 850, sizes: ['500ml'], img: imgFacePack }, /* Placeholder img */
 ];
+
+const getSlug = (name) => name.toLowerCase().replace(/ /g, '-').replace(/[&]/g, 'and');
 
 const Wishlist = () => {
   const navigate = useNavigate();
@@ -106,13 +114,13 @@ const Wishlist = () => {
                 <i className="fa-solid fa-xmark"></i>
               </button>
               
-              <div className="product-image-container wishlist-img-wrapper" onClick={() => navigate(`/product/${item.id}`)}>
+              <div className="product-image-container wishlist-img-wrapper" onClick={() => navigate(`/products/${getSlug(item.name)}`)}>
                 <img src={item.img} alt={item.name} />
               </div>
               
               <div className="product-info">
                 <span className="p-cat">{item.brand}</span>
-                <h3 className="p-title" onClick={() => navigate(`/product/${item.id}`)}>{item.name}</h3>
+                <h3 className="p-title" onClick={() => navigate(`/products/${getSlug(item.name)}`)}>{item.name}</h3>
                 
                 <div className="p-footer">
                   <div className="p-prices">

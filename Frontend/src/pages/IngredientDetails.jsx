@@ -14,7 +14,7 @@ const ingredientsData = [
     id: 1,
     name: "Citrus Bio-Enzyme",
     scientific: "Natural Fermentation",
-    description: "Bio-enzymes are natural catalysts produced through fermentation of citrus peels and organic materials. They help break down grease, stains, and odors naturally without harsh chemicals.",
+    description: "Bio-enzymes are natural catalysts produced through fermentation of citrus peels and natural materials. They help break down grease, stains, and odors naturally without harsh chemicals.",
     extendedDetails: "Our bio-enzymes are cultured slowly to ensure maximum potency. When used in cleaning, they continue to work long after application, breaking down microscopic grime and maintaining a truly clean environment without leaving harmful residues.",
     usedIn: 3,
     image: citrusImg
@@ -45,15 +45,6 @@ const ingredientsData = [
     extendedDetails: "By utilizing guar gum, we avoid synthetic polymers often found in conventional products. It binds our natural ingredients together effectively and leaves no sticky or toxic residue on your skin or surfaces.",
     usedIn: 4,
     image: guargumImg
-  },
-  {
-    id: 5,
-    name: "Organic Jaggery",
-    scientific: "Saccharum officinarum",
-    description: "Unlike refined sugar, jaggery retains natural minerals and trace nutrients. It is traditionally used in wellness preparations and wholesome food formulations.",
-    extendedDetails: "Our jaggery is unrefined and sourced directly from traditional producers who use time-tested boiling methods without adding harsh clarifying agents. This ensures you get all the inherent iron, magnesium, and potassium.",
-    usedIn: 2,
-    image: jaggeryImg
   }
 ];
 

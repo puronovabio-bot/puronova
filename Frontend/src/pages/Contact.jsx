@@ -55,7 +55,7 @@ const Contact = () => {
             <h1 className="heading-md">Get in Touch</h1>
             <p className="contact-desc">
               Have questions about our bio-enzyme powered products or your order? 
-              Our team is here to help you embrace a more organic lifestyle.
+              Our team is here to help you embrace a more natural lifestyle.
             </p>
 
             <div className="info-cards">
