@@ -12,9 +12,15 @@ import imgToothPowder from '../assets/products/Tooth powder.png';
 import imgHandWash from '../assets/products/Handwash.png';
 import imgFacePack from '../assets/products/Facepack.png';
 import imgShampoo from '../assets/products/Herbal shampoo.png';
-import imgHairDye from '../assets/products/Hairdye.png';
+import imgHairDye from '../assets/products/hair-dye.jpeg';
 import imgPeetambar from '../assets/products/Peetambar.png';
 import imgAmrutadhara from '../assets/products/Amrutadhara.png';
+import imgA2Ghee from '../assets/products/A2-cow-ghee.jpeg';
+import imgProteinJawa from '../assets/products/protein.jpeg';
+import imgDryFruit from '../assets/products/dryfruit.jpeg';
+import imgLipBalm from '../assets/products/lip-bam.jpeg';
+import imgHairOil from '../assets/products/hair-oil.jpeg';
+import imgFaceCream from '../assets/products/Moisturizing face cream.png';
 
 const allProducts = {
   1: {
@@ -78,7 +84,7 @@ const allProducts = {
     ingredients: 'Shea Butter, Mango Butter, Jojoba Oil, Almond Oil, Vitamin E Oil, Ghee, Kesar (Saffron), and Special Herbs.',
     benefits: 'Deep hydration and skin repair, improves skin elasticity, nourishes and smoothens skin, reduces fine lines, brightens skin tone, and enhances natural glow.',
     variants: [{ size: '50g', price: 220 }],
-    images: [imgFaceWash], /* Placeholder img */
+    images: [imgFaceCream],
   },
   8: {
     _id: '8', name: 'Bees Wax Lip Balm, Beetroot', brand: 'TouchCo', category: 'Personal Care',
@@ -87,7 +93,7 @@ const allProducts = {
     ingredients: 'Beeswax, Beetroot extract, Almond oil, Shea butter, Vitamin E.',
     benefits: 'Deeply hydrates lips, Natural tint, Prevents chapping, Gentle formulation',
     variants: [{ size: '20g', price: 230 }],
-    images: [imgFacePack], /* Placeholder img */
+    images: [imgLipBalm],
   },
   9: {
     _id: '9', name: 'Body Wash', brand: 'TouchCo', category: 'Personal Care',
@@ -123,7 +129,7 @@ const allProducts = {
     ingredients: 'Coconut oil, Sesame oil, Amla, Brahmi, Bhringraj, Hibiscus, Fenugreek.',
     benefits: 'Strengthens hair roots, Reduces hair fall, Promotes growth, Deep nourishment',
     variants: [{ size: '100ml', price: 215 }],
-    images: [imgFacePack], /* Placeholder img */
+    images: [imgHairOil],
   },
   13: {
     _id: '13', name: 'Neem + Citrus Hand Wash', brand: 'TouchCo', category: 'Personal Care',
@@ -158,26 +164,26 @@ const allProducts = {
     description: 'A wholesome and energy-packed traditional sweet made entirely from premium dry fruits and cow ghee, with no added refined sugar.',
     ingredients: 'Almonds, cashews, pistachios, dates, walnuts, cow ghee.',
     benefits: 'Energy boosting, No refined sugar, Rich in nuts, Wholesome snack',
-    variants: [{ size: '250g', price: 325 }, { size: '500g', price: 599 }, { size: '1kg', price: 1150 }],
-    images: [imgFacePack], /* Placeholder img */
+    variants: [{ size: '250g', price: 325 }, { size: '500g', price: 650 }, { size: '1kg', price: 1300 }],
+    images: [imgDryFruit],
   },
   17: {
     _id: '17', name: 'Protein Jawa', brand: 'Heart-full Foods', category: 'Heart-full Foods',
     rating: 4.8, numReviews: 41,
-    description: 'A natural, plant-based protein supplement made from sprouted ragi and nuts, perfect for daily nutritional support.',
-    ingredients: 'Sprouted ragi, almonds, walnuts, cardamom, dry ginger.',
-    benefits: 'Plant-based protein, Easy to digest, Natural ingredients, Supports daily nutrition',
+    description: 'A nutritious traditional drink mix packed with protein and vital nutrients to start your day right.',
+    ingredients: 'Ragi, whole grains, nuts, cardamom.',
+    benefits: 'High in protein, Sustained energy, Traditional recipe, Rich in calcium',
     variants: [{ size: '500g', price: 700 }],
-    images: [imgFacePack], /* Placeholder img */
+    images: [imgProteinJawa],
   },
   18: {
     _id: '18', name: 'A2 Cow Ghee', brand: 'Heart-full Foods', category: 'Heart-full Foods',
-    rating: 4.9, numReviews: 62,
-    description: 'Pure, traditional A2 Cow Ghee crafted using the bilona method for authentic taste and maximum nutritional benefits.',
-    ingredients: 'A2 Cow Milk.',
-    benefits: 'Rich in nutrients, Traditional bilona method, Enhances digestion, Authentic flavor',
+    rating: 5.0, numReviews: 89,
+    description: 'Pure, traditional bilona A2 cow ghee. Made from the milk of indigenous cows using the time-honored curd churning method.',
+    ingredients: '100% Pure A2 Cow Milk Fat.',
+    benefits: 'Rich in Omega-3, Enhances digestion, Traditional bilona method, Supports overall immunity',
     variants: [{ size: '500ml', price: 850 }],
-    images: [imgFacePack], /* Placeholder img */
+    images: [imgA2Ghee],
   }
 };
 
