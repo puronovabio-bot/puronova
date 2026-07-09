@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
+import SEO from '../components/SEO';
 import { Leaf, Sparkles, Beaker, Users, HandHeart, BookOpen, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import './Home.css';
 import './Home_Additions.css';
@@ -126,6 +127,11 @@ const Home = () => {
 
   return (
     <div className="home-page">
+      <SEO 
+        title="Puro Nova | Modern Natural Living" 
+        description="Discover our range of herbal personal care and eco-friendly home care products, crafted from nature for a healthier lifestyle." 
+        url="/"
+      />
       {/* Toast Notification */}
       {toast && (
         <div className={`shop-toast shop-toast--${toast.type}`}>
@@ -247,8 +253,8 @@ const Home = () => {
 
                   <div className="product-price-row">
                     <div className="prices">
+                      <span className="old-price">₹{Math.round(product.price * 1.1)}</span>
                       <span className="current-price">₹{product.price}</span>
-                      <span className="old-price">₹{product.oldPrice}</span>
                     </div>
                     <button
                       className="add-to-cart-btn"

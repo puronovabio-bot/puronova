@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import SEO from '../components/SEO';
 import './Learn.css';
 import learnHero from '../assets/learn_hero.png';
 import blog1 from '../assets/learn_blog_1.png';
@@ -79,6 +80,11 @@ const Learn = () => {
 
   return (
     <div className="learn-page">
+      <SEO 
+        title="Learn" 
+        description="Discover educational articles about natural ingredients, our philosophy, and healthy living on the Puro Nova blog." 
+        url="/learn"
+      />
       {/* Hero Section */}
       <section className="learn-hero">
         <div className="learn-hero-image">

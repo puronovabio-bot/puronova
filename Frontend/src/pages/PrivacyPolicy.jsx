@@ -1,9 +1,11 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import './Policies.css';
 
 const PrivacyPolicy = () => {
   return (
     <div className="policy-page">
+      <SEO title="Privacy Policy" url="/privacy-policy" />
       <div className="container">
         <div className="policy-card">
           <div className="section-head">

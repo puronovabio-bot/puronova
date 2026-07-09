@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import SEO from '../components/SEO';
 import './ProductDetails.css';
 
 import imgDishWash from '../assets/products/Dish Wash.png';
@@ -236,7 +237,6 @@ const ProductDetails = () => {
     // Reset variant and quantity when product changes
     setSelectedVariant(product.variants[0]);
     setQuantity(1);
-    document.title = `${product.name} | Puro Nova`;
   }, [slug, product]);
 
   const handleAddToCart = () => {
@@ -269,6 +269,12 @@ const ProductDetails = () => {
 
   return (
     <div className="product-details-page">
+      <SEO 
+        title={product.name} 
+        description={product.description} 
+        url={`/products/${slug}`}
+        image={product.images[0]}
+      />
       <script type="application/ld+json">
         {JSON.stringify(schemaData)}
       </script>
@@ -303,6 +309,9 @@ const ProductDetails = () => {
 
 
             <div className="price-display">
+              <span className="old-amount" style={{ textDecoration: 'line-through', color: '#94a3b8', fontSize: '0.6em', marginRight: '10px' }}>
+                ₹{Math.round(selectedVariant.price * 1.1)}
+              </span>
               <span className="currency">₹</span>
               <span className="amount">{selectedVariant.price}</span>
             </div>
@@ -372,7 +381,12 @@ const ProductDetails = () => {
                   <img src={rp.images[0]} alt={rp.name} className="related-product-img" />
                   <div className="related-product-brand">{rp.brand}</div>
                   <h4 className="related-product-name">{rp.name}</h4>
-                  <div className="related-product-price">₹{rp.variants[0].price}</div>
+                  <div className="related-product-price">
+                    <span style={{ textDecoration: 'line-through', color: '#94a3b8', marginRight: '8px', fontSize: '0.85em' }}>
+                      ₹{Math.round(rp.variants[0].price * 1.1)}
+                    </span>
+                    ₹{rp.variants[0].price}
+                  </div>
                 </div>
               ))}
             </div>

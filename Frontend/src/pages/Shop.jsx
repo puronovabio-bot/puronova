@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import SEO from '../components/SEO';
 import './Shop.css';
 
 import imgDishWash from '../assets/products/Dish Wash.png';
@@ -63,7 +64,7 @@ const Shop = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { addToCart } = useCart();
-  
+
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [showMobileFilters, setShowMobileFilters] = useState(false);
@@ -191,7 +192,7 @@ const Shop = () => {
   const filteredProducts = products.filter(p => {
     const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
     const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          p.brand.toLowerCase().includes(searchTerm.toLowerCase());
+      p.brand.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -201,6 +202,11 @@ const Shop = () => {
 
   return (
     <div className="shop-page">
+      <SEO 
+        title="Shop" 
+        description="Explore Puro Nova's entire range of natural, plant-based home care and personal care products." 
+        url="/shop"
+      />
       {/* Toast Notification */}
       {toast && (
         <div className={`shop-toast shop-toast--${toast.type}`}>
@@ -221,9 +227,9 @@ const Shop = () => {
         <div className="mobile-top-bar">
           <div className="mobile-search-box">
             <i className="fa-solid fa-magnifying-glass search-icon"></i>
-            <input 
-              type="text" 
-              placeholder="Search products..." 
+            <input
+              type="text"
+              placeholder="Search products..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -238,8 +244,8 @@ const Shop = () => {
               <i className="fa-solid fa-sliders"></i> Sort & Filter
             </button>
             {['All', 'Home Care & Hygiene', 'Personal Care', 'Wellness / Traditional', 'Heart-full Foods'].map((cat, i) => (
-              <button 
-                key={i} 
+              <button
+                key={i}
                 className={`mobile-chip-btn ${activeCategory === cat ? 'active' : ''}`}
                 onClick={() => setActiveCategory(cat)}
               >
@@ -259,9 +265,9 @@ const Shop = () => {
 
             <div className="search-box">
               <i className="fa-solid fa-magnifying-glass search-icon"></i>
-              <input 
-                type="text" 
-                placeholder="Search products..." 
+              <input
+                type="text"
+                placeholder="Search products..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -279,8 +285,8 @@ const Shop = () => {
               </h4>
               <div className="filter-list">
                 {['All', 'Home Care & Hygiene', 'Personal Care', 'Wellness / Traditional', 'Heart-full Foods'].map((cat, i) => (
-                  <button 
-                    key={i} 
+                  <button
+                    key={i}
                     className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
                     onClick={() => setActiveCategory(cat)}
                   >
@@ -319,14 +325,7 @@ const Shop = () => {
                 <i className="fa-solid fa-box-open"></i>
                 Showing <strong>{filteredProducts.length}</strong> of <strong>{products.length}</strong> products
               </p>
-              <div className="sort-wrapper">
-                <i className="fa-solid fa-arrow-down-short-wide"></i>
-                <select>
-                  <option>Newest Arrivals</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                </select>
-              </div>
+
             </div>
 
             {filteredProducts.length === 0 ? (
@@ -342,7 +341,7 @@ const Shop = () => {
               <div className="shop-grid">
                 {filteredProducts.map((p, i) => (
                   <div className={`product-card reveal delay-${(i % 3) + 1}`} key={p.id} onClick={() => handleProductClick(p)} style={{ cursor: 'pointer' }}>
-                    <button 
+                    <button
                       className={`wishlist-btn ${wishlist.includes(p.id) ? 'wishlisted' : ''}`}
                       onClick={(e) => toggleWishlist(e, p.id)}
                       title={wishlist.includes(p.id) ? 'Remove from wishlist' : 'Add to wishlist'}
@@ -366,10 +365,11 @@ const Shop = () => {
                       <h3 className="p-title">{p.name}</h3>
                       <div className="p-footer">
                         <div className="p-prices">
+                          <span className="p-old-price">₹{Math.round(p.price * 1.1)}</span>
                           <span className="p-price">₹{p.price}</span>
                         </div>
-                        <button 
-                          className="p-add-btn" 
+                        <button
+                          className="p-add-btn"
                           onClick={(e) => handleAddToCart(e, p)}
                           title="Add to Cart"
                         >

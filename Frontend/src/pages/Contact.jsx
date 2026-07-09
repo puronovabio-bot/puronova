@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 import './Contact.css';
 
 const Instagram = ({ size = 24, color = "currentColor", ...props }) => (
@@ -49,6 +50,11 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
+      <SEO 
+        title="Contact Us" 
+        description="Get in touch with Puro Nova. Have questions about our products or your order? We're here to help." 
+        url="/contact"
+      />
       <div className="container">
         <div className="contact-grid">
           <div className="contact-info-section">

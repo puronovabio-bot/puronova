@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import './About.css';
+import SEO from '../components/SEO';
 import aboutHero from '../assets/about_hero.png';
 import aboutIngredients from '../assets/about_ingredients.png';
 import aboutFamily from '../assets/about_family.png';
+import aboutTeam from '../assets/about-team-puronova.jpg';
 
 const About = () => {
   useEffect(() => {
@@ -21,6 +23,11 @@ const About = () => {
 
   return (
     <div className="about-page">
+      <SEO 
+        title="About Us" 
+        description="Learn about Puro Nova's story, our values, and our mission to provide natural, honest products for everyday homes." 
+        url="/about"
+      />
       {/* Hero Section */}
       <section className="about-hero">
         <div className="about-hero-image">
@@ -60,11 +67,16 @@ const About = () => {
             </p>
           </div>
           
-          <div className="story-quote reveal delay-2">
-            <blockquote>
-              “We started Puro Nova because we couldn’t find products we trusted for our own home. That frustration became our compass.”
-            </blockquote>
-            <cite>— Hyderabad, Telangana</cite>
+          <div className="story-right-col">
+            <div className="story-quote reveal delay-2">
+              <blockquote>
+                “We started Puro Nova because we couldn’t find products we trusted for our own home. That frustration became our compass.”
+              </blockquote>
+              <cite>— Hyderabad, Telangana</cite>
+            </div>
+            <div className="story-team-image reveal delay-3">
+              <img src={aboutTeam} alt="The Puro Nova Team" />
+            </div>
           </div>
         </div>
       </section>

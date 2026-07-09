@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import SEO from '../components/SEO';
 import './IngredientDetails.css';
 
 import citrusImg from '../assets/ingredient_citrus.png';
@@ -56,9 +57,6 @@ const IngredientDetails = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (ingredient) {
-      document.title = `${ingredient.name} | Puro Nova Ingredients`;
-    }
   }, [ingredient]);
 
   if (!ingredient) {
@@ -72,6 +70,12 @@ const IngredientDetails = () => {
 
   return (
     <div className="ingredient-details-page">
+      <SEO 
+        title={ingredient.name} 
+        description={ingredient.description} 
+        url={`/ingredients/${slug}`}
+        image={ingredient.image}
+      />
       <div className="container">
         <Link to="/ingredients" className="back-link">
           <ArrowLeft size={18} /> Back to Library

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import './Ingredients.css';
 import ingredientsHero from '../assets/ingredients_hero.png';
 import citrusImg from '../assets/ingredient_citrus.png';
@@ -62,6 +63,11 @@ const Ingredients = () => {
 
   return (
     <div className="ingredients-page">
+      <SEO 
+        title="Ingredient Library" 
+        description="An honest guide to every botanical, enzyme, and natural active we use in Puro Nova products." 
+        url="/ingredients"
+      />
       {/* Hero Banner */}
       <section className="ingredients-hero">
         <div className="ingredients-hero-image">

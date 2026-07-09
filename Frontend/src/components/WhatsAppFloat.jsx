@@ -1,6 +1,5 @@
 import React from 'react';
 import './WhatsAppFloat.css';
-import { MessageCircle } from 'lucide-react';
 
 const WhatsAppFloat = () => {
   // WhatsApp Number without '+'
@@ -19,7 +18,7 @@ const WhatsAppFloat = () => {
       aria-label="Chat with us on WhatsApp"
     >
       <div className="whatsapp-icon-wrapper">
-        <MessageCircle size={28} color="white" />
+        <i className="fa-brands fa-whatsapp"></i>
       </div>
       <span className="whatsapp-tooltip">Chat with us</span>
     </button>

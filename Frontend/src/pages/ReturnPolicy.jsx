@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
 import './Policies.css';
 
 const ReturnPolicy = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Return Policy | Puro Nova';
   }, []);
 
   return (
     <div className="policy-page">
+      <SEO title="Return Policy" url="/return-policy" />
       <div className="container">
         <div className="policy-card">
           <div className="section-head">

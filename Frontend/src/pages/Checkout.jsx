@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
+import SEO from '../components/SEO';
 import axios from 'axios';
 import './Checkout.css';
 
@@ -176,6 +177,7 @@ const Checkout = () => {
 
   return (
     <div className="checkout-page">
+      <SEO title="Checkout" url="/checkout" />
       <div className="container checkout-container">
         <div className="checkout-form-section">
           <h2>Shipping Details</h2>

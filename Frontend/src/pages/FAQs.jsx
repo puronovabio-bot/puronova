@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SEO from '../components/SEO';
 import './FAQs.css';
 
 const faqs = [
@@ -49,7 +50,6 @@ const FAQs = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Frequently Asked Questions | Puro Nova';
   }, []);
 
   const toggleAccordion = (index) => {
@@ -58,6 +58,11 @@ const FAQs = () => {
 
   return (
     <div className="faqs-page">
+      <SEO 
+        title="Frequently Asked Questions" 
+        description="Find answers to common questions about Puro Nova products, ingredients, shipping, and return policies." 
+        url="/faqs"
+      />
       <div className="faqs-header">
         <div className="container">
           <h1>Frequently Asked Questions</h1>

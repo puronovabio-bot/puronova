@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import './Philosophy.css';
 import heroImg from '../assets/philosophy_hero.png';
 import principlesImg from '../assets/philosophy_principles.png';
@@ -22,6 +23,11 @@ const Philosophy = () => {
 
   return (
     <div className="philosophy-page">
+      <SEO 
+        title="Our Philosophy" 
+        description="Read about Puro Nova's commitment to plant-based formulations, bio-enzyme technology, and honest ingredients." 
+        url="/philosophy"
+      />
       {/* Hero Banner */}
       <section className="philosophy-hero">
         <div className="philosophy-hero-image">

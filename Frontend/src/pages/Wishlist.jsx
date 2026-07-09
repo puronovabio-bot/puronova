@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import SEO from '../components/SEO';
 import './Wishlist.css';
 
 import imgDishWash from '../assets/products/Dish Wash.png';
@@ -81,6 +82,7 @@ const Wishlist = () => {
   if (wishlistItems.length === 0) {
     return (
       <div className="wishlist-page empty-wishlist">
+        <SEO title="Your Wishlist" url="/wishlist" />
         <div className="container text-center">
           <div className="empty-icon"><i className="fa-regular fa-heart"></i></div>
           <h2>Your wishlist is empty</h2>
@@ -95,6 +97,7 @@ const Wishlist = () => {
 
   return (
     <div className="wishlist-page">
+      <SEO title="Your Wishlist" url="/wishlist" />
       {/* Toast Notification */}
       {toast && (
         <div className={`shop-toast shop-toast--${toast.type}`}>
@@ -130,8 +133,8 @@ const Wishlist = () => {
                 
                 <div className="p-footer">
                   <div className="p-prices">
+                    <span className="p-old-price">₹{Math.round(item.price * 1.1)}</span>
                     <span className="p-price">₹{item.price}</span>
-                    {item.oldPrice && <span className="p-old-price">₹{item.oldPrice}</span>}
                   </div>
                   <button 
                     className="p-add-btn"

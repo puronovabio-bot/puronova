@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, Clock, Calendar } from 'lucide-react';
+import SEO from '../components/SEO';
 import './Learn.css';
 import blog1 from '../assets/learn_blog_1.png';
 import blog2 from '../assets/learn_blog_2.png';
@@ -95,6 +96,12 @@ const BlogDetails = () => {
 
   return (
     <div className="blog-details-page">
+      <SEO 
+        title={blog.title} 
+        description={blog.excerpt} 
+        url={`/learn/${slug}`}
+        image={blog.image}
+      />
       <div className="blog-details-header" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(${blog.image})` }}>
         <div className="container">
           <Link to="/learn" className="back-link">

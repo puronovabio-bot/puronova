@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import SEO from '../components/SEO';
 import './Cart.css';
 
 const Cart = () => {
@@ -14,6 +15,7 @@ const Cart = () => {
   if (cartItems.length === 0) {
     return (
       <div className="cart-page empty-cart">
+        <SEO title="Your Cart" url="/cart" />
         <div className="container text-center">
           <div className="empty-cart-icon">🛒</div>
           <h2>Your cart is empty</h2>
@@ -28,6 +30,7 @@ const Cart = () => {
 
   return (
     <div className="cart-page">
+      <SEO title="Your Cart" url="/cart" />
       <div className="container">
         <h1 className="heading-md" style={{ marginBottom: '40px' }}>Shopping Cart ({cartItems.length})</h1>
         
