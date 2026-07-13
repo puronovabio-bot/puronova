@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import dns from 'dns';
 dotenv.config();
 
 const sendEmail = async (options) => {
@@ -14,6 +15,9 @@ const sendEmail = async (options) => {
       host: 'smtp.gmail.com',
       port: 465,
       secure: true,
+      lookup: (hostname, options, callback) => {
+        dns.lookup(hostname, { family: 4 }, callback);
+      },
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,

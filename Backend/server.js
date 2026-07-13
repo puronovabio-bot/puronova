@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import nodemailer from 'nodemailer';
+import dns from 'dns';
 
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -60,7 +61,9 @@ app.get('/api/test-smtp', async (req, res) => {
       host: 'smtp.gmail.com',
       port: 465,
       secure: true,
-      family: 4,
+      lookup: (hostname, options, callback) => {
+        dns.lookup(hostname, { family: 4 }, callback);
+      },
       connectionTimeout: 5000,
       greetingTimeout: 5000,
       socketTimeout: 5000,
