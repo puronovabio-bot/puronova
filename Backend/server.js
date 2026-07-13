@@ -62,10 +62,23 @@ app.get('/api/test-smtp', async (req, res) => {
       });
     }
 
+    let host = 'smtp.gmail.com';
+    try {
+      const ips = await dns.promises.resolve4('smtp.gmail.com');
+      if (ips && ips.length > 0) {
+        host = ips[0];
+      }
+    } catch (dnsErr) {
+      console.warn("DNS resolve4 failed:", dnsErr.message);
+    }
+
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
+      host,
       port: 465,
       secure: true,
+      tls: {
+        servername: 'smtp.gmail.com'
+      },
       connectionTimeout: 5000,
       greetingTimeout: 5000,
       socketTimeout: 5000,

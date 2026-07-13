@@ -16,12 +16,22 @@ const sendEmail = async (options) => {
   }
 
   try {
+    let host = 'smtp.gmail.com';
+    try {
+      const ips = await dns.promises.resolve4('smtp.gmail.com');
+      if (ips && ips.length > 0) {
+        host = ips[0];
+      }
+    } catch (dnsErr) {
+      console.warn("DNS resolve4 failed:", dnsErr.message);
+    }
+
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
+      host,
       port: 465,
       secure: true,
-      lookup: (hostname, options, callback) => {
-        dns.lookup(hostname, { family: 4 }, callback);
+      tls: {
+        servername: 'smtp.gmail.com'
       },
       auth: {
         user: process.env.EMAIL_USER,
