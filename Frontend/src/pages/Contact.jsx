@@ -70,10 +70,10 @@ const Contact = () => {
                 <div>
                   <h4>Our Location</h4>
                   <p style={{ margin: 0, lineHeight: '1.5' }}>
-                    Plot No. 127, Suraram Village,<br />
-                    Gajularamaram, Quthbullapur,<br />
-                    Medchal-Malkajgiri, Hyderabad,<br />
-                    Telangana — 500055
+                    Tripura landmark2,<br />
+                    Opposite Srk Green Park,<br />
+                    Bowrampet, Hyderabad,<br />
+                    Telangana — 500043
                   </p>
                 </div>
               </div>
@@ -81,7 +81,7 @@ const Contact = () => {
                 <span className="info-icon">📞</span>
                 <div>
                   <h4>Call Us</h4>
-                  <p>+91 97048 45883</p>
+                  <p>+91 80192 32666</p>
                 </div>
               </div>
               <div className="info-card">

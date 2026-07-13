@@ -9,7 +9,7 @@ import imgDetergent from '../assets/products/Detergent.png';
 import imgFloorCleaner from '../assets/products/Floor Cleaner.jpeg';
 import imgFaceWash from '../assets/products/face wash.jpeg';
 import imgBodyWash from '../assets/products/Bodywash.png';
-import imgToothPowder from '../assets/products/Tooth powder.png';
+import imgToothPowder from '../assets/products/tooth.jpg';
 import imgHandWash from '../assets/products/Handwash.png';
 import imgFacePack from '../assets/products/Facepack.png';
 import imgShampoo from '../assets/products/Herbal shampoo.png';
@@ -19,7 +19,9 @@ import imgAmrutadhara from '../assets/products/Amrutadhara.png';
 import imgA2Ghee from '../assets/products/A2-cow-ghee.jpeg';
 import imgProteinJawa from '../assets/products/protein.jpeg';
 import imgDryFruit from '../assets/products/dryfruit.jpeg';
-import imgLipBalm from '../assets/products/lip-bam.jpeg';
+import imgLipBalm from '../assets/products/beetroot.jpg';
+import imgLipBalmVanilla from '../assets/products/vennela.jpg';
+import imgLipBalmMixFruit from '../assets/products/mix-fruit.jpg';
 import imgHairOil from '../assets/products/hair-oil.jpeg';
 import imgFaceCream from '../assets/products/Moisturizing face cream.png';
 
@@ -102,7 +104,7 @@ const allProducts = {
     description: 'A luxurious body wash infused with raw turmeric and aloe vera for deeply nourishing skin care. The citrus bio-enzyme base ensures a thorough yet gentle cleanse.',
     ingredients: 'Citrus bio-enzyme, raw turmeric, nagarmotha, xanthan gum, natural surfactant, aloe vera gel, glycerin, essential oil.',
     benefits: 'Deep hydration, Anti-inflammatory turmeric, Soothing aloe vera, Natural fragrance',
-    variants: [{ size: '200ml', price: 235 }],
+    variants: [{ size: '200ml', price: 235 }, { size: '500ml', price: 450 }],
     images: [imgBodyWash],
   },
   10: {
@@ -183,8 +185,26 @@ const allProducts = {
     description: 'Pure, traditional bilona A2 cow ghee. Made from the milk of indigenous cows using the time-honored curd churning method.',
     ingredients: '100% Pure A2 Cow Milk Fat.',
     benefits: 'Rich in Omega-3, Enhances digestion, Traditional bilona method, Supports overall immunity',
-    variants: [{ size: '500ml', price: 850 }],
+    variants: [{ size: '500g', price: 1400 }, { size: '1kg', price: 2700 }],
     images: [imgA2Ghee],
+  },
+  19: {
+    _id: '19', name: 'Bees Wax Lip Balm, Vanilla', brand: 'TouchCo', category: 'Personal Care',
+    rating: 4.7, numReviews: 19,
+    description: 'A deeply nourishing lip balm made with natural beeswax and vanilla extract to keep your lips soft, hydrated, and naturally healthy.',
+    ingredients: 'Beeswax, Vanilla extract, Almond oil, Shea butter, Vitamin E.',
+    benefits: 'Deeply hydrates lips, Gentle aroma, Prevents chapping, Gentle formulation',
+    variants: [{ size: '20g', price: 230 }],
+    images: [imgLipBalmVanilla],
+  },
+  20: {
+    _id: '20', name: 'Bees Wax Lip Balm, Mixed Fruit', brand: 'TouchCo', category: 'Personal Care',
+    rating: 4.7, numReviews: 19,
+    description: 'A deeply nourishing lip balm made with natural beeswax and mixed fruit extract to keep your lips soft, hydrated, and naturally healthy.',
+    ingredients: 'Beeswax, Mixed fruit extract, Almond oil, Shea butter, Vitamin E.',
+    benefits: 'Deeply hydrates lips, Natural fruit flavor, Prevents chapping, Gentle formulation',
+    variants: [{ size: '20g', price: 230 }],
+    images: [imgLipBalmMixFruit],
   }
 };
 

@@ -93,9 +93,6 @@ const AdminDashboard = () => {
           <button className={activeTab === 'orders' ? 'active' : ''} onClick={() => handleTabChange('orders')}>Orders</button>
           <button className={activeTab === 'customers' ? 'active' : ''} onClick={() => handleTabChange('customers')}>Customers</button>
           <button className={activeTab === 'blogs' ? 'active' : ''} onClick={() => handleTabChange('blogs')}>Blogs</button>
-          <button className={activeTab === 'products' ? 'active' : ''} onClick={() => handleTabChange('products')}>Products</button>
-          <button className={activeTab === 'categories' ? 'active' : ''} onClick={() => handleTabChange('categories')}>Categories</button>
-          <button className={activeTab === 'coupons' ? 'active' : ''} onClick={() => handleTabChange('coupons')}>Coupons</button>
         </nav>
         <button className="admin-logout" onClick={handleLogout}>Log Out</button>
       </aside>

@@ -9,7 +9,39 @@ const Cart = () => {
   const { cartItems, updateQuantity, removeFromCart, getSubtotal } = useCart();
 
   const subtotal = getSubtotal();
-  const shipping = subtotal > 500 ? 0 : 50;
+  
+  const parseGrams = (sizeStr) => {
+    if (!sizeStr) return 0;
+    const str = sizeStr.toLowerCase().trim();
+    
+    // Extract number and unit
+    const numMatch = str.match(/^([\d.]+)\s*([a-zA-Z]+)?$/);
+    if (!numMatch) return 0;
+    
+    const value = parseFloat(numMatch[1]);
+    const unit = numMatch[2] || '';
+    
+    if (unit === 'kg' || unit === 'l' || unit === 'litre') {
+      return value * 1000;
+    }
+    // All other units: ml, g, gm, gms, etc., map 1-to-1 to grams
+    return value;
+  };
+
+  const getShippingCharge = (grams) => {
+    if (grams <= 0) return 0;
+    if (grams <= 500) return 40;
+    if (grams <= 1000) return 60;
+    if (grams <= 2000) return 100;
+    if (grams <= 4000) return 150;
+    return 180;
+  };
+
+  const totalGrams = cartItems.reduce((acc, item) => {
+    return acc + (parseGrams(item.size) * item.quantity);
+  }, 0);
+
+  const shipping = getShippingCharge(totalGrams);
   const total = subtotal + (cartItems.length > 0 ? shipping : 0);
 
   if (cartItems.length === 0) {
@@ -80,15 +112,14 @@ const Cart = () => {
             </div>
             
             <div className="summary-row">
+              <span>Total Weight</span>
+              <span>{totalGrams >= 1000 ? `${(totalGrams / 1000).toFixed(2)} kg` : `${totalGrams} g`}</span>
+            </div>
+            
+            <div className="summary-row">
               <span>Shipping</span>
               <span>{shipping === 0 ? 'Free' : `₹${shipping}`}</span>
             </div>
-
-            {shipping > 0 && (
-              <div className="free-shipping-notice">
-                Add ₹{500 - subtotal} more to get free shipping!
-              </div>
-            )}
 
             <div className="summary-divider"></div>
             

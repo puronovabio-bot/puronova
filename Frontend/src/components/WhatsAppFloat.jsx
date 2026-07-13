@@ -3,7 +3,7 @@ import './WhatsAppFloat.css';
 
 const WhatsAppFloat = () => {
   // WhatsApp Number without '+'
-  const phoneNumber = "919704845883";
+  const phoneNumber = "918019232666";
   const defaultMessage = "Hello! I have a question about Puro Nova products.";
   
   const handleWhatsAppClick = () => {

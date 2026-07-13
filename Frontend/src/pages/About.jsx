@@ -54,7 +54,7 @@ const About = () => {
               The Puro Nova brand architecture is deliberate. NeatCo is our home care range — bio-enzyme powered cleaners that work without harshness. TouchCo is our personal care range — botanical formulas built for daily use. Wellness by Puro Nova is our range of traditional wellness preparations. Heartful Foods is a separate brand in our ecosystem focused on wholesome Indian food.
             </p>
             <p>
-              We are FSSAI registered and produce from our facility in Suraram Village, Hyderabad. We produce in small batches — not because we have to, but because we think it matters.
+              We are FSSAI registered and produce from our facility in Bowrampet, Hyderabad. We produce in small batches — not because we have to, but because we think it matters.
             </p>
             <p>
               We are not an ayurvedic brand in the traditional marketing sense. We don’t use Sanskrit slogans or imagery of women in sarees holding tulsi sprigs. We are a contemporary Indian brand that respects traditional knowledge enough to use it thoughtfully rather than decoratively.
@@ -141,11 +141,11 @@ const About = () => {
             <div className="contact-info-grid">
               <div className="contact-info-item">
                 <h4>Address</h4>
-                <p>Plot No. 127, Suraram Village,<br/>Gajularamaram, Quthbullapur,<br/>Medchal-Malkajgiri, Hyderabad,<br/>Telangana — 500055</p>
+                <p>Tripura landmark2,<br/>Opposite Srk Green Park,<br/>Bowrampet, Hyderabad,<br/>Telangana — 500043</p>
               </div>
               <div className="contact-info-item">
                 <h4>Phone</h4>
-                <p>+91 97048 45883</p>
+                <p>+91 80192 32666</p>
               </div>
               <div className="contact-info-item">
                 <h4>Email</h4>

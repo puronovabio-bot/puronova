@@ -9,7 +9,7 @@ import imgDetergent from '../assets/products/Detergent.png';
 import imgFloorCleaner from '../assets/products/Floor Cleaner.jpeg';
 import imgFaceWash from '../assets/products/face wash.jpeg';
 import imgBodyWash from '../assets/products/Bodywash.png';
-import imgToothPowder from '../assets/products/Tooth powder.png';
+import imgToothPowder from '../assets/products/tooth.jpg';
 import imgHandWash from '../assets/products/Handwash.png';
 import imgFacePack from '../assets/products/Facepack.png';
 import imgShampoo from '../assets/products/Herbal shampoo.png';
@@ -19,7 +19,9 @@ import imgAmrutadhara from '../assets/products/Amrutadhara.png';
 import imgA2Ghee from '../assets/products/A2-cow-ghee.jpeg';
 import imgProteinJawa from '../assets/products/protein.jpeg';
 import imgDryFruit from '../assets/products/dryfruit.jpeg';
-import imgLipBalm from '../assets/products/lip-bam.jpeg';
+import imgLipBalm from '../assets/products/beetroot.jpg';
+import imgLipBalmVanilla from '../assets/products/vennela.jpg';
+import imgLipBalmMixFruit from '../assets/products/mix-fruit.jpg';
 import imgHairOil from '../assets/products/hair-oil.jpeg';
 import imgFaceCream from '../assets/products/Moisturizing face cream.png';
 
@@ -32,7 +34,7 @@ const products = [
   { id: 6, name: 'Herbal Facepack Powder', brand: 'TouchCo', category: 'Personal Care', price: 175, sizes: ['100g'], img: imgFacePack },
   { id: 7, name: 'Face Cream', brand: 'TouchCo', category: 'Personal Care', price: 220, sizes: ['50g'], img: imgFaceCream },
   { id: 8, name: 'Bees Wax Lip Balm, Beetroot', brand: 'TouchCo', category: 'Personal Care', price: 230, sizes: ['20g'], img: imgLipBalm },
-  { id: 9, name: 'Body Wash', brand: 'TouchCo', category: 'Personal Care', price: 235, sizes: ['200ml'], img: imgBodyWash },
+  { id: 9, name: 'Body Wash', brand: 'TouchCo', category: 'Personal Care', price: 235, sizes: ['200ml', '500ml'], img: imgBodyWash },
   { id: 10, name: 'Bio Enzyme Shampoo', brand: 'TouchCo', category: 'Personal Care', price: 190, sizes: ['200ml', '500ml'], img: imgShampoo },
   { id: 11, name: 'Chemical-Free Black Henna / Hair Dye', brand: 'TouchCo', category: 'Personal Care', price: 150, sizes: ['50g'], img: imgHairDye },
   { id: 12, name: 'Hair Oil', brand: 'TouchCo', category: 'Personal Care', price: 215, sizes: ['100ml'], img: imgHairOil },
@@ -41,7 +43,9 @@ const products = [
   { id: 15, name: 'Amruta Dhara', brand: 'Wellness / Traditional', category: 'Wellness / Traditional', price: 150, sizes: ['10ml'], img: imgAmrutadhara },
   { id: 16, name: 'Dry Fruit Laddu', brand: 'Heart-full Foods', category: 'Heart-full Foods', price: 325, sizes: ['250g', '500g', '1kg'], img: imgDryFruit },
   { id: 17, name: 'Protein Jawa', brand: 'Heart-full Foods', category: 'Heart-full Foods', price: 700, sizes: ['500g'], img: imgProteinJawa },
-  { id: 18, name: 'A2 Cow Ghee', brand: 'Heart-full Foods', category: 'Heart-full Foods', price: 850, sizes: ['500ml'], img: imgA2Ghee },
+  { id: 18, name: 'A2 Cow Ghee', brand: 'Heart-full Foods', category: 'Heart-full Foods', price: 1400, sizes: ['500g', '1kg'], img: imgA2Ghee },
+  { id: 19, name: 'Bees Wax Lip Balm, Vanilla', brand: 'TouchCo', category: 'Personal Care', price: 230, sizes: ['20g'], img: imgLipBalmVanilla },
+  { id: 20, name: 'Bees Wax Lip Balm, Mixed Fruit', brand: 'TouchCo', category: 'Personal Care', price: 230, sizes: ['20g'], img: imgLipBalmMixFruit },
 ];
 
 const categoryIcons = {

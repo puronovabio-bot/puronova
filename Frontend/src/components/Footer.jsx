@@ -57,15 +57,15 @@ const Footer = () => {
             <div className="contact-item">
               <MapPin size={18} style={{ flexShrink: 0, marginTop: '4px' }} />
               <span>
-                Plot No. 127, Suraram Village,<br />
-                Gajularamaram, Quthbullapur,<br />
-                Medchal-Malkajgiri, Hyderabad,<br />
-                Telangana — 500055
+                Tripura landmark2,<br />
+                Opposite Srk Green Park,<br />
+                Bowrampet, Hyderabad,<br />
+                Telangana — 500043
               </span>
             </div>
             <div className="contact-item">
               <Phone size={18} />
-              <span>+91 97048 45883</span>
+              <span>+91 80192 32666</span>
             </div>
             <div className="contact-item">
               <Mail size={18} />
