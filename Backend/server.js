@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import nodemailer from 'nodemailer';
 
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -38,6 +39,57 @@ app.use('/api/blogs', blogRoutes);
 app.use('/api/reviews', reviewRoutes);
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok', message: 'Puro Nova API running' }));
+
+app.get('/api/test-smtp', async (req, res) => {
+  try {
+    const emailUser = process.env.EMAIL_USER;
+    const emailPass = process.env.EMAIL_PASS ? 'configured' : 'missing';
+    const adminEmail = process.env.ADMIN_EMAIL;
+    
+    if (!emailUser || !process.env.EMAIL_PASS) {
+      return res.json({
+        success: false,
+        error: "Missing EMAIL_USER or EMAIL_PASS in environment variables.",
+        emailUser,
+        emailPass,
+        adminEmail
+      });
+    }
+
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
+      auth: {
+        user: emailUser,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    await transporter.verify();
+    
+    await transporter.sendMail({
+      from: `Puro Nova Test <${emailUser}>`,
+      to: adminEmail || emailUser,
+      subject: "Live Server SMTP Diagnostics",
+      html: "<h3>SMTP is working fine on the live server!</h3>"
+    });
+
+    res.json({
+      success: true,
+      message: `Test email sent successfully to ${adminEmail || emailUser}`,
+      emailUser,
+      adminEmail
+    });
+  } catch (error) {
+    res.json({
+      success: false,
+      error: error.message,
+      emailUser: process.env.EMAIL_USER,
+      adminEmail: process.env.ADMIN_EMAIL
+    });
+  }
+});
 
 // Error handling
 app.use((err, req, res, next) => {
