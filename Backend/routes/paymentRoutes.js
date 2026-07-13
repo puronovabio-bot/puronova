@@ -101,7 +101,7 @@ router.post('/verify', protect, async (req, res) => {
         </div>
       `;
       sendEmail({
-        email: updatedOrder.user.email,
+        email: updatedOrder.shippingAddress?.email || updatedOrder.user.email,
         subject: `Payment Successful - Puro Nova [${updatedOrder.orderNumber}]`,
         html: emailContent
       }).catch(err => console.error("Email send error:", err));

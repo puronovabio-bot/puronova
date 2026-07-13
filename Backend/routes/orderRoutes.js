@@ -60,7 +60,7 @@ router.post('/', protect, async (req, res) => {
         </div>
       `;
       sendEmail({
-        email: req.user.email,
+        email: order.shippingAddress?.email || req.user.email,
         subject: `Order Confirmation - Puro Nova [${order.orderNumber}]`,
         html: emailContent
       }).catch(err => console.error("Email send error:", err));
