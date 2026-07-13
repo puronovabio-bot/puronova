@@ -3,6 +3,11 @@ import dotenv from 'dotenv';
 import dns from 'dns';
 dotenv.config();
 
+// Force IPv4 resolution to prevent IPv6 ENETUNREACH errors on cloud hosting (Render)
+if (typeof dns.setDefaultResultOrder === 'function') {
+  dns.setDefaultResultOrder('ipv4first');
+}
+
 const sendEmail = async (options) => {
   // Use a fallback text if credentials are not provided to avoid crashing
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {

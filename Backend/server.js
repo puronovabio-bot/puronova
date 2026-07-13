@@ -17,6 +17,11 @@ import reviewRoutes from './routes/reviewRoutes.js';
 
 dotenv.config();
 
+// Force IPv4 resolution to prevent IPv6 ENETUNREACH errors on cloud hosting (Render)
+if (typeof dns.setDefaultResultOrder === 'function') {
+  dns.setDefaultResultOrder('ipv4first');
+}
+
 const app = express();
 
 // Middleware
@@ -59,11 +64,8 @@ app.get('/api/test-smtp', async (req, res) => {
 
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
-      port: 587,
-      secure: false,
-      lookup: (hostname, options, callback) => {
-        dns.lookup(hostname, { family: 4 }, callback);
-      },
+      port: 465,
+      secure: true,
       connectionTimeout: 5000,
       greetingTimeout: 5000,
       socketTimeout: 5000,
