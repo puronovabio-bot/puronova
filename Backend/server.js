@@ -60,6 +60,7 @@ app.get('/api/test-smtp', async (req, res) => {
       host: 'smtp.gmail.com',
       port: 465,
       secure: true,
+      family: 4,
       connectionTimeout: 5000,
       greetingTimeout: 5000,
       socketTimeout: 5000,
