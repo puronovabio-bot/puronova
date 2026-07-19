@@ -8,7 +8,7 @@ import imgDishWash from '../assets/products/Dish Wash.png';
 import imgDetergent from '../assets/products/Detergent.png';
 import imgFloorCleaner from '../assets/products/Floor Cleaner.jpeg';
 import imgFaceWash from '../assets/products/face wash.jpeg';
-import imgBodyWash from '../assets/products/Bodywash.png';
+import imgBodyWash from '../assets/products/body-wash.jpg';
 import imgToothPowder from '../assets/products/tooth.jpg';
 import imgHandWash from '../assets/products/Handwash.png';
 import imgFacePack from '../assets/products/Facepack.png';
@@ -24,7 +24,9 @@ import imgLipBalmVanilla from '../assets/products/vennela.jpg';
 import imgLipBalmMixFruit from '../assets/products/mix-fruit.jpg';
 import imgHairOil from '../assets/products/hair-oil.jpeg';
 import imgFaceCream from '../assets/products/Moisturizing face cream.png';
-
+import imgDiabeticTea from '../assets/products/diabetics.jpg';
+import imgGastricTea from '../assets/products/gastric.jpg';
+import imgHeartHealthyTea from '../assets/products/Heart-healthy.jpg';
 const allProducts = {
   1: {
     _id: '1', name: 'Dish Wash', brand: 'NeatCo', category: 'Home Care & Hygiene',
@@ -205,6 +207,33 @@ const allProducts = {
     benefits: 'Deeply hydrates lips, Natural fruit flavor, Prevents chapping, Gentle formulation',
     variants: [{ size: '20g', price: 230 }],
     images: [imgLipBalmMixFruit],
+  },
+  21: {
+    _id: '21', name: 'Diabetic tea', brand: 'Health Care', category: 'Health Care',
+    rating: 4.8, numReviews: 14,
+    description: 'A natural blend formulated for diabetic care.',
+    ingredients: 'Natural herbal tea blend.',
+    benefits: 'Supports healthy blood sugar levels, 100% Natural, Herbal formulation',
+    variants: [{ size: '100g', price: 93 }],
+    images: [imgDiabeticTea],
+  },
+  22: {
+    _id: '22', name: 'Gastric tea', brand: 'Health Care', category: 'Health Care',
+    rating: 4.7, numReviews: 12,
+    description: 'Soothing herbal tea for digestive comfort.',
+    ingredients: 'Natural herbal tea blend.',
+    benefits: 'Relieves bloating and gas, Supports healthy digestion',
+    variants: [{ size: '100g', price: 114 }],
+    images: [imgGastricTea],
+  },
+  23: {
+    _id: '23', name: 'Heart health tea', brand: 'Health Care', category: 'Health Care',
+    rating: 4.9, numReviews: 15,
+    description: 'Herbal tea blend to support cardiovascular health.',
+    ingredients: 'Natural herbal tea blend.',
+    benefits: 'Supports healthy blood pressure, Promotes heart function',
+    variants: [{ size: '100g', price: 110 }],
+    images: [imgHeartHealthyTea],
   }
 };
 

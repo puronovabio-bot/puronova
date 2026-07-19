@@ -11,7 +11,7 @@ import promoImage from '../assets/two-image.png';
 
 import imgDishWash from '../assets/products/Dish Wash.png';
 import imgFaceWash from '../assets/products/face wash.jpeg';
-import imgBodyWash from '../assets/products/Bodywash.png';
+import imgBodyWash from '../assets/products/body-wash.jpg';
 import imgFacePack from '../assets/products/Facepack.png';
 import imgAmrutadhara from '../assets/products/Amrutadhara.png';
 import imgPeetambar from '../assets/products/Peetambar.png';
@@ -280,9 +280,9 @@ const Home = () => {
           <div className="promo-banner reveal">
             <div className="promo-content">
               <span className="promo-tag">Special Offer</span>
-              <h2 className="heading-lg" style={{ marginBottom: '15px' }}>Get Discount <br /> on Your First Order!</h2>
-              <p className="promo-code-text" style={{ fontSize: '1.1rem', margin: '0 0 30px 0', opacity: 0.95, display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                Use Coupon Code: <span style={{ background: '#FFF', color: 'var(--puro-charcoal)', padding: '5px 12px', borderRadius: '6px', fontWeight: '800', letterSpacing: '1px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>WELCOME</span>
+              <h2 className="heading-lg" style={{ marginBottom: '15px' }}>Pure & Natural <br /> Wellness Everyday</h2>
+              <p className="promo-text" style={{ fontSize: '1.1rem', margin: '0 0 30px 0', opacity: 0.95, lineHeight: '1.6' }}>
+                Experience the difference with our 100% plant-based, thoughtfully formulated care products for your family.
               </p>
               <Link to="/shop" className="btn btn-accent">Shop Now</Link>
             </div>

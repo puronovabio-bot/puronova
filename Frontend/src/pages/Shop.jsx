@@ -8,7 +8,7 @@ import imgDishWash from '../assets/products/Dish Wash.png';
 import imgDetergent from '../assets/products/Detergent.png';
 import imgFloorCleaner from '../assets/products/Floor Cleaner.jpeg';
 import imgFaceWash from '../assets/products/face wash.jpeg';
-import imgBodyWash from '../assets/products/Bodywash.png';
+import imgBodyWash from '../assets/products/body-wash.jpg';
 import imgToothPowder from '../assets/products/tooth.jpg';
 import imgHandWash from '../assets/products/Handwash.png';
 import imgFacePack from '../assets/products/Facepack.png';
@@ -24,28 +24,34 @@ import imgLipBalmVanilla from '../assets/products/vennela.jpg';
 import imgLipBalmMixFruit from '../assets/products/mix-fruit.jpg';
 import imgHairOil from '../assets/products/hair-oil.jpeg';
 import imgFaceCream from '../assets/products/Moisturizing face cream.png';
+import imgDiabeticTea from '../assets/products/diabetics.jpg';
+import imgGastricTea from '../assets/products/gastric.jpg';
+import imgHeartHealthyTea from '../assets/products/Heart-healthy.jpg';
 
 const products = [
-  { id: 1, name: 'Dish Wash', brand: 'NeatCo', category: 'Home Care & Hygiene', price: 215, sizes: ['500ml', '1L'], img: imgDishWash },
-  { id: 2, name: 'Detergent', brand: 'NeatCo', category: 'Home Care & Hygiene', price: 200, sizes: ['500ml', '1L'], img: imgDetergent },
-  { id: 3, name: 'Floor Cleaner', brand: 'NeatCo', category: 'Home Care & Hygiene', price: 195, sizes: ['500ml', '1L'], img: imgFloorCleaner },
-  { id: 4, name: 'Bio Pitambar', brand: 'NeatCo', category: 'Home Care & Hygiene', price: 250, sizes: ['500ml'], img: imgPeetambar }, /* Placeholder img */
-  { id: 5, name: 'Rose + Papaya Face Wash', brand: 'TouchCo', category: 'Personal Care', price: 225, sizes: ['100ml', '200ml'], img: imgFaceWash },
-  { id: 6, name: 'Herbal Facepack Powder', brand: 'TouchCo', category: 'Personal Care', price: 175, sizes: ['100g'], img: imgFacePack },
-  { id: 7, name: 'Face Cream', brand: 'TouchCo', category: 'Personal Care', price: 220, sizes: ['50g'], img: imgFaceCream },
-  { id: 8, name: 'Bees Wax Lip Balm, Beetroot', brand: 'TouchCo', category: 'Personal Care', price: 230, sizes: ['20g'], img: imgLipBalm },
-  { id: 9, name: 'Body Wash', brand: 'TouchCo', category: 'Personal Care', price: 235, sizes: ['200ml', '500ml'], img: imgBodyWash },
-  { id: 10, name: 'Bio Enzyme Shampoo', brand: 'TouchCo', category: 'Personal Care', price: 190, sizes: ['200ml', '500ml'], img: imgShampoo },
-  { id: 11, name: 'Chemical-Free Black Henna / Hair Dye', brand: 'TouchCo', category: 'Personal Care', price: 150, sizes: ['50g'], img: imgHairDye },
-  { id: 12, name: 'Hair Oil', brand: 'TouchCo', category: 'Personal Care', price: 215, sizes: ['100ml'], img: imgHairOil },
-  { id: 13, name: 'Neem + Citrus Hand Wash', brand: 'TouchCo', category: 'Personal Care', price: 185, sizes: ['200ml'], img: imgHandWash },
-  { id: 14, name: 'Vedic Tooth Powder', brand: 'TouchCo', category: 'Personal Care', price: 170, sizes: ['50g'], img: imgToothPowder },
-  { id: 15, name: 'Amruta Dhara', brand: 'Wellness / Traditional', category: 'Wellness / Traditional', price: 150, sizes: ['10ml'], img: imgAmrutadhara },
-  { id: 16, name: 'Dry Fruit Laddu', brand: 'Heart-full Foods', category: 'Heart-full Foods', price: 325, sizes: ['250g', '500g', '1kg'], img: imgDryFruit },
-  { id: 17, name: 'Protein Jawa', brand: 'Heart-full Foods', category: 'Heart-full Foods', price: 700, sizes: ['500g'], img: imgProteinJawa },
-  { id: 18, name: 'A2 Cow Ghee', brand: 'Heart-full Foods', category: 'Heart-full Foods', price: 1400, sizes: ['500g', '1kg'], img: imgA2Ghee },
-  { id: 19, name: 'Bees Wax Lip Balm, Vanilla', brand: 'TouchCo', category: 'Personal Care', price: 230, sizes: ['20g'], img: imgLipBalmVanilla },
-  { id: 20, name: 'Bees Wax Lip Balm, Mixed Fruit', brand: 'TouchCo', category: 'Personal Care', price: 230, sizes: ['20g'], img: imgLipBalmMixFruit },
+  { id: 1, name: 'Dish Wash', brand: 'NeatCo', category: 'Home Care & Hygiene', variants: [{size: '500ml', price: 215}, {size: '1L', price: 430}], img: imgDishWash },
+  { id: 2, name: 'Detergent', brand: 'NeatCo', category: 'Home Care & Hygiene', variants: [{size: '500ml', price: 200}, {size: '1L', price: 380}], img: imgDetergent },
+  { id: 3, name: 'Floor Cleaner', brand: 'NeatCo', category: 'Home Care & Hygiene', variants: [{size: '500ml', price: 195}, {size: '1L', price: 360}], img: imgFloorCleaner },
+  { id: 4, name: 'Bio Pitambar', brand: 'NeatCo', category: 'Home Care & Hygiene', variants: [{size: '500ml', price: 250}], img: imgPeetambar },
+  { id: 5, name: 'Rose + Papaya Face Wash', brand: 'TouchCo', category: 'Personal Care', variants: [{size: '100ml', price: 225}, {size: '200ml', price: 450}], img: imgFaceWash },
+  { id: 6, name: 'Herbal Facepack Powder', brand: 'TouchCo', category: 'Personal Care', variants: [{size: '100g', price: 175}], img: imgFacePack },
+  { id: 7, name: 'Face Cream', brand: 'TouchCo', category: 'Personal Care', variants: [{size: '50g', price: 220}], img: imgFaceCream },
+  { id: 8, name: 'Bees Wax Lip Balm, Beetroot', brand: 'TouchCo', category: 'Personal Care', variants: [{size: '20g', price: 230}], img: imgLipBalm },
+  { id: 9, name: 'Body Wash', brand: 'TouchCo', category: 'Personal Care', variants: [{size: '200ml', price: 235}, {size: '500ml', price: 450}], img: imgBodyWash },
+  { id: 10, name: 'Bio Enzyme Shampoo', brand: 'TouchCo', category: 'Personal Care', variants: [{size: '200ml', price: 190}, {size: '500ml', price: 400}], img: imgShampoo },
+  { id: 11, name: 'Chemical-Free Black Henna / Hair Dye', brand: 'TouchCo', category: 'Personal Care', variants: [{size: '50g', price: 150}], img: imgHairDye },
+  { id: 12, name: 'Hair Oil', brand: 'TouchCo', category: 'Personal Care', variants: [{size: '100ml', price: 215}], img: imgHairOil },
+  { id: 13, name: 'Neem + Citrus Hand Wash', brand: 'TouchCo', category: 'Personal Care', variants: [{size: '200ml', price: 185}], img: imgHandWash },
+  { id: 14, name: 'Vedic Tooth Powder', brand: 'TouchCo', category: 'Personal Care', variants: [{size: '50g', price: 170}], img: imgToothPowder },
+  { id: 15, name: 'Amruta Dhara', brand: 'Wellness / Traditional', category: 'Wellness / Traditional', variants: [{size: '10ml', price: 150}], img: imgAmrutadhara },
+  { id: 16, name: 'Dry Fruit Laddu', brand: 'Heart-full Foods', category: 'Heart-full Foods', variants: [{size: '250g', price: 325}, {size: '500g', price: 650}, {size: '1kg', price: 1300}], img: imgDryFruit },
+  { id: 17, name: 'Protein Jawa', brand: 'Heart-full Foods', category: 'Heart-full Foods', variants: [{size: '500g', price: 700}], img: imgProteinJawa },
+  { id: 18, name: 'A2 Cow Ghee', brand: 'Heart-full Foods', category: 'Heart-full Foods', variants: [{size: '500g', price: 1400}, {size: '1kg', price: 2700}], img: imgA2Ghee },
+  { id: 19, name: 'Bees Wax Lip Balm, Vanilla', brand: 'TouchCo', category: 'Personal Care', variants: [{size: '20g', price: 230}], img: imgLipBalmVanilla },
+  { id: 20, name: 'Bees Wax Lip Balm, Mixed Fruit', brand: 'TouchCo', category: 'Personal Care', variants: [{size: '20g', price: 230}], img: imgLipBalmMixFruit },
+  { id: 21, name: 'Diabetic tea', brand: 'Health Care', category: 'Health Care', variants: [{size: '100g', price: 93}], img: imgDiabeticTea },
+  { id: 22, name: 'Gastric tea', brand: 'Health Care', category: 'Health Care', variants: [{size: '100g', price: 114}], img: imgGastricTea },
+  { id: 23, name: 'Heart health tea', brand: 'Health Care', category: 'Health Care', variants: [{size: '100g', price: 110}], img: imgHeartHealthyTea },
 ];
 
 const categoryIcons = {
@@ -54,13 +60,15 @@ const categoryIcons = {
   'Personal Care': 'fa-spa',
   'Wellness / Traditional': 'fa-leaf',
   'Heart-full Foods': 'fa-seedling',
+  'Health Care': 'fa-notes-medical',
 };
 
 const catMap = {
   'home-care': 'Home Care & Hygiene',
   'personal-care': 'Personal Care',
   'wellness': 'Wellness / Traditional',
-  'heartful-foods': 'Heart-full Foods'
+  'heartful-foods': 'Heart-full Foods',
+  'health-care': 'Health Care'
 };
 
 const Shop = () => {
@@ -72,6 +80,7 @@ const Shop = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const [selectedSizes, setSelectedSizes] = useState({});
   const [wishlist, setWishlist] = useState(() => {
     const saved = localStorage.getItem('wishlist');
     return saved ? JSON.parse(saved) : [];
@@ -138,7 +147,9 @@ const Shop = () => {
 
   const handleAddToCart = (e, p) => {
     e.stopPropagation();
-    addToCart({ _id: p.id, name: p.name, brand: p.brand, images: [p.img] }, p.sizes[0], p.price, 1);
+    const sizeToAdd = selectedSizes[p.id] || p.variants[0].size;
+    const variant = p.variants.find(v => v.size === sizeToAdd) || p.variants[0];
+    addToCart({ _id: p.id, name: p.name, brand: p.brand, images: [p.img] }, variant.size, variant.price, 1);
     showToast(`${p.name} added to cart!`, 'cart');
 
     // Fly-to-cart animation
@@ -247,7 +258,7 @@ const Shop = () => {
             <button className="mobile-chip-btn" onClick={() => setShowMobileFilters(!showMobileFilters)}>
               <i className="fa-solid fa-sliders"></i> Sort & Filter
             </button>
-            {['All', 'Home Care & Hygiene', 'Personal Care', 'Wellness / Traditional', 'Heart-full Foods'].map((cat, i) => (
+            {['All', 'Home Care & Hygiene', 'Personal Care', 'Wellness / Traditional', 'Heart-full Foods', 'Health Care'].map((cat, i) => (
               <button
                 key={i}
                 className={`mobile-chip-btn ${activeCategory === cat ? 'active' : ''}`}
@@ -288,7 +299,7 @@ const Shop = () => {
                 Categories
               </h4>
               <div className="filter-list">
-                {['All', 'Home Care & Hygiene', 'Personal Care', 'Wellness / Traditional', 'Heart-full Foods'].map((cat, i) => (
+                {['All', 'Home Care & Hygiene', 'Personal Care', 'Wellness / Traditional', 'Heart-full Foods', 'Health Care'].map((cat, i) => (
                   <button
                     key={i}
                     className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
@@ -366,11 +377,57 @@ const Shop = () => {
                     </div>
                     <div className="product-info">
                       <span className="p-cat">{p.brand}</span>
-                      <h3 className="p-title">{p.name}</h3>
+                      <h3 className="p-title" style={{ marginBottom: '4px' }}>{p.name}</h3>
+                      
+                      {p.variants && p.variants.length > 1 ? (
+                        <div className="p-size-selector" style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '8px', marginBottom: '12px' }} onClick={(e) => e.stopPropagation()}>
+                          {p.variants.map(v => {
+                            const isSelected = selectedSizes[p.id] === v.size || (!selectedSizes[p.id] && p.variants[0].size === v.size);
+                            return (
+                              <button 
+                                key={v.size}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setSelectedSizes({...selectedSizes, [p.id]: v.size});
+                                }}
+                                style={{ 
+                                  padding: '4px 12px', 
+                                  borderRadius: '20px', 
+                                  border: isSelected ? '1px solid var(--puro-green-forest, #2E4E3F)' : '1px solid #e2e8f0',
+                                  fontSize: '11px',
+                                  fontWeight: isSelected ? '600' : '500',
+                                  backgroundColor: isSelected ? '#F0F7F0' : '#fff',
+                                  color: isSelected ? 'var(--puro-green-forest, #2E4E3F)' : '#64748b',
+                                  cursor: 'pointer',
+                                  outline: 'none',
+                                  transition: 'all 0.2s ease',
+                                  letterSpacing: '0.3px'
+                                }}
+                              >
+                                {v.size}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      ) : p.variants && p.variants.length === 1 ? (
+                        <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', marginBottom: '12px', fontWeight: '500', letterSpacing: '0.3px' }}>
+                          {p.variants[0].size}
+                        </div>
+                      ) : (
+                        <div style={{ marginBottom: '12px' }}></div>
+                      )}
+
                       <div className="p-footer">
                         <div className="p-prices">
-                          <span className="p-old-price">₹{Math.round(p.price * 1.1)}</span>
-                          <span className="p-price">₹{p.price}</span>
+                          {(() => {
+                            const currentVariant = p.variants.find(v => v.size === (selectedSizes[p.id] || p.variants[0].size)) || p.variants[0];
+                            return (
+                              <>
+                                <span className="p-old-price">₹{Math.round(currentVariant.price * 1.1)}</span>
+                                <span className="p-price">₹{currentVariant.price}</span>
+                              </>
+                            );
+                          })()}
                         </div>
                         <button
                           className="p-add-btn"

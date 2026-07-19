@@ -8,7 +8,7 @@ import imgDishWash from '../assets/products/Dish Wash.png';
 import imgDetergent from '../assets/products/Detergent.png';
 import imgFloorCleaner from '../assets/products/Floor Cleaner.jpeg';
 import imgFaceWash from '../assets/products/face wash.jpeg';
-import imgBodyWash from '../assets/products/Bodywash.png';
+import imgBodyWash from '../assets/products/body-wash.jpg';
 import imgToothPowder from '../assets/products/tooth.jpg';
 import imgHandWash from '../assets/products/Handwash.png';
 import imgFacePack from '../assets/products/Facepack.png';
@@ -24,7 +24,9 @@ import imgLipBalmVanilla from '../assets/products/vennela.jpg';
 import imgLipBalmMixFruit from '../assets/products/mix-fruit.jpg';
 import imgHairOil from '../assets/products/hair-oil.jpeg';
 import imgFaceCream from '../assets/products/Moisturizing face cream.png';
-
+import imgDiabeticTea from '../assets/products/diabetics.jpg';
+import imgGastricTea from '../assets/products/gastric.jpg';
+import imgHeartHealthyTea from '../assets/products/Heart-healthy.jpg';
 const allProducts = [
   { id: 1, name: 'Dish Wash', brand: 'NeatCo', price: 215, oldPrice: 215, sizes: ['500ml', '1L'], img: imgDishWash },
   { id: 2, name: 'Detergent', brand: 'NeatCo', price: 200, oldPrice: 200, sizes: ['500ml', '1L'], img: imgDetergent },
@@ -46,6 +48,9 @@ const allProducts = [
   { id: 18, name: 'A2 Cow Ghee', brand: 'Heart-full Foods', price: 1400, oldPrice: 1400, sizes: ['500g', '1kg'], img: imgA2Ghee },
   { id: 19, name: 'Bees Wax Lip Balm, Vanilla', brand: 'TouchCo', price: 230, oldPrice: 230, sizes: ['20g'], img: imgLipBalmVanilla },
   { id: 20, name: 'Bees Wax Lip Balm, Mixed Fruit', brand: 'TouchCo', price: 230, oldPrice: 230, sizes: ['20g'], img: imgLipBalmMixFruit },
+  { id: 21, name: 'Diabetic tea', brand: 'Health Care', price: 93, oldPrice: 93, sizes: ['100g'], img: imgDiabeticTea },
+  { id: 22, name: 'Gastric tea', brand: 'Health Care', price: 114, oldPrice: 114, sizes: ['100g'], img: imgGastricTea },
+  { id: 23, name: 'Heart health tea', brand: 'Health Care', price: 110, oldPrice: 110, sizes: ['100g'], img: imgHeartHealthyTea },
 ];
 
 const getSlug = (name) => name.toLowerCase().replace(/ /g, '-').replace(/[&]/g, 'and');

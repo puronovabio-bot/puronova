@@ -23,9 +23,9 @@ const About = () => {
 
   return (
     <div className="about-page">
-      <SEO 
-        title="About Us" 
-        description="Learn about Puro Nova's story, our values, and our mission to provide natural, honest products for everyday homes." 
+      <SEO
+        title="About Us"
+        description="Learn about Puro Nova's story, our values, and our mission to provide natural, honest products for everyday homes."
         url="/about"
       />
       {/* Hero Section */}
@@ -66,16 +66,16 @@ const About = () => {
               We believe that natural can mean effective, that transparent can mean trustworthy, and that everyday homes deserve products made with genuine care. That’s what we’re building.
             </p>
           </div>
-          
+
           <div className="story-right-col">
-            <div className="story-quote reveal delay-2">
+            <div className="story-team-image reveal delay-2">
+              <img src={aboutTeam} alt="The Puro Nova Team" />
+            </div>
+            <div className="story-quote reveal delay-3">
               <blockquote>
                 “We started Puro Nova because we couldn’t find products we trusted for our own home. That frustration became our compass.”
               </blockquote>
-              <cite>— Hyderabad, Telangana</cite>
-            </div>
-            <div className="story-team-image reveal delay-3">
-              <img src={aboutTeam} alt="The Puro Nova Team" />
+              <cite>— Founders of Puro Nova</cite>
             </div>
           </div>
         </div>
@@ -104,29 +104,29 @@ const About = () => {
             <span className="section-subtitle">Our Ecosystem</span>
             <h2 className="heading-md">Our Brand Family</h2>
           </div>
-          
+
           <div className="family-grid">
             <div className="family-card reveal">
               <h3>NeatCo by Puro Nova</h3>
               <p>Home care. Bio-enzyme powered dish wash, detergent, floor cleaner, and toilet cleaner.</p>
             </div>
-            
+
             <div className="family-card reveal delay-1">
               <h3>TouchCo by Puro Nova</h3>
               <p>Personal care. Face wash, body wash, hand wash, vedic tooth powder, and face pack.</p>
             </div>
-            
+
             <div className="family-card reveal delay-2">
               <h3>Wellness by Puro Nova</h3>
               <p>Traditional wellness. Herbal tea, bio salt liquid, and Amrutha Dhara.</p>
             </div>
-            
+
             <div className="family-card reveal delay-3">
               <h3>Heartful Foods</h3>
               <p>Wholesome food. Dry fruit laddus, sesame laddus, protein powder, jaggery, and papads.</p>
             </div>
           </div>
-          
+
           <div className="family-image reveal delay-1">
             <img src={aboutFamily} alt="Our natural care brand family" className="img-cover radius-lg" />
           </div>
@@ -141,7 +141,7 @@ const About = () => {
             <div className="contact-info-grid">
               <div className="contact-info-item">
                 <h4>Address</h4>
-                <p>Tripura landmark2,<br/>Opposite Srk Green Park,<br/>Bowrampet, Hyderabad,<br/>Telangana — 500043</p>
+                <p>Tripura landmark2,<br />Opposite Srk Green Park,<br />Bowrampet, Hyderabad,<br />Telangana — 500043</p>
               </div>
               <div className="contact-info-item">
                 <h4>Phone</h4>
