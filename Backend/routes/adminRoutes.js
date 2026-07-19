@@ -20,7 +20,7 @@ const upload = multer({ storage });
 // ====== DASHBOARD ======
 router.get('/dashboard', protect, admin, async (req, res) => {
   try {
-    const totalOrders = await Order.countDocuments();
+    const totalOrders = await Order.countDocuments({ paymentStatus: 'paid' });
     const totalRevenue = await Order.aggregate([
       { $match: { paymentStatus: 'paid' } },
       { $group: { _id: null, total: { $sum: '$total' } } }
