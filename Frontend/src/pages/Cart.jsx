@@ -111,10 +111,7 @@ const Cart = () => {
               <span>₹{subtotal}</span>
             </div>
             
-            <div className="summary-row">
-              <span>Total Weight</span>
-              <span>{totalGrams >= 1000 ? `${(totalGrams / 1000).toFixed(2)} kg` : `${totalGrams} g`}</span>
-            </div>
+
             
             <div className="summary-row">
               <span>Shipping</span>

@@ -12,9 +12,9 @@ import promoImage from '../assets/two-image.png';
 import imgDishWash from '../assets/products/Dish Wash.png';
 import imgFaceWash from '../assets/products/face wash.jpeg';
 import imgBodyWash from '../assets/products/body-wash.jpg';
-import imgFacePack from '../assets/products/Facepack.png';
+import imgFacePack from '../assets/products/face-pack.jpg';
 import imgAmrutadhara from '../assets/products/Amrutadhara.png';
-import imgPeetambar from '../assets/products/Peetambar.png';
+import imgPeetambar from '../assets/products/bio.jpg';
 import categoryOneImg from '../assets/categoryone.png';
 import categoryTwoImg from '../assets/categorytwo.png';
 import categoryThreeImg from '../assets/categorythree.png';
@@ -106,7 +106,10 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
-  const getSlug = (name) => name.toLowerCase().replace(/ /g, '-').replace(/[&]/g, 'and');
+  const getSlug = (name) => {
+    if (!name) return '';
+    return name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  };
 
   const popularCategories = [
     { name: 'Home Care & Hygiene', items: '4 Items', img: imgDishWash },

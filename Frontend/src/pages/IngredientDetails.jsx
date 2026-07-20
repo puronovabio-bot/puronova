@@ -51,7 +51,10 @@ const ingredientsData = [
 
 const IngredientDetails = () => {
   const { slug } = useParams();
-  const getSlug = (name) => name.toLowerCase().replace(/ /g, '-').replace(/[&]/g, 'and');
+  const getSlug = (name) => {
+    if (!name) return '';
+    return name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  };
   
   const ingredient = ingredientsData.find(i => getSlug(i.name) === slug);
 

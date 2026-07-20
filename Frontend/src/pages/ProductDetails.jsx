@@ -11,10 +11,10 @@ import imgFaceWash from '../assets/products/face wash.jpeg';
 import imgBodyWash from '../assets/products/body-wash.jpg';
 import imgToothPowder from '../assets/products/tooth.jpg';
 import imgHandWash from '../assets/products/Handwash.png';
-import imgFacePack from '../assets/products/Facepack.png';
-import imgShampoo from '../assets/products/Herbal shampoo.png';
-import imgHairDye from '../assets/products/hair-dye.jpeg';
-import imgPeetambar from '../assets/products/Peetambar.png';
+import imgFacePack from '../assets/products/face-pack.jpg';
+import imgShampoo from '../assets/products/herbar-shampo.jpg';
+import imgHairDye from '../assets/products/hair.jpg';
+import imgPeetambar from '../assets/products/bio.jpg';
 import imgAmrutadhara from '../assets/products/Amrutadhara.png';
 import imgA2Ghee from '../assets/products/A2-cow-ghee.jpeg';
 import imgProteinJawa from '../assets/products/protein.jpeg';
@@ -23,7 +23,7 @@ import imgLipBalm from '../assets/products/beetroot.jpg';
 import imgLipBalmVanilla from '../assets/products/vennela.jpg';
 import imgLipBalmMixFruit from '../assets/products/mix-fruit.jpg';
 import imgHairOil from '../assets/products/hair-oil.jpeg';
-import imgFaceCream from '../assets/products/Moisturizing face cream.png';
+import imgFaceCream from '../assets/products/face-cream.jpg';
 import imgDiabeticTea from '../assets/products/diabetics.jpg';
 import imgGastricTea from '../assets/products/gastric.jpg';
 import imgHeartHealthyTea from '../assets/products/Heart-healthy.jpg';
@@ -242,7 +242,10 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   
-  const getSlug = (name) => name.toLowerCase().replace(/ /g, '-').replace(/[()]/g, '');
+  const getSlug = (name) => {
+    if (!name) return '';
+    return name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  };
   const product = Object.values(allProducts).find(p => getSlug(p.name) === slug) || allProducts[1];
 
   const relatedProducts = Object.values(allProducts)
